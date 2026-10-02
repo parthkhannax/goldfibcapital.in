@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 Sitemap: https://goldfibcapital.in/sitemap.xml
