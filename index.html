@@ -13,141 +13,166 @@
 <meta property="og:image" content="https://goldfibcapital.in/assets/img/photos/towers.jpg">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Goldfib Capital","url":"https://goldfibcapital.in/","logo":"https://goldfibcapital.in/assets/logo.svg","email":"partners@goldfibcapital.in","foundingDate":"2023","description":"Outsourced research and automation desk for family offices in India: deal diligence and portfolio monitoring.","founder":{"@type":"Person","name":"Parth Khanna","url":"https://parthkhannax.github.io/opus6portfolio.html"}}</script>
 <style>
-:root{--navy:#0f1d31;--navy-2:#16273f;--paper:#f6f4ef;--white:#fff;--line:#e3ded3;--line-dark:rgba(255,255,255,.12);--text:#1a2433;--muted:#5b6575;--soft:#8a93a1;--gold:#a4813d;--gold-2:#c8a76a;--red:#b4483c;--amber:#b7832a;--green:#2e7a58;--r:6px}
+:root{--navy:#0f1d31;--navy-2:#16273f;--navy-3:#0a1524;--paper:#f6f4ef;--white:#fff;--line:#e6e1d6;--line-dark:rgba(255,255,255,.1);--text:#0f1d31;--muted:#5b6575;--soft:#8a93a1;--gold:#a4813d;--gold-2:#c8a76a;--red:#b4483c;--amber:#b7832a;--green:#2e7a58;--r:14px;--shadow:0 1px 2px rgba(15,29,49,.04),0 12px 32px -12px rgba(15,29,49,.12);--mono:'JetBrains Mono',ui-monospace,monospace}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;font-feature-settings:'cv11','ss01'}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
-.container{max-width:1140px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-.01em;line-height:1.15}
-.kicker{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.btn{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;padding:13px 22px;border-radius:var(--r);border:1px solid var(--gold);background:var(--gold);color:#fff;transition:background .2s,border-color .2s}
-.btn:hover{background:#8d6d30;border-color:#8d6d30}
-.btn.line{background:transparent;color:var(--text);border-color:#c9c3b6}
-.btn.line:hover{border-color:var(--text)}
-.dark .btn.line,.hero .btn.line,.final .btn.line{color:#fff;border-color:rgba(255,255,255,.35)}
-.dark .btn.line:hover,.hero .btn.line:hover,.final .btn.line:hover{border-color:#fff}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:'Inter',system-ui,sans-serif;font-weight:600;letter-spacing:-.035em;line-height:1.08}
+h3{letter-spacing:-.02em;line-height:1.25}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);padding:5px 12px;border:1px solid rgba(164,129,61,.28);border-radius:999px;background:rgba(164,129,61,.06)}
+.kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px rgba(164,129,61,.18)}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;padding:12px 20px;border-radius:10px;border:1px solid var(--gold);background:linear-gradient(180deg,#b38f4a,var(--gold));color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 6px 18px -6px rgba(164,129,61,.55);transition:transform .15s,box-shadow .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 24px -8px rgba(164,129,61,.7)}
+.btn.line{background:#fff;color:var(--text);border-color:var(--line);box-shadow:0 1px 2px rgba(15,29,49,.06)}
+.btn.line:hover{border-color:#c9c3b6}
+.dark .btn.line,.hero .btn.line,.final .btn.line{background:rgba(255,255,255,.04);color:#fff;border-color:rgba(255,255,255,.18);box-shadow:none;backdrop-filter:blur(6px)}
+.dark .btn.line:hover,.hero .btn.line:hover,.final .btn.line:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
 /* nav */
-.nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:1px solid var(--line-dark)}
-.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff}
-.brand{display:flex;align-items:center;gap:10px;font-family:'Source Serif 4',serif;font-weight:600;font-size:1.12rem}
-.brand img{width:30px;height:30px;border-radius:6px}
-.nav-links{display:flex;gap:28px;list-style:none;font-size:.88rem}
-.nav-links a{color:rgba(255,255,255,.72)}.nav-links a:hover{color:#fff}
-.nav .btn{padding:9px 16px;font-size:.82rem}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,21,36,.94);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line-dark)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#fff}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.02rem;letter-spacing:-.02em}
+.brand img{width:28px;height:28px;border-radius:7px}
+.nav-links{display:flex;gap:28px;list-style:none;font-size:.86rem}
+.nav-links a{color:rgba(255,255,255,.66);transition:color .15s}.nav-links a:hover{color:#fff}
+.nav .btn{padding:8px 14px;font-size:.8rem;border-radius:8px}
 .nav-cta .short{display:none}
+/* shared dark backdrop: grid + glow */
+.hero,.final{position:relative;color:#fff;background:var(--navy-3);overflow:hidden;isolation:isolate}
+.hero::before,.final::before{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 30%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 60% 30%,#000 30%,transparent 75%)}
+.hero::after,.final::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(600px 420px at 78% 38%,rgba(200,167,106,.22),transparent 70%),radial-gradient(700px 500px at 10% 0%,rgba(59,107,138,.28),transparent 70%)}
 /* hero */
-.hero{position:relative;color:#fff;background:var(--navy);overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:url(/assets/img/photos/towers.jpg) center/cover;opacity:.16}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,var(--navy) 35%,rgba(15,29,49,.75))}
-.hero .container{position:relative;z-index:1;max-width:1240px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:80px;padding-bottom:88px}
-.hero h1{font-size:clamp(2.1rem,3.8vw,3rem);margin:16px 0 20px}
-.hero h1 em{font-style:normal;color:var(--gold-2)}
-.hero .lead{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:540px;margin-bottom:32px}
+.hero .container{max-width:1240px;display:grid;grid-template-columns:1.08fr .92fr;gap:32px;align-items:center;padding-top:88px;padding-bottom:88px}
+.hero h1{font-size:clamp(2.3rem,4.2vw,3.5rem);margin:20px 0 20px;letter-spacing:-.045em}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#e2c48a,var(--gold-2) 60%,#a4813d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:1.1rem;color:rgba(255,255,255,.7);max-width:520px;margin-bottom:32px}
 .hero .cta-row{flex-wrap:nowrap}
-.hero .kicker{color:var(--gold-2)}
-.laptop{position:relative;padding-bottom:28px}
-.laptop svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45))}
-.fix{position:absolute;right:-12px;bottom:0;background:#fff;color:var(--text);border-radius:var(--r);padding:14px 18px;width:262px;box-shadow:0 18px 40px rgba(0,0,0,.35);border-top:3px solid var(--gold)}
-.fix b{display:block;font-family:'Source Serif 4',serif;font-size:1rem;margin-bottom:8px}
-.fix ul{display:grid;grid-template-columns:1fr;}.fix li{list-style:none;line-height:1.4;font-size:.82rem;color:var(--muted);padding:3px 0 3px 20px;position:relative}
-.fix li::before{content:'';position:absolute;left:2px;top:9px;width:9px;height:5px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
+.hero .kicker,.final .kicker,.dark .kicker{color:var(--gold-2);border-color:rgba(200,167,106,.3);background:rgba(200,167,106,.08)}
+/* 3D laptop */
+.device{position:relative;perspective:2400px;padding:0 0 64px;margin-right:-40px}
+.rig{position:relative;width:84%;margin-left:14%;transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(-24deg) rotateZ(.5deg)}
+.lid{position:relative;aspect-ratio:16/10.4;background:linear-gradient(160deg,#2b313b,#12151b);border-radius:18px 18px 6px 6px;padding:11px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);transform-origin:bottom center;transform:rotateX(-5deg);transform-style:preserve-3d}
+.lid::after{content:'';position:absolute;inset:11px;border-radius:7px;background:linear-gradient(115deg,rgba(255,255,255,.1),transparent 38%);pointer-events:none}
+.scr{width:100%;height:100%;border-radius:7px;overflow:hidden;background:#0b1626}
+.scr svg{width:100%;height:100%;display:block}
+.deck{position:absolute;left:-7%;right:-7%;top:100%;aspect-ratio:1/.4;transform-origin:top center;transform:rotateX(84deg);background:linear-gradient(180deg,#d5d9df,#a7adb7);border-radius:3px 3px 26px 26px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 60px 80px rgba(0,0,0,.5)}
+.deck::before{content:'';position:absolute;left:11%;right:11%;top:9%;height:50%;border-radius:10px;background:repeating-linear-gradient(90deg,transparent 0 22px,#c3c8d0 22px 26px),repeating-linear-gradient(0deg,#2e333c 0 18%,#c3c8d0 18% 20%);box-shadow:inset 0 0 0 4px #c3c8d0}
+.deck::after{content:'';position:absolute;left:34%;right:34%;bottom:7%;height:26%;border-radius:10px;background:#bfc4cc;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.device .glow{position:absolute;left:10%;right:0;bottom:4%;height:30%;background:radial-gradient(closest-side,rgba(200,167,106,.28),transparent);filter:blur(20px);z-index:-1}
+.fix{position:absolute;left:-6px;bottom:6px;z-index:2;background:rgba(15,29,49,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 18px 12px;width:268px;box-shadow:0 24px 48px -12px rgba(0,0,0,.6)}
+.fix b{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-2);margin-bottom:6px}
+.fix ul{display:grid}.fix li{list-style:none;line-height:1.4;font-size:.84rem;color:rgba(255,255,255,.86);padding:4px 0 4px 22px;position:relative}
+.fix li::before{content:'';position:absolute;left:3px;top:10px;width:9px;height:5px;border-left:2px solid #5fd39a;border-bottom:2px solid #5fd39a;transform:rotate(-45deg)}
 /* sections */
-section.block{padding:96px 0}
+section.block{padding:104px 0}
 .paper{background:var(--paper)}
-.dark{background:var(--navy);color:#fff}
-.head{max-width:640px;margin-bottom:48px}
+.dark{background:var(--navy-3);color:#fff}
+.head{max-width:680px;margin-bottom:52px}
 .head.center{margin-left:auto;margin-right:auto;text-align:center}
-.head h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin:10px 0 12px}
-.head p{color:var(--muted);font-size:1.04rem}
-.dark .head p{color:rgba(255,255,255,.68)}
-/* trust */
-.trust{padding:64px 0;border-bottom:1px solid var(--line)}
-.trust .head{margin-bottom:36px}
+.head h2{font-size:clamp(1.9rem,3.4vw,2.75rem);margin:16px 0 14px}
+.head p{color:var(--muted);font-size:1.06rem}
+.dark .head p{color:rgba(255,255,255,.64)}
+/* trust / proof */
+.trust{padding:96px 0 88px;border-bottom:1px solid var(--line)}
+.trust .head{margin-bottom:44px}
 .proof{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.pcard{border:1px solid var(--line);border-radius:var(--r);padding:30px;background:#fff;display:grid;grid-template-columns:72px 1fr;gap:22px;align-items:start}
-.pcard img{width:64px;height:64px;object-fit:contain}
-.pcard h3{font-size:1.25rem}
-.pcard .what{color:var(--muted);font-size:.9rem;margin:4px 0 16px}
-.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid var(--line);padding-top:16px}
-.nums b{display:block;font-family:'Source Serif 4',serif;font-size:1.6rem;color:var(--navy);line-height:1.1}
-.nums span{font-size:.78rem;color:var(--muted);line-height:1.35;display:block;margin-top:4px}
-.also{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 44px;margin-top:40px}
-.also span{font-size:.78rem;color:var(--soft);font-weight:500;letter-spacing:.04em}
-.also img{height:26px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(1) brightness(0);opacity:.45}
+.pcard{position:relative;border:1px solid var(--line);border-radius:18px;padding:28px;background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:20px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.pcard:hover{transform:translateY(-3px);border-color:#d9d2c3;box-shadow:0 1px 2px rgba(15,29,49,.04),0 24px 48px -16px rgba(15,29,49,.2)}
+.pcard .top{display:flex;align-items:center;gap:16px}
+.pcard .logo{width:56px;height:56px;border-radius:14px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;flex:none}
+.pcard .logo img{width:38px;height:38px;object-fit:contain}
+.pcard h3{font-size:1.3rem}
+.pcard .nums{flex:1}.pcard .what{color:var(--muted);font-size:.88rem;line-height:1.4;margin-top:2px}
+.pcard .visit{margin-left:auto;align-self:flex-start;font-family:var(--mono);font-size:.74rem;color:var(--gold);border:1px solid rgba(164,129,61,.3);border-radius:999px;padding:5px 11px;white-space:nowrap;transition:background .15s}
+.pcard .visit:hover{background:rgba(164,129,61,.08)}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.nums div{background:#fbfaf7;padding:16px 16px 15px}
+.nums b{display:block;font-size:1.7rem;font-weight:600;letter-spacing:-.04em;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+.nums span{font-size:.8rem;color:var(--muted);line-height:1.4;display:block;margin-top:6px}
+.nums .hl{background:var(--navy);grid-column:1/-1}
+.nums .hl b{color:#fff}.nums .hl b small{font-size:.9rem;font-weight:500;color:var(--gold-2);letter-spacing:0;margin-left:8px}
+.nums .hl span{color:rgba(255,255,255,.7)}
+.also{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 44px;margin-top:48px}
+.also span{font-family:var(--mono);font-size:.72rem;color:var(--soft);letter-spacing:.04em;text-transform:uppercase;width:100%;text-align:center}
+.also img{height:26px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(1) brightness(0);opacity:.4;transition:opacity .2s}
+.also img:hover{opacity:.7}
 .also img.sq{height:34px}
 /* problem/solution */
 .ps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.ps article{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.ps article{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.ps article:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(15,29,49,.04),0 24px 48px -16px rgba(15,29,49,.2)}
 .ps img{aspect-ratio:16/10;object-fit:cover;width:100%}
 .ps .b{padding:24px 24px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
 .ps h3{font-size:1.25rem}
-.ps .pain,.ps .gain{font-size:.92rem;padding-left:14px;border-left:2px solid}
-.ps .pain{color:var(--muted);border-color:var(--red)}
-.ps .gain{color:var(--text);border-color:var(--green);font-weight:500}
-.ps .tag{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.ps .pain,.ps .gain{font-size:.92rem;padding:12px 14px;border-radius:10px;line-height:1.5}
+.ps .pain{color:var(--muted);background:#faf6f5;border:1px solid #f0e2df}
+.ps .gain{color:var(--text);background:#f3f8f5;border:1px solid #d8eade;font-weight:500}
+.ps .tag{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:3px}
 .ps .pain .tag{color:var(--red)}.ps .gain .tag{color:var(--green)}
+.ask{margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 26px;border-radius:18px;background:var(--navy);color:#fff;box-shadow:var(--shadow)}
+.ask p{font-size:1.05rem;font-weight:500;letter-spacing:-.01em}
+.ask p a{color:var(--gold-2);border-bottom:1px solid rgba(200,167,106,.4)}
+.ask p a:hover{border-color:var(--gold-2)}
 /* study */
-.study{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.study h2{font-size:clamp(1.8rem,3.2vw,2.4rem);margin:10px 0 14px}
+.study{display:grid;grid-template-columns:1.18fr .82fr;gap:44px;align-items:center}
+.study h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:16px 0 14px}
 .study p{color:var(--muted)}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r);margin:26px 0 28px;background:#fff}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;margin:26px 0 28px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
 .facts div{padding:18px}
 .facts div+div{border-left:1px solid var(--line)}
-.facts b{display:block;font-family:'Source Serif 4',serif;font-size:1.55rem;color:var(--navy)}
+.facts b{display:block;font-size:1.5rem;font-weight:600;letter-spacing:-.04em;color:var(--navy);font-variant-numeric:tabular-nums}
 .facts span{font-size:.8rem;color:var(--muted);display:block;line-height:1.4;margin-top:4px}
-.chart{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;display:block}
+.chart{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;display:block;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.chart:hover{transform:translateY(-3px)}
 .chart svg{width:100%;height:auto;display:block}
 .fine{font-size:.78rem;color:var(--soft);margin-top:14px}
 /* process */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--navy)}
-.steps div{padding:22px 22px 0 0}
-.steps b{font-family:'Source Serif 4',serif;color:var(--gold);font-size:1rem}
-.steps h3{font-size:1.15rem;margin:6px 0 6px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.steps div{position:relative;padding:22px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.steps b{font-family:var(--mono);font-weight:500;color:var(--gold);font-size:.78rem;display:inline-block;padding:3px 9px;border-radius:999px;background:rgba(164,129,61,.08);border:1px solid rgba(164,129,61,.22)}
+.steps h3{font-size:1.15rem;margin:14px 0 6px}
 .steps p{color:var(--muted);font-size:.9rem}
 /* research (cards generated by tools/build.py) */
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.rcard{display:flex;flex-direction:column;background:var(--navy-2);border:1px solid var(--line-dark);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
-.rcard:hover{border-color:var(--gold-2)}
+.rcard{display:flex;flex-direction:column;background:rgba(255,255,255,.03);border:1px solid var(--line-dark);border-radius:18px;overflow:hidden;transition:border-color .2s,transform .2s}
+.rcard:hover{border-color:rgba(200,167,106,.6);transform:translateY(-3px)}
 .rcard .thumb{aspect-ratio:320/140;border-bottom:1px solid var(--line-dark)}.rcard .thumb svg{width:100%;height:100%;display:block}
 .rcard div.b{padding:18px 22px 22px}
-.rcard .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-2)}
-.rcard h3{font-size:1.08rem;line-height:1.4;margin-top:8px;color:#fff}
-.more{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.rcard .eyebrow{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-2)}
+.rcard h3{font-size:1.05rem;line-height:1.4;margin-top:8px;color:#fff}
+.more{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .sec-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .sec-cta.center{justify-content:center}
 .sec-cta span{color:var(--muted);font-size:.95rem}
 .fine a{color:var(--gold);text-decoration:underline}
 /* founder */
 .founder{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center}
-.founder img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%}
-.founder h3{font-size:1.9rem;margin:8px 0 4px}
+.founder img{border-radius:20px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:0 30px 60px -24px rgba(15,29,49,.4)}
+.founder h3{font-size:2.2rem;letter-spacing:-.04em;margin:16px 0 6px}
 .founder .role{color:var(--gold);font-size:.88rem;font-weight:500;margin-bottom:18px}
 .founder p{color:var(--muted);margin-bottom:14px}
 .creds{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;margin:22px 0 26px;padding-top:20px;border-top:1px solid var(--line)}
 .creds span{font-size:.76rem;color:var(--soft);font-weight:500;width:100%}
 .creds img{height:28px;width:auto;max-width:110px;object-fit:contain;filter:grayscale(1) brightness(0);opacity:.5}
 /* final cta */
-.final{position:relative;color:#fff;overflow:hidden;padding:110px 0}
-.final::before{content:'';position:absolute;inset:0;background:url(/assets/img/photos/handshake.jpg) center/cover}
-.final::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,29,49,.96) 40%,rgba(15,29,49,.6))}
-.final .container{position:relative;z-index:1}
-.final h2{font-size:clamp(2rem,3.6vw,2.8rem);max-width:600px;margin:10px 0 14px}
-.final p{color:rgba(255,255,255,.75);max-width:520px;margin-bottom:30px}
-.final .kicker{color:var(--gold-2)}
-footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;border-top:1px solid var(--line-dark)}
+.final{padding:120px 0}
+.final::after{background:radial-gradient(600px 400px at 85% 50%,rgba(200,167,106,.22),transparent 70%),radial-gradient(700px 500px at 0% 100%,rgba(59,107,138,.28),transparent 70%)}
+.final h2{font-size:clamp(2.1rem,4vw,3.1rem);max-width:640px;margin:18px 0 14px;letter-spacing:-.045em}
+.final p{color:rgba(255,255,255,.7);max-width:520px;margin-bottom:30px}
+footer{background:var(--navy-3);color:rgba(255,255,255,.66);padding:44px 0 36px;border-top:1px solid var(--line-dark)}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px;font-size:.88rem}
 .foot .brand{color:#fff}
 .foot nav{display:flex;gap:22px}.foot a:hover{color:#fff}
-.disclaimer{font-size:.74rem;color:rgba(255,255,255,.45);line-height:1.7;border-top:1px solid var(--line-dark);padding-top:20px}
+.disclaimer{font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.7;border-top:1px solid var(--line-dark);padding-top:20px}
 @media(max-width:1100px){.nav-cta .long{display:none}.nav-cta .short{display:inline}}
 @media(max-width:1180px){.hero .cta-row{flex-wrap:wrap}}
-@media(max-width:960px){.hero .container{padding-bottom:72px}.fix{left:auto;right:8px}.hero .container,.study,.founder{grid-template-columns:1fr}.fix{right:8px}.proof,.ps,.rgrid{grid-template-columns:1fr 1fr}.ps article:last-child{grid-column:1/-1}.steps{grid-template-columns:1fr 1fr}.nav-links{display:none}.founder img{max-width:280px}}
-@media(max-width:640px){.container,.nav-inner{padding:0 16px}section.block{padding:72px 0}.proof,.ps,.rgrid,.steps{grid-template-columns:1fr}.pcard{grid-template-columns:1fr}.nums b{font-size:1.35rem}.facts{grid-template-columns:1fr}.facts div+div{border-left:0;border-top:1px solid var(--line)}.laptop{padding-bottom:0}.fix{position:relative;right:auto;bottom:auto;width:auto;margin-top:16px}.hero .cta-row .btn{width:100%;justify-content:center;text-align:center}.nav-cta{display:none}.hero .container{padding-top:56px;padding-bottom:64px}}
+@media(max-width:960px){.hero .container,.study,.founder{grid-template-columns:1fr}.hero .container{padding-bottom:72px}.device{margin:0 auto;max-width:620px;width:100%}.proof,.rgrid{grid-template-columns:1fr 1fr}.ps{grid-template-columns:1fr 1fr}.ps article:last-child{grid-column:1/-1}.steps{grid-template-columns:1fr 1fr}.nav-links{display:none}.founder img{max-width:280px}.proof{grid-template-columns:1fr}}
+@media(max-width:640px){.container,.nav-inner{padding:0 16px}.btn{white-space:normal}.hero h1{font-size:2.1rem}section.block,.trust{padding:72px 0}.ps,.rgrid,.steps{grid-template-columns:1fr}.nums b{font-size:1.4rem}.pcard{padding:22px}.pcard .top{flex-wrap:wrap}.pcard .visit{margin-left:0}.facts{grid-template-columns:1fr}.facts div+div{border-left:0;border-top:1px solid var(--line)}.device{padding-bottom:20px}.rig{width:84%;margin-left:9%}.fix{position:relative;left:auto;bottom:auto;width:auto;margin-top:8px}.hero .cta-row .btn{width:100%;justify-content:center;text-align:center}.nav-cta{display:none}.hero .container{padding-top:56px;padding-bottom:64px}.ask{padding:20px}.ask .btn{width:100%;justify-content:center}}
 </style>
 <script src="/assets/mail.js" defer></script>
 <script src="/assets/walkthrough.js" defer></script>
@@ -167,41 +192,44 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
     <p class="lead">Goldfib is your outsourced research and automation desk. Decision-ready diligence on every deal, and one portfolio view that updates itself.</p>
     <div class="cta-row"><a class="btn" href="/blog/walkthrough/" data-walkthrough-open>See how automation helps your institutional research →</a><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Intro%20Call">Book an intro call</a></div>
   </div>
-  <div class="laptop">
-    <svg viewBox="0 0 600 400" font-family="Inter,Arial,sans-serif" role="img" aria-label="A laptop showing a family office spreadsheet: holdings spread across broker PDFs, WhatsApp decks and email threads, with stale data and no diligence memo.">
-      <rect x="58" y="8" width="484" height="318" rx="14" fill="#1c1f26"/>
-      <rect x="70" y="20" width="460" height="294" rx="3" fill="#fff"/>
-      <rect x="70" y="20" width="460" height="26" fill="#eef0f3"/>
-      <circle cx="84" cy="33" r="4" fill="#e0675a"/><circle cx="98" cy="33" r="4" fill="#e6b84a"/><circle cx="112" cy="33" r="4" fill="#5fbf6e"/>
-      <text x="300" y="37" font-size="10" fill="#5b6575" text-anchor="middle">FO_portfolio_Q3_v7_FINAL(2).xlsx</text>
-      <rect x="70" y="46" width="460" height="22" fill="#f6f4ef"/>
-      <g font-size="8.5" font-weight="600" fill="#5b6575"><text x="82" y="61">HOLDING</text><text x="218" y="61">WHERE IT LIVES</text><text x="340" y="61">LAST UPDATED</text><text x="440" y="61">STATUS</text></g>
-      <g stroke="#e3ded3"><line x1="70" x2="530" y1="68" y2="68"/><line x1="70" x2="530" y1="98" y2="98"/><line x1="70" x2="530" y1="128" y2="128"/><line x1="70" x2="530" y1="158" y2="158"/><line x1="70" x2="530" y1="188" y2="188"/><line x1="70" x2="530" y1="218" y2="218"/><line x1="208" x2="208" y1="46" y2="218"/><line x1="330" x2="330" y1="46" y2="218"/><line x1="430" x2="430" y1="46" y2="218"/></g>
-      <g font-size="10" fill="#1a2433">
-        <text x="82" y="87">Listed equity</text><text x="218" y="87" fill="#5b6575">3 broker PDFs</text><text x="340" y="87">41 days ago</text>
-        <text x="82" y="117">PMS + AIFs</text><text x="218" y="117" fill="#5b6575">4 report formats</text><text x="340" y="117">63 days ago</text>
-        <text x="82" y="147">Pre-IPO deal</text><text x="218" y="147" fill="#5b6575">WhatsApp deck</text><text x="340" y="147">IC on Friday</text>
-        <text x="82" y="177">Real estate fund</text><text x="218" y="177" fill="#5b6575">Email thread</text><text x="340" y="177" fill="#b4483c">#REF!</text>
-        <text x="82" y="207">Private credit</text><text x="218" y="207" fill="#5b6575">Excel, manual</text><text x="340" y="207">90 days ago</text>
-      </g>
-      <g font-size="8.5" font-weight="600">
-        <rect x="440" y="76" width="56" height="16" rx="8" fill="#f7e3e0"/><text x="468" y="87" fill="#b4483c" text-anchor="middle">Stale</text>
-        <rect x="440" y="106" width="76" height="16" rx="8" fill="#f7e3e0"/><text x="478" y="117" fill="#b4483c" text-anchor="middle">Unreconciled</text>
-        <rect x="440" y="136" width="62" height="16" rx="8" fill="#f7ecd8"/><text x="471" y="147" fill="#b7832a" text-anchor="middle">No memo</text>
-        <rect x="440" y="166" width="56" height="16" rx="8" fill="#f7e3e0"/><text x="468" y="177" fill="#b4483c" text-anchor="middle">Missing</text>
-        <rect x="440" y="196" width="56" height="16" rx="8" fill="#f7ecd8"/><text x="468" y="207" fill="#b7832a" text-anchor="middle">Manual</text>
-      </g>
-      <rect x="82" y="228" width="210" height="76" rx="4" fill="#f6f4ef"/>
-      <text x="94" y="246" font-size="8.5" font-weight="600" fill="#5b6575">TOTAL PORTFOLIO VALUE</text>
-      <text x="94" y="282" font-size="20" font-weight="600" fill="#b4483c">₹ ??? Cr</text>
-      <rect x="306" y="228" width="212" height="76" rx="4" fill="#fdf6f5" stroke="#f0d2cd"/>
-      <text x="318" y="245" font-size="8.5" font-weight="600" fill="#b4483c">3 THINGS YOUR CIO ASKED THIS WEEK</text>
-      <text x="318" y="262" font-size="9.5" fill="#1a2433">What is our real exposure to banks?</text>
-      <text x="318" y="278" font-size="9.5" fill="#1a2433">Is the pre-IPO deal worth it?</text>
-      <text x="318" y="294" font-size="9.5" fill="#1a2433">Why did the PMS lag the index?</text>
-      <path d="M20,326 H580 L560,350 Q556,356 546,356 H54 Q44,356 40,350 Z" fill="#c9ccd2"/>
-      <rect x="250" y="326" width="100" height="7" rx="3" fill="#a9adb5"/>
-    </svg>
+  <div class="device">
+    <div class="rig"><div class="lid"><div class="scr">
+        <svg viewBox="0 0 640 416" font-family="Inter,Arial,sans-serif" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The Goldfib desk on a laptop: one portfolio view synced across all sources, a performance chart, and diligence memos ready before the investment committee.">
+          <defs><linearGradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c8a76a" stop-opacity=".35"/><stop offset="1" stop-color="#c8a76a" stop-opacity="0"/></linearGradient></defs>
+          <rect width="640" height="416" fill="#0b1626"/>
+          <rect width="640" height="34" fill="#0f1d31"/>
+          <circle cx="18" cy="17" r="4.5" fill="#e0675a"/><circle cx="33" cy="17" r="4.5" fill="#e6b84a"/><circle cx="48" cy="17" r="4.5" fill="#5fbf6e"/>
+          <rect x="200" y="8" width="240" height="18" rx="9" fill="#16273f"/><text x="320" y="21" font-size="10" fill="#8a93a1" text-anchor="middle">desk.goldfibcapital.in/portfolio</text>
+          <rect y="34" width="54" height="382" fill="#0d1a2c"/>
+          <rect x="15" y="50" width="24" height="24" rx="7" fill="#c8a76a"/><text x="27" y="66.5" font-size="11" font-weight="700" fill="#0f1d31" text-anchor="middle">G</text>
+          <rect x="13" y="94" width="28" height="28" rx="8" fill="#1d3150"/>
+          <g fill="#3a4c66"><rect x="21" y="102" width="12" height="12" rx="3" fill="#c8a76a"/><rect x="21" y="142" width="12" height="12" rx="3"/><rect x="21" y="178" width="12" height="12" rx="3"/><rect x="21" y="214" width="12" height="12" rx="3"/></g>
+          <text x="74" y="66" font-size="17" font-weight="600" fill="#fff" letter-spacing="-.4">Family portfolio</text>
+          <rect x="500" y="51" width="118" height="20" rx="10" fill="rgba(95,211,154,.12)" stroke="rgba(95,211,154,.35)"/><circle cx="513" cy="61" r="3.5" fill="#5fd39a"/><text x="522" y="65" font-size="9.5" fill="#5fd39a">Synced 2 min ago</text>
+          <g font-size="9" fill="#8a93a1" letter-spacing=".6">
+            <rect x="74" y="86" width="176" height="64" rx="10" fill="#122238" stroke="#1d3150"/><text x="88" y="104">NET WORTH</text>
+            <rect x="260" y="86" width="176" height="64" rx="10" fill="#122238" stroke="#1d3150"/><text x="274" y="104">SOURCES</text>
+            <rect x="446" y="86" width="172" height="64" rx="10" fill="#122238" stroke="#1d3150"/><text x="460" y="104">IC QUEUE</text>
+          </g>
+          <g font-weight="600" fill="#fff" letter-spacing="-.6"><text x="88" y="133" font-size="21">₹412.6 Cr</text><text x="274" y="133" font-size="21">11 → 1</text><text x="460" y="133" font-size="21">3 memos</text></g>
+          <g font-size="9.5"><text x="196" y="133" fill="#5fd39a">▲ 2.4%</text><text x="342" y="133" fill="#8a93a1">one view</text><text x="562" y="133" fill="#c8a76a">ready</text></g>
+          <rect x="74" y="162" width="340" height="232" rx="10" fill="#122238" stroke="#1d3150"/>
+          <text x="88" y="184" font-size="11" font-weight="600" fill="#fff">Portfolio value</text>
+          <g font-size="8.5" fill="#8a93a1"><rect x="306" y="173" width="30" height="16" rx="5" fill="#1d3150"/><text x="321" y="184" text-anchor="middle" fill="#fff">1Y</text><text x="355" y="184" text-anchor="middle">3Y</text><text x="388" y="184" text-anchor="middle">All</text></g>
+          <g stroke="#1d3150"><line x1="88" x2="400" y1="230" y2="230"/><line x1="88" x2="400" y1="276" y2="276"/><line x1="88" x2="400" y1="322" y2="322"/><line x1="88" x2="400" y1="368" y2="368"/></g>
+          <path d="M88,340 C112,334 124,322 146,326 S182,300 206,304 S240,288 262,276 S298,286 318,262 S356,232 376,226 S392,214 400,210 L400,368 L88,368 Z" fill="url(#ar)"/>
+          <path d="M88,340 C112,334 124,322 146,326 S182,300 206,304 S240,288 262,276 S298,286 318,262 S356,232 376,226 S392,214 400,210" fill="none" stroke="#c8a76a" stroke-width="2.4"/>
+          <circle cx="400" cy="210" r="4.5" fill="#c8a76a" stroke="#0b1626" stroke-width="2"/>
+          <rect x="426" y="162" width="192" height="232" rx="10" fill="#122238" stroke="#1d3150"/>
+          <text x="440" y="184" font-size="11" font-weight="600" fill="#fff">Diligence</text>
+          <g font-size="10" fill="#fff">
+            <rect x="436" y="198" width="172" height="52" rx="8" fill="#16273f"/><text x="448" y="218">Pre-IPO · fintech</text><rect x="448" y="226" width="70" height="15" rx="7.5" fill="rgba(95,211,154,.14)"/><text x="483" y="236.5" font-size="8.5" fill="#5fd39a" text-anchor="middle">Memo ready</text>
+            <rect x="436" y="258" width="172" height="52" rx="8" fill="#16273f"/><text x="448" y="278">Real estate fund III</text><rect x="448" y="286" width="62" height="15" rx="7.5" fill="rgba(200,167,106,.16)"/><text x="479" y="296.5" font-size="8.5" fill="#c8a76a" text-anchor="middle">In review</text>
+            <rect x="436" y="318" width="172" height="52" rx="8" fill="#16273f"/><text x="448" y="338">Private credit AIF</text><rect x="448" y="346" width="70" height="15" rx="7.5" fill="rgba(95,211,154,.14)"/><text x="483" y="356.5" font-size="8.5" fill="#5fd39a" text-anchor="middle">Memo ready</text>
+          </g>
+        </svg>
+      </div></div><div class="deck"></div></div>
+    <div class="glow"></div>
     <div class="fix"><b>With Goldfib</b><ul><li>Diligence memo before every IC</li><li>One portfolio view, auto-refreshed</li><li>Quarterly review, ready to present</li></ul></div>
   </div>
 </div></section>
@@ -209,8 +237,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
 <section class="trust"><div class="container">
   <div class="head center"><span class="kicker">Proven in production</span><h2>Research and automation our team runs every week</h2><p>Before Goldfib, we built these systems for two investment firms. They run today.</p></div>
   <div class="proof">
-    <div class="pcard"><img src="/assets/img/logos/proflex-mark.png" alt="Proflex Finance logo"><div><h3>Proflex Finance</h3><p class="what">Silicon Valley multi-strategy investment firm</p><div class="nums"><div><b>Weekly</b><span>trade sheet and investor deck, every week</span></div><div><b>20</b><span>research articles shipped in one week</span></div><div><b>10+</b><span>Reddit threads an AI agent scouts daily</span></div></div></div></div>
-    <div class="pcard"><img src="/assets/img/logos/embark-funds.webp" alt="Embark Funds logo"><div><h3>Embark Funds</h3><p class="what">Fund platform, research and investor funnel</p><div class="nums"><div><b>20</b><span>fund research articles shipped in one week</span></div><div><b>4</b><span>channels for each calculator push: web, WhatsApp, social, email</span></div><div><b>Live</b><span>investor funnel with automated follow-ups</span></div></div></div></div>
+    <div class="pcard"><div class="top"><div class="logo"><img src="/assets/img/logos/proflex-mark.png" alt="Proflex Finance logo"></div><div><h3>Proflex Finance</h3><p class="what">Silicon Valley multi-strategy investment firm</p></div><a class="visit" href="https://proflexfinance.com/" target="_blank" rel="noopener">proflexfinance.com ↗</a></div><div class="nums"><div class="hl"><b>10+ screens<small>Proflex terminal</small></b><span>Scanning option flows, fundamental data and earnings data in one place</span></div><div><b>20</b><span>research articles shipped in one week</span></div><div><b>Live</b><span>investor funnel, from free newsletter to client call</span></div></div></div>
+    <div class="pcard"><div class="top"><div class="logo"><img src="/assets/img/logos/embark-funds.webp" alt="Embark Funds logo"></div><div><h3>Embark Funds</h3><p class="what">Income from concentrated stock, without selling</p></div><a class="visit" href="https://www.embarkfunds.com/" target="_blank" rel="noopener">embarkfunds.com ↗</a></div><div class="nums"><div class="hl"><b>60+ guides<small>Research library</small></b><span>Concentrated stock, RSU, tax and exchange-fund research, built and published by our team</span></div><div><b>4</b><span>channels for each calculator push: web, WhatsApp, social, email</span></div><div><b>Live</b><span>investor funnel: income calculator to eligibility check, with automated follow-ups</span></div></div></div>
   </div>
   <div class="also"><span>Our team has also worked with</span><img src="/assets/img/logos/amazon-india.svg" alt="Amazon India" loading="lazy"><img src="/assets/img/logos/costa.png" alt="Costa Coffee India" class="sq" loading="lazy"><img src="/assets/img/logos/oberoi.png" alt="The Oberoi Group" loading="lazy"><img src="/assets/img/logos/rtaf.png" alt="Real Time Angel Fund" loading="lazy"><img src="/assets/img/logos/1-5-degree.avif" alt="1.5 Degree" class="sq" loading="lazy"></div>
   <div class="sec-cta center"><span>Want the same systems for your family office?</span><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20research%20and%20automation%20for%20our%20family%20office">Inquire now →</a></div>
@@ -223,12 +251,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
     <article><img src="/assets/img/photos/dashboard.jpg" alt="Laptop showing a portfolio dashboard" loading="lazy"><div class="b"><h3>Portfolio monitoring</h3><p class="pain"><span class="tag">Today</span>Holdings sit across brokers, PMS, AIFs and private deals.</p><p class="gain"><span class="tag">With Goldfib</span>One consolidated view, refreshed automatically.</p></div></article>
     <article><img src="/assets/img/photos/signing.jpg" alt="Investment committee member signing a memo" loading="lazy"><div class="b"><h3>Decision records</h3><p class="pain"><span class="tag">Today</span>Why you invested lives in one person's head.</p><p class="gain"><span class="tag">With Goldfib</span>Memos, IC notes and a decision log the family can audit.</p></div></article>
   </div>
-  <div class="sec-cta"><span>Facing one of these today?</span><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20deal%20diligence%20and%20portfolio%20monitoring">Inquire now →</a></div>
+  <div class="ask"><p>Any other problem you want us to solve? Reach out to us at <a href="mailto:partners@goldfibcapital.in?subject=A%20problem%20we%20want%20Goldfib%20to%20solve">partners@goldfibcapital.in</a></p><a class="btn" href="mailto:partners@goldfibcapital.in?subject=A%20problem%20we%20want%20Goldfib%20to%20solve">Inquire now →</a></div>
 </div></section>
 
 <section class="block" id="study"><div class="container study">
   <div>
-    <span class="kicker">★ 5-step walkthrough · The study</span>
+    <span class="kicker">5-step walkthrough · The study</span>
     <h2>See how automation helps your institutional research</h2>
     <p>We modelled one analyst's 50-hour week, then re-ran it with filing collection, data extraction and model updates automated.</p>
     <div class="facts"><div><b>27h → 6h</b><span>mechanical work a week</span></div><div><b>8h → 20h</b><span>time on analysis</span></div><div><b>2×</b><span>reports per analyst a year</span></div></div>
@@ -260,7 +288,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
 </div></section>
 
 <section class="block dark" id="research"><div class="container">
-  <div class="head"><span class="kicker" style="color:var(--gold-2)">Research library</span><h2>How we think, in the open</h2><p>Guides on diligence, portfolio monitoring and research automation for Indian family offices.</p></div>
+  <div class="head"><span class="kicker">Research library</span><h2>How we think, in the open</h2><p>Guides on diligence, portfolio monitoring and research automation for Indian family offices.</p></div>
   <!-- research:start --><div class="rgrid"><a class="rcard reveal" href="/blog/institutional-grade-equity-research-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh0" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><text x="24" y="20" fill="#8b919e" font-size="8" letter-spacing=".08em" text-anchor="start">INSTITUTIONAL STANDARD</text><rect x="60" y="31" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,37 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="40" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">SOURCED</text><rect x="210" y="34" width="40" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="53" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,59 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="62" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">MODELLED</text><rect x="210" y="56" width="63" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="75" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,81 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="84" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">REVIEWED</text><rect x="210" y="78" width="86" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="97" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,103 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="106" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">DISCLOSED</text><rect x="210" y="100" width="59" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/></svg></div><div class="b"><span class="eyebrow">Institutional Research, Decoded</span><h3>What Makes Equity Research “Institutional-Grade”? A 12-Point Standard for Indian Markets</h3></div></a><a class="rcard reveal" href="/blog/research-desk-cost-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><rect class="tb" x="30" y="26" width="46" height="96" rx="2" fill="#b8965a" opacity="0.45"/><text x="53.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">IN-HOUSE</text><rect class="tb" x="137" y="56" width="46" height="66" rx="2" fill="#b8965a" opacity="0.45"/><text x="160.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">OUTSOURCED</text><rect class="tb" x="244" y="88" width="46" height="34" rx="2" fill="#b8965a" opacity="1"/><text x="267.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">AUTOMATED</text><line x1="16" x2="304" y1="122" y2="122" stroke="rgba(255,255,255,.18)"/></svg></div><div class="b"><span class="eyebrow">Research Automation</span><h3>What a Research Desk Really Costs in India (and the Leaner Alternatives)</h3></div></a><a class="rcard reveal" href="/blog/family-office-research-function-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><line x1="160" y1="70" x2="160" y2="22" stroke="rgba(184,150,90,.35)"/><rect x="126" y="13" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="160.0" y="25.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MEMO</text><line x1="160" y1="70" x2="264" y2="70" stroke="rgba(184,150,90,.35)"/><rect x="230" y="61" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="264.0" y="73.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">DEALS</text><line x1="160" y1="70" x2="160" y2="118" stroke="rgba(184,150,90,.35)"/><rect x="126" y="109" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="160.0" y="121.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MANAGERS</text><line x1="160" y1="70" x2="56" y2="70" stroke="rgba(184,150,90,.35)"/><rect x="22" y="61" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="56.0" y="73.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MONITOR</text><circle cx="160" cy="70" r="20" fill="#b8965a"/><text x="160" y="73" fill="#0c1220" font-size="8" letter-spacing=".08em" text-anchor="middle">CIO</text></svg></div><div class="b"><span class="eyebrow">Family Office Playbook</span><h3>How Indian Family Offices Should Organise Their Research Function</h3></div></a></div><!-- research:end -->
   <div class="more"><a class="btn line" href="/blog/">Browse the research library →</a><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20research%20question%20for%20Goldfib">Inquire now →</a></div>
 </div></section>
@@ -272,7 +300,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
       <span class="kicker">Founder</span>
       <h3>Parth Khanna</h3>
       <div class="role">Founder, Goldfib Capital · Investment Research &amp; Product, Proflex</div>
-      <p>Parth runs institutional-grade research and managed portfolios (~$30Mn AUM context) for a Silicon Valley multi-strategy firm. He founded Goldfib in 2023 to bring the same rigour, and the automation behind it, to Indian family offices.</p>
+      <p>Parth runs institutional-grade research for managed portfolios and a private equity fund. He founded Goldfib in 2023 to bring the same rigour, and the automation behind it, to Indian family offices.</p>
       <p style="margin-bottom:26px">CFA Level III candidate with 15+ podium finishes in competitions judged by Bain, Kearney, BlackRock, CPP and Cornell.</p>
       <div class="cta-row"><a class="btn" href="mailto:parth@proflexfinance.com?subject=Hi%20Parth%2C%20reaching%20out%20via%20Goldfib%20Capital">Reach out to us →</a><a class="btn line" href="https://parthkhannax.github.io/opus6portfolio.html" target="_blank" rel="noopener">Full profile →</a></div>
     </div>
