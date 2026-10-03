@@ -15,28 +15,43 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   // scroll-reveal (content stays visible without JS or with reduced motion)
-  var targets = $$('.prose > .viz, .prose > .stats, .prose > .callout, .prose > .takeaways, .cta, .rel, .cluster > h2, .map, .featured');
+  var targets = $$('.prose > .viz, .prose > .stats, .prose > .callout, .prose > .takeaways, .cta, .rel, .cluster-head, .card, .start');
   if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
     targets.forEach(function (el, i) {
       if (el.getBoundingClientRect().top < innerHeight) return;
-      el.classList.add('reveal'); el.style.transitionDelay = (el.classList.contains('rel') ? (i % 3) * 70 : 0) + 'ms'; io.observe(el);
+      el.classList.add('reveal'); el.style.transitionDelay = (el.classList.contains('card') ? (i % 3) * 70 : 0) + 'ms'; io.observe(el);
     });
   }
 
-  // topic filter tabs on the library index
-  var tabs = $$('.tab[data-filter]');
-  tabs.forEach(function (t) {
+  // library filters: topic pills, level, search (combined)
+  var q = document.getElementById('lib-q'), topic = 'all', lvl = 'all';
+  function apply() {
+    var term = q ? q.value.trim().toLowerCase() : '', any = false;
+    $$('.cluster').forEach(function (c) {
+      var shown = 0;
+      $$('.card', c).forEach(function (k) {
+        var ok = (topic === 'all' || k.dataset.cluster === topic) && (lvl === 'all' || k.dataset.level === lvl) &&
+          (!term || term.split(/\s+/).every(function (w) { return k.dataset.search.indexOf(w) > -1; }));
+        k.hidden = !ok; if (ok) { shown++; k.classList.add('in'); }
+      });
+      c.hidden = !shown; if (shown) any = true;
+    });
+    var nr = document.querySelector('.no-results'); if (nr) nr.hidden = any;
+  }
+  $$('.pill[data-filter]').forEach(function (t) {
     t.addEventListener('click', function () {
-      var f = t.dataset.filter;
-      tabs.forEach(function (x) { x.classList.toggle('on', x === t); x.setAttribute('aria-pressed', x === t); });
-      $$('.cluster').forEach(function (c) { c.hidden = f !== 'all' && c.id !== f; });
-      $$('[data-hide-filtered]').forEach(function (c) { c.hidden = f !== 'all'; });
-      $$('.rel.reveal').forEach(function (c) { c.classList.add('in'); });
+      topic = t.dataset.filter;
+      $$('.pill[data-filter]').forEach(function (x) { x.classList.toggle('on', x === t); x.setAttribute('aria-pressed', x === t); });
+      apply();
     });
   });
+  $$('.lv').forEach(function (t) {
+    t.addEventListener('click', function () { lvl = t.dataset.level; $$('.lv').forEach(function (x) { x.classList.toggle('on', x === t); }); apply(); });
+  });
+  if (q) q.addEventListener('input', apply);
 
   // mobile menu
   var nav = document.querySelector('.nav'), btn = document.querySelector('.nav-toggle');

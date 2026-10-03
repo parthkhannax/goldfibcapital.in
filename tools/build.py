@@ -19,6 +19,7 @@ import markdown
 import yaml
 
 sys.path.insert(0, str(Path(__file__).parent))
+import thumbs  # noqa: E402
 import viz  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,6 +42,9 @@ CLUSTERS = {
 LEVELS = {"beginner": "Beginner", "intermediate": "Intermediate", "advanced": "Advanced"}
 SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/walkthrough.js" defer></script>\n'
 WT_URL = "/blog/walkthrough/"
+CTA_TEXT = "See how automation helps your institutional research"
+HI_TEXT = "Say hi to Goldfib Capital"
+CTA_BTN = f'<a class="btn" href="{WT_URL}" data-walkthrough-open>{CTA_TEXT} →</a>'
 
 esc = html.escape
 
@@ -92,16 +96,15 @@ def cta_box(a, end=False):
     subj = c.get("subject", f"Research enquiry: {a['title']}")
     body = f"Hi Goldfib team,\n\nI read \"{a['title']}\" and would like to talk about:\n\n- \n\nName / organisation:\n"
     cls = "cta cta-end" if end else "cta"
-    wt = f'<a class="btn ghost" href="{WT_URL}" data-walkthrough-open>Try the 5-step walkthrough</a>' if end else ""
     return (f'<aside class="{cls}"><span class="eyebrow">{"Work with Goldfib" if end else "Talk to us"}</span>'
             f'<h3>{esc(head)}</h3><p>{esc(text)}</p>'
-            f'<div class="cta-row"><a class="btn" href="{esc(mailto(subj, body))}">Email {EMAIL} →</a>{wt}'
+            f'<div class="cta-row">{CTA_BTN}<a class="btn ghost" href="{esc(mailto(subj, body))}">{HI_TEXT} →</a>'
             f'<span class="cta-note">A real person replies within one working day. No sales sequence.</span></div></aside>')
 
 
 NAV = ('<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="30" height="30">Goldfib <span>Capital</span></a>'
        '<ul class="nav-links"><li><a href="/#offering">Offering</a></li><li><a href="/#process">Process</a></li><li><a href="/blog/">Research</a></li></ul>'
-       f'<a class="btn" href="{mailto("Family Office Partnership")}">Talk to us</a>'
+       f'<a class="btn nav-cta" href="{WT_URL}" data-walkthrough-open><span class="long">{CTA_TEXT}</span><span class="short">See how automation helps</span> →</a>'
        '<button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button></div></header>')
 
 FOOT = ('<footer><div class="container"><div class="foot"><a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="30" height="30">Goldfib <span>Capital</span></a>'
@@ -131,7 +134,7 @@ def head(title, desc, url, extra="", og_type="article"):
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="Goldfib Capital Research" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/article.css">
 {extra}</head>"""
 
@@ -203,8 +206,8 @@ def build_article(a, all_articles):
 </div></header>
 <div class="container layout">
   <aside class="toc"><div class="toc-inner"><p class="eyebrow">Contents</p><ol>{toc}</ol>
-  <a class="btn ghost small" href="{esc(mailto(a.get('cta', {}).get('subject', 'Research enquiry: ' + a['title'])))}">Talk to us →</a>
-  <a class="toc-wt" href="{WT_URL}" data-walkthrough-open><span class="eyebrow">Interactive</span>Price a research desk in 5 steps →</a></div></aside>
+  <a class="btn ghost small" href="{esc(mailto(a.get('cta', {}).get('subject', 'Research enquiry: ' + a['title'])))}">{HI_TEXT} →</a>
+  <a class="toc-wt" href="{WT_URL}" data-walkthrough-open><span class="eyebrow">&#9733; 5-step walkthrough</span>{CTA_TEXT} →</a></div></aside>
   <article class="prose">
     {f'<div class="takeaways"><p class="eyebrow">Key takeaways</p><ul>{takeaways}</ul></div>' if takeaways else ''}
     {body}
@@ -226,47 +229,61 @@ def build_article(a, all_articles):
 
 def build_index(arts):
     url = f"{SITE}/blog/"
-    root = {"label": "Goldfib Research", "children": [
-        {"label": CLUSTERS[k][0], "href": f"#{k}", "children": [
-            {"label": a["short"], "href": f"/blog/{a['slug']}/", "hl": a.get("pillar")}
-            for a in sorted([x for x in arts if x["cluster"] == k], key=lambda x: not x.get("pillar"))]}
-        for k in CLUSTERS if any(x["cluster"] == k for x in arts)]}
-    tree = viz.tree({"type": "tree", "root": root, "node_width": 196, "col_gap": 40,
-                     "caption": "Every article sits in one of four clusters. Gold-outlined nodes are the pillar guides. Click any node to open it."})
-    sections = ""
-    for k, (name, blurb) in CLUSTERS.items():
-        items = sorted([x for x in arts if x["cluster"] == k], key=lambda x: (not x.get("pillar"), x["title"]))
-        if not items:
-            continue
-        cards = "".join(f'<a class="rel{" pillar" if x.get("pillar") else ""}" href="/blog/{x["slug"]}/" data-category="{k}">'
-                        f'<span class="rel-top">{level(x)}<span class="eyebrow">{"Pillar guide · " if x.get("pillar") else ""}{x["minutes"]} min</span></span>'
-                        f'<b>{esc(x["title"])}</b><span class="muted">{esc(x["description"])}</span></a>' for x in items)
-        sections += f'<section class="cluster" id="{k}"><h2>{esc(name)}</h2><p class="muted">{esc(blurb)}</p><div class="rel-grid">{cards}</div></section>'
+    present = [k for k in CLUSTERS if any(x["cluster"] == k for x in arts)]
+
+    def card(x, n, cls="card"):
+        k = x["cluster"]
+        words = " ".join([x["title"], x["description"], x.get("short", ""), CLUSTERS[k][0], " ".join(x.get("keywords", []) or [])])
+        return (f'<a class="{cls}" href="/blog/{x["slug"]}/" data-cluster="{k}" data-level="{x.get("level", "intermediate")}" data-search="{esc(words.lower())}">'
+                f'<div class="thumb">{thumbs.thumb(x["slug"], f"{cls[0]}{n}")}</div>'
+                f'<div class="card-body"><span class="eyebrow">{esc(CLUSTERS[k][0])}</span><h3>{esc(x["title"])}</h3>'
+                + ('' if cls == "start" else f'<p>{esc(x["description"])}</p><span class="card-meta">{level(x)}<span>{x["minutes"]} min read</span></span>')
+                + '</div></a>')
+
+    sections, n = "", 0
+    for k in present:
+        name, blurb = CLUSTERS[k]
+        items = sorted([x for x in arts if x["cluster"] == k], key=lambda x: (not x.get("pillar"), ["beginner", "intermediate", "advanced"].index(x.get("level", "intermediate")), x["title"]))
+        cards = ""
+        for x in items:
+            n += 1
+            cards += card(x, n)
+        sections += (f'<section class="cluster" id="{k}"><div class="cluster-head"><h2>{esc(name)}</h2>'
+                     f'<p>{esc(blurb)} <span class="count">{len(items)} articles</span></p></div><div class="card-grid">{cards}</div></section>')
+
+    by_slug = {a["slug"]: a for a in arts}
+    starters = [by_slug[s] for s in ("institutional-grade-equity-research-india", "research-desk-cost-india") if s in by_slug]
+    start_cards = (f'<a class="start special" href="{WT_URL}" data-walkthrough-open><div class="thumb">{thumbs.walkthrough("sw")}</div>'
+                   f'<div class="card-body"><span class="eyebrow">&#9733; 5-step walkthrough</span><h3>{CTA_TEXT}</h3></div></a>'
+                   + "".join(card(x, i, "start") for i, x in enumerate(starters)))
+
     schema = {"@context": "https://schema.org", "@type": "Blog", "name": "Goldfib Capital Research", "url": url,
               "description": "Research guides on Indian equities, research automation and family office investing.",
               "blogPost": [{"@type": "BlogPosting", "headline": a["title"], "url": f"{SITE}/blog/{a['slug']}/", "datePublished": a["date"]} for a in arts]}
     page = head("Research · Goldfib Capital", "Guides on institutional-grade equity research in India, research automation, family office investing and the student research model.", url, extra=ld(schema) + SCRIPTS, og_type="website")
-    present = [k for k in CLUSTERS if any(x["cluster"] == k for x in arts)]
-    tabs = ('<div class="tabs" role="toolbar" aria-label="Filter by topic"><button class="tab on" data-filter="all" aria-pressed="true">All topics<span>' + str(len(arts)) + '</span></button>'
-            + f'<a class="tab special" href="{WT_URL}" data-walkthrough-open>&#9733; 5-step walkthrough</a>'
-            + "".join(f'<button class="tab" data-filter="{k}" aria-pressed="false">{esc(CLUSTERS[k][0])}<span>{sum(x["cluster"] == k for x in arts)}</span></button>' for k in present)
-            + '</div>')
+    pills = ('<div class="pills" role="toolbar" aria-label="Filter by topic"><button class="pill on" data-filter="all" aria-pressed="true">All topics<span>' + str(len(arts)) + '</span></button>'
+             + "".join(f'<button class="pill" data-filter="{k}" aria-pressed="false">{esc(CLUSTERS[k][0])}<span>{sum(x["cluster"] == k for x in arts)}</span></button>' for k in present)
+             + f'<a class="pill special" href="{WT_URL}" data-walkthrough-open>&#9733; 5-step walkthrough</a></div>')
+    levels = ('<div class="levels" role="toolbar" aria-label="Filter by level"><button class="lv on" data-level="all">All levels</button>'
+              + "".join(f'<button class="lv" data-level="{k}">{v}</button>' for k, v in LEVELS.items()) + '</div>')
     page += f"""
-<body>
+<body class="library">
 {NAV}
 <main>
-<header class="art-head"><div class="container">
-  <span class="eyebrow">Goldfib Research</span>
-  <h1>Institutional-grade research, explained in the open.</h1>
-  <p class="dek">{len(arts)} guides on how serious research on Indian markets gets done, how to automate the repetitive parts, and how family offices can get it without building a full desk.</p>
-  <div class="cta-row"><a class="btn" href="{WT_URL}" data-walkthrough-open>Start the 5-step walkthrough →</a><a class="btn ghost" href="{mailto('Family Office Partnership')}">Talk to us</a><a class="btn ghost" href="#map">See the topic map</a></div>
+<header class="lib-head"><div class="container">
+  <h1>Goldfib <em>Research</em></h1>
+  <p class="dek">Deeply researched guides on institutional-grade equity research in India, research automation, family office investing and the student research model, organised from Beginner to Advanced. Search for a question, or pick a topic and start at the top.</p>
+  <div class="cta-row center">{CTA_BTN}<a class="btn ghost" href="{mailto('Hello from the Goldfib research library')}">{HI_TEXT}</a></div>
+  <label class="search"><span class="sr">Search the guides</span><input type="search" id="lib-q" placeholder="Search {len(arts)} guides: try &ldquo;DCF&rdquo;, &ldquo;promoter pledge&rdquo;, &ldquo;PMS&rdquo;" autocomplete="off"></label>
+  <p class="start-label">New here? Start with</p>
+  <div class="start-grid">{start_cards}</div>
+  {pills}
+  {levels}
 </div></header>
 <div class="container">
-  {tabs}
-  <div data-hide-filtered>{FEATURED}</div>
-  <section id="map" class="map" data-hide-filtered><h2>Topic map</h2>{tree}</section>
   {sections}
-  <aside class="cta cta-end"><span class="eyebrow">Work with Goldfib</span><h3>Need research done, not just read about?</h3><p>We build investment theses, initiation-style equity research and research automation for family offices, at a fraction of the cost of an in-house desk.</p><div class="cta-row"><a class="btn" href="{mailto('Family Office Partnership')}">Email {EMAIL} →</a></div></aside>
+  <p class="no-results" hidden>No guide matches that yet. <a href="{mailto('Research question')}">Ask us the question</a> and we may write it next.</p>
+  <aside class="cta cta-end"><span class="eyebrow">Work with Goldfib</span><h3>Need research done, not just read about?</h3><p>We build investment theses, initiation-style equity research and research automation for family offices, at a fraction of the cost of an in-house desk.</p><div class="cta-row">{CTA_BTN}<a class="btn ghost" href="{mailto('Family Office Partnership')}">{HI_TEXT} →</a></div></aside>
 </div>
 </main>
 {FOOT}
@@ -276,25 +293,9 @@ def build_index(arts):
     (ROOT / "blog" / "index.html").write_text(page)
 
 
-FEATURED = f"""<a class="featured" href="{WT_URL}" data-walkthrough-open="featured">
-  <div class="f-copy"><span class="eyebrow">&#9733; Interactive guide · 5 steps · 3 min</span>
-    <h2>Price a research desk for your coverage list</h2>
-    <p>Pick how many Indian companies you want covered. The walkthrough builds the in-house desk, shows where analyst hours go, and what automation does to cost per report.</p>
-    <ol><li><span>01</span>Your coverage list</li><li><span>02</span>The in-house desk, fully costed</li><li><span>03</span>Where the hours go</li><li><span>04</span>Cost per report, manual vs automated</li><li><span>05</span>Your research plan</li></ol>
-    <span class="btn" style="align-self:flex-start">Start the walkthrough →</span></div>
-  <div class="f-art" aria-hidden="true"><svg viewBox="0 0 360 240">
-    <g fill="#b8965a" opacity=".85"><rect class="f-bar" x="24" y="70" width="34" height="140" rx="4" style="animation-delay:.1s"/><rect class="f-bar" x="70" y="118" width="34" height="92" rx="4" style="animation-delay:.25s"/><rect class="f-bar" x="116" y="150" width="34" height="60" rx="4" style="animation-delay:.4s"/><rect class="f-bar" x="162" y="168" width="34" height="42" rx="4" style="animation-delay:.55s"/><rect class="f-bar" x="208" y="178" width="34" height="32" rx="4" style="animation-delay:.7s"/></g>
-    <path class="f-line" d="M24,60 C90,96 130,140 200,156 S300,176 340,180" fill="none" stroke="#e8e4dc" stroke-width="2.5"/>
-    <path class="f-line" d="M24,110 C90,150 130,170 200,182 S300,192 340,194" fill="none" stroke="#34d399" stroke-width="2.5" style="animation-delay:.8s"/>
-    <line x1="20" x2="344" y1="210" y2="210" stroke="rgba(255,255,255,.15)"/>
-    <text x="24" y="34" fill="#8b919e" font-family="JetBrains Mono" font-size="11">COST PER REPORT, ₹ LAKH</text>
-    <text x="340" y="232" fill="#8b919e" font-family="Outfit" font-size="11" text-anchor="end">companies covered →</text></svg></div>
-</a>"""
-
-
 def build_walkthrough():
     url = f"{SITE}{WT_URL}"
-    title = "Research desk walkthrough: cost, hours and automation"
+    title = "See how automation helps your institutional research: a 5-step study"
     desc = "Interactive 5-step walkthrough: price an in-house equity research desk for your Indian coverage list and see what automation does to cost per report."
     faq = [
         ("How much does an in-house equity research desk cost in India?",
@@ -326,18 +327,22 @@ def build_walkthrough():
 <header class="art-head"><div class="container narrow">
   <nav class="crumbs" aria-label="breadcrumb"><a href="/">Goldfib</a><span>/</span><a href="/blog/">Research</a><span>/</span><span>Walkthrough</span></nav>
   <div class="meta-row"><span class="level level-beginner">Beginner</span><span class="tag">Interactive guide</span><span>5 steps · 3 min</span></div>
-  <h1>What does institutional-grade research cost you? A 5-step walkthrough.</h1>
-  <p class="dek">Pick a coverage list. We cost the in-house desk, show where analyst hours go, and what automating the mechanical work does to cost per report.</p>
+  <h1>See how automation helps your institutional research</h1>
+  <p class="dek">A 5-step study on your own coverage list. We cost the in-house desk, show where analyst hours go, and what automating the mechanical work does to cost per report.</p>
   <div class="answer"><span class="eyebrow">Short answer</span><p>{esc(faq[0][1])}</p></div>
   <div class="wt-page" data-walkthrough-inline></div>
 </div></header>
 <div class="container narrow">
   <article class="prose">
+    <h2 id="study">The study behind the walkthrough</h2>
+    <p>We modelled one analyst's 50-hour week covering Indian listed companies and split it into six tasks: collecting filings and extracting tables, updating models, reading, analysis and thesis work, writing, and verification. We then built a desk around that week (salary, data seats, overheads and a senior reviewer's time) and costed it for a coverage list.</p>
+    <p>Next we re-ran the same week with collection, extraction and model updates automated, and added an explicit verification step. Mechanical work falls from about 27 hours to 6, analysis time rises from 8 to 20 hours, and each analyst finishes about twice as many full reports a year (24 instead of 12). The walkthrough applies that result to the list you choose.</p>
+    <p>It is a model built from stated assumptions, not a survey of firms. Every assumption is printed under the walkthrough so you can replace it with your own.</p>
     <h2 id="steps">What each step shows</h2>
     <div class="steps-explained">{"".join(f'<div><span class="eyebrow">Step {n}</span><b>{esc(t)}</b><p>{esc(x)}</p></div>' for n, t, x in steps)}</div>
     <p>The cost model follows <a href="/blog/research-desk-cost-india/">what a research desk really costs</a>, and the hours split follows <a href="/blog/ai-investment-research-automation-india/">AI and research automation: what works</a>. For where uncovered companies sit, see <a href="/blog/coverage-gap-indian-small-caps/">the small-cap coverage gap</a>.</p>
     <section class="faq" id="faq"><h2>Frequently asked questions</h2>{"".join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in faq)}</section>
-    {cta_box({"title": "5-step research walkthrough", "cta": {"subject": "Research plan enquiry"}}, end=True).replace(f'<a class="btn ghost" href="{WT_URL}" data-walkthrough-open>Try the 5-step walkthrough</a>', '')}
+    {cta_box({"title": "5-step research walkthrough", "cta": {"subject": "Research plan enquiry"}}, end=True).replace(CTA_BTN, '')}
   </article>
 </div>
 </main>
@@ -377,6 +382,18 @@ def build_feeds(arts):
     (ROOT / "llms.txt").write_text("\n".join(lines))
 
 
+def build_home(arts):
+    """Refresh the research cards on the homepage between the research:start/end markers."""
+    by_slug = {a["slug"]: a for a in arts}
+    picks = [by_slug[s] for s in ("institutional-grade-equity-research-india", "research-desk-cost-india", "family-office-research-function-india") if s in by_slug]
+    cards = "".join(f'<a class="rcard reveal" href="/blog/{a["slug"]}/"><div class="thumb">{thumbs.thumb(a["slug"], f"h{i}")}</div>'
+                    f'<div class="b"><span class="eyebrow">{esc(CLUSTERS[a["cluster"]][0])}</span><h3>{esc(a["title"])}</h3></div></a>' for i, a in enumerate(picks))
+    home = ROOT / "index.html"
+    html_ = re.sub(r"<!-- research:start -->.*?<!-- research:end -->",
+                   lambda m: f'<!-- research:start --><div class="rgrid">{cards}</div><!-- research:end -->', home.read_text(), flags=re.S)
+    home.write_text(html_)
+
+
 def main():
     arts = [load(p) for p in sorted(SRC.glob("*.md"))]
     slugs = [a["slug"] for a in arts]
@@ -393,6 +410,7 @@ def main():
     build_index(arts)
     build_walkthrough()
     build_feeds(arts)
+    build_home(arts)
     print(f"built {len(arts)} articles")
 
 

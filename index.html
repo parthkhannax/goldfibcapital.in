@@ -101,13 +101,68 @@ footer{padding:50px 0 40px;border-top:1px solid var(--border);margin-top:110px}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
 @media(max-width:900px){.hero-grid,.founder{grid-template-columns:1fr}.g3,.g4{grid-template-columns:1fr 1fr}.nav-links{display:none}.founder img{max-width:260px}}
 @media(max-width:600px){.g3,.g2,.g4{grid-template-columns:1fr}.container,.nav-inner{padding:0 16px}section.block{padding:80px 0}.cta-box{padding:38px 22px}.step{grid-template-columns:44px 1fr}}
+/* ---- shine pass ---- */
+.hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 60% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 60% 40%,#000,transparent 75%);pointer-events:none}
+.hero .container{position:relative;z-index:1}
+.hero h1 em{background:linear-gradient(180deg,#e9cf98,#b8965a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-card{box-shadow:0 30px 80px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05)}
+.hero-card::before{content:'';position:absolute;inset:-1px;border-radius:17px;padding:1px;background:linear-gradient(140deg,rgba(184,150,90,.6),transparent 40%,transparent 60%,rgba(184,150,90,.25));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.btn.glow{box-shadow:0 0 0 0 rgba(184,150,90,.5);animation:glow 2.8s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(184,150,90,.0)}50%{box-shadow:0 0 0 6px rgba(184,150,90,.16)}}
+.card:hover{border-color:rgba(184,150,90,.45);box-shadow:0 16px 44px rgba(0,0,0,.25)}
+.nav-cta .short{display:none}
+@media(max-width:1180px){.nav-cta .long{display:none}.nav-cta .short{display:inline}}
+@media(max-width:560px){.nav-cta{display:none}}
+/* logos */
+.logos{padding:56px 0 30px;border-bottom:1px solid var(--border)}
+.logos-row+.logos-row{margin-top:34px}
+.logos .label{display:block;text-align:center;font-family:'JetBrains Mono';font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:22px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:64px;width:max-content;animation:scroll 38s linear infinite;align-items:center}
+.marquee.rev .marquee-track{animation-direction:reverse;animation-duration:44s}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee img{height:30px;width:auto;max-width:150px;object-fit:contain;filter:brightness(0) invert(1);opacity:.5;transition:opacity .3s}
+.marquee img.sq{height:40px}
+.marquee img:hover{opacity:.95}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.inst{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px;margin-top:34px;padding-top:26px;border-top:1px solid var(--border)}
+.inst span{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted)}
+.inst b{font-family:'Space Grotesk';font-weight:500;color:var(--text-secondary);font-size:.95rem}
+/* study / walkthrough */
+.study{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.study-art{background:linear-gradient(180deg,var(--bg-card),var(--bg-elevated));border:1px solid rgba(184,150,90,.35);border-radius:18px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.3);position:relative;cursor:pointer;transition:transform var(--t)}
+.study-art:hover{transform:translateY(-3px)}
+.study-art svg{width:100%;height:auto;display:block}
+.study-art .bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.study-art .ln{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1) .4s}
+.study-art.in .bar{transform:none}.study-art.in .ln{stroke-dashoffset:0}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}
+.facts div{padding:16px;border-radius:10px;background:var(--accent-glow);border:1px solid rgba(184,150,90,.2)}
+.facts b{display:block;font-family:'Space Grotesk';font-size:1.7rem;color:var(--accent)}
+.facts span{font-size:.8rem;color:var(--text-secondary)}
+.steps5{list-style:none;counter-reset:s;margin:0 0 28px}
+.steps5 li{display:flex;gap:14px;padding:9px 0;border-top:1px solid var(--border);color:var(--text-secondary);font-size:.94rem}
+.steps5 li span{font-family:'JetBrains Mono';color:var(--accent);font-size:.78rem;padding-top:2px}
+.fine{font-size:.76rem;color:var(--text-muted);margin-top:16px}
+/* research cards */
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rcard{display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border-hover);border-radius:14px;overflow:hidden;transition:all var(--t)}
+.rcard:hover{transform:translateY(-3px);border-color:rgba(184,150,90,.5)}
+.rcard .thumb{aspect-ratio:320/140;border-bottom:1px solid var(--border)}.rcard .thumb svg{width:100%;height:100%;display:block}
+.rcard div.b{padding:18px 22px 22px}.rcard h3{font-family:'Outfit';font-weight:600;font-size:1.04rem;letter-spacing:0;line-height:1.4;margin-top:8px}
+.thumb .tl{stroke-dasharray:700;stroke-dashoffset:0}
+.more{margin-top:26px;text-align:center}
+@media(max-width:900px){.study{grid-template-columns:1fr}.rgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.rgrid,.facts{grid-template-columns:1fr}.marquee-track{gap:44px}}
+@media(prefers-reduced-motion:reduce){.marquee-track,.btn.glow{animation:none}.study-art .bar,.study-art .ln{transform:none;stroke-dashoffset:0;transition:none}}
 </style>
+<script src="/assets/walkthrough.js" defer></script>
 </head>
 <body>
 <header class="nav"><div class="nav-inner">
   <a class="brand" href="/"><img src="/assets/logo.svg" alt="">Goldfib <span>Capital</span></a>
   <ul class="nav-links"><li><a href="#offering">Offering</a></li><li><a href="#why">Why Students</a></li><li><a href="#process">Process</a></li><li><a href="#team">Team</a></li><li><a href="/blog/">Research</a></li></ul>
-  <a class="btn" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Partnership">Partner With Us</a>
+  <a class="btn nav-cta" href="/blog/walkthrough/" data-walkthrough-open><span class="long">See how automation helps your institutional research</span><span class="short">See how automation helps</span> →</a>
 </div></header>
 
 <main>
@@ -116,7 +171,7 @@ footer{padding:50px 0 40px;border-top:1px solid var(--border);margin-top:110px}
     <div class="chip"><span class="dot"></span>Now onboarding family office partners · 2026</div>
     <h1>Student-based research for <em>family offices.</em></h1>
     <p class="lead">Goldfib Capital gives family offices a dedicated research bench. Our student analysts from UVA, IIT Bombay, IIT Kharagpur, St. Stephen's and SSCBS build investment theses and equity research and work on live projects with your team.</p>
-    <div class="cta-row"><a class="btn" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Partnership">Book an intro call →</a><a class="btn ghost" href="#offering">See the offering</a></div>
+    <div class="cta-row"><a class="btn glow" href="/blog/walkthrough/" data-walkthrough-open>See how automation helps your institutional research →</a><a class="btn ghost" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Partnership">Book an intro call</a></div>
   </div>
   <aside class="hero-card reveal">
     <img src="/assets/logo.svg" alt="Goldfib Capital logo">
@@ -127,7 +182,33 @@ footer{padding:50px 0 40px;border-top:1px solid var(--border);margin-top:110px}
   </aside>
 </div></section>
 
-<div class="strip"><div class="container"><span class="label">Board &amp; analysts from</span><b>University of Virginia</b><b>IIT Bombay</b><b>IIT Kharagpur</b><b>St. Stephen's College</b><b>SSCBS</b></div></div>
+<section class="logos" aria-label="Where we work"><div class="container">
+  <div class="logos-row"><span class="label">Where our team has worked</span><div class="marquee"><div class="marquee-track"><img src="/assets/img/logos/proflex.png" alt="Proflex Finance" class="sq" loading="lazy"><img src="/assets/img/logos/amazon-india.svg" alt="Amazon India" class="" loading="lazy"><img src="/assets/img/logos/costa.png" alt="Costa Coffee India" class="sq" loading="lazy"><img src="/assets/img/logos/oberoi.png" alt="The Oberoi Group" class="" loading="lazy"><img src="/assets/img/logos/rtaf.png" alt="Real Time Angel Fund" class="" loading="lazy"><img src="/assets/img/logos/1-5-degree.avif" alt="1.5 Degree" class="sq" loading="lazy"><img src="/assets/img/logos/proflex.png" alt="Proflex Finance" class="sq" loading="lazy"><img src="/assets/img/logos/amazon-india.svg" alt="Amazon India" class="" loading="lazy"><img src="/assets/img/logos/costa.png" alt="Costa Coffee India" class="sq" loading="lazy"><img src="/assets/img/logos/oberoi.png" alt="The Oberoi Group" class="" loading="lazy"><img src="/assets/img/logos/rtaf.png" alt="Real Time Angel Fund" class="" loading="lazy"><img src="/assets/img/logos/1-5-degree.avif" alt="1.5 Degree" class="sq" loading="lazy"><img src="/assets/img/logos/proflex.png" aria-hidden="true" alt="Proflex Finance" class="sq" loading="lazy"><img src="/assets/img/logos/amazon-india.svg" aria-hidden="true" alt="Amazon India" class="" loading="lazy"><img src="/assets/img/logos/costa.png" aria-hidden="true" alt="Costa Coffee India" class="sq" loading="lazy"><img src="/assets/img/logos/oberoi.png" aria-hidden="true" alt="The Oberoi Group" class="" loading="lazy"><img src="/assets/img/logos/rtaf.png" aria-hidden="true" alt="Real Time Angel Fund" class="" loading="lazy"><img src="/assets/img/logos/1-5-degree.avif" aria-hidden="true" alt="1.5 Degree" class="sq" loading="lazy"><img src="/assets/img/logos/proflex.png" aria-hidden="true" alt="Proflex Finance" class="sq" loading="lazy"><img src="/assets/img/logos/amazon-india.svg" aria-hidden="true" alt="Amazon India" class="" loading="lazy"><img src="/assets/img/logos/costa.png" aria-hidden="true" alt="Costa Coffee India" class="sq" loading="lazy"><img src="/assets/img/logos/oberoi.png" aria-hidden="true" alt="The Oberoi Group" class="" loading="lazy"><img src="/assets/img/logos/rtaf.png" aria-hidden="true" alt="Real Time Angel Fund" class="" loading="lazy"><img src="/assets/img/logos/1-5-degree.avif" aria-hidden="true" alt="1.5 Degree" class="sq" loading="lazy"></div></div></div>
+  <div class="logos-row"><span class="label">Recognised by</span><div class="marquee rev"><div class="marquee-track"><img src="/assets/img/logos/cornell.png" alt="Cornell University" class="sq" loading="lazy"><img src="/assets/img/logos/bain.png" alt="Bain & Company" class="sq" loading="lazy"><img src="/assets/img/logos/blackrock.png" alt="BlackRock" class="" loading="lazy"><img src="/assets/img/logos/kearney.png" alt="Kearney" class="" loading="lazy"><img src="/assets/img/logos/iima.svg" alt="IIM Ahmedabad" class="sq" loading="lazy"><img src="/assets/img/logos/iimb.svg" alt="IIM Bangalore" class="sq" loading="lazy"><img src="/assets/img/logos/mcgill.png" alt="McGill University" class="" loading="lazy"><img src="/assets/img/logos/cornell.png" alt="Cornell University" class="sq" loading="lazy"><img src="/assets/img/logos/bain.png" alt="Bain & Company" class="sq" loading="lazy"><img src="/assets/img/logos/blackrock.png" alt="BlackRock" class="" loading="lazy"><img src="/assets/img/logos/kearney.png" alt="Kearney" class="" loading="lazy"><img src="/assets/img/logos/iima.svg" alt="IIM Ahmedabad" class="sq" loading="lazy"><img src="/assets/img/logos/iimb.svg" alt="IIM Bangalore" class="sq" loading="lazy"><img src="/assets/img/logos/mcgill.png" alt="McGill University" class="" loading="lazy"><img src="/assets/img/logos/cornell.png" aria-hidden="true" alt="Cornell University" class="sq" loading="lazy"><img src="/assets/img/logos/bain.png" aria-hidden="true" alt="Bain & Company" class="sq" loading="lazy"><img src="/assets/img/logos/blackrock.png" aria-hidden="true" alt="BlackRock" class="" loading="lazy"><img src="/assets/img/logos/kearney.png" aria-hidden="true" alt="Kearney" class="" loading="lazy"><img src="/assets/img/logos/iima.svg" aria-hidden="true" alt="IIM Ahmedabad" class="sq" loading="lazy"><img src="/assets/img/logos/iimb.svg" aria-hidden="true" alt="IIM Bangalore" class="sq" loading="lazy"><img src="/assets/img/logos/mcgill.png" aria-hidden="true" alt="McGill University" class="" loading="lazy"><img src="/assets/img/logos/cornell.png" aria-hidden="true" alt="Cornell University" class="sq" loading="lazy"><img src="/assets/img/logos/bain.png" aria-hidden="true" alt="Bain & Company" class="sq" loading="lazy"><img src="/assets/img/logos/blackrock.png" aria-hidden="true" alt="BlackRock" class="" loading="lazy"><img src="/assets/img/logos/kearney.png" aria-hidden="true" alt="Kearney" class="" loading="lazy"><img src="/assets/img/logos/iima.svg" aria-hidden="true" alt="IIM Ahmedabad" class="sq" loading="lazy"><img src="/assets/img/logos/iimb.svg" aria-hidden="true" alt="IIM Bangalore" class="sq" loading="lazy"><img src="/assets/img/logos/mcgill.png" aria-hidden="true" alt="McGill University" class="" loading="lazy"></div></div></div>
+  <div class="inst"><span>Board &amp; analysts from</span><b>University of Virginia</b><b>IIT Bombay</b><b>IIT Kharagpur</b><b>St. Stephen's College</b><b>SSCBS</b></div>
+</div></section>
+
+<section class="block alt" id="study"><div class="container study">
+  <div class="reveal">
+    <span class="eyebrow">&#9733; 5-step walkthrough · The study</span>
+    <h2 style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 16px">See how automation helps your institutional research</h2>
+    <p style="color:var(--text-secondary);font-weight:300;font-size:1.04rem">We modelled one analyst's 50-hour week covering Indian listed companies, timed it across six tasks, then costed a full desk around it. Then we re-ran the same week with filing collection, table extraction and model updates automated.</p>
+    <div class="facts"><div><b>27h → 6h</b><span>mechanical work per week</span></div><div><b>8h → 20h</b><span>time on analysis</span></div><div><b>2×</b><span>reports per analyst a year</span></div></div>
+    <ol class="steps5"><li><span>01</span>Your coverage list</li><li><span>02</span>The in-house desk, fully costed</li><li><span>03</span>Where the analyst hours go</li><li><span>04</span>Cost per report, manual vs automated</li><li><span>05</span>Your research plan, sent to us</li></ol>
+    <div class="cta-row"><a class="btn glow" href="/blog/walkthrough/" data-walkthrough-open>See how automation helps your institutional research →</a><a class="btn ghost" href="/blog/walkthrough/#study">Read the study</a></div>
+    <p class="fine">An illustrative model built from stated assumptions, not a survey of firms. All inputs are shown in the walkthrough.</p>
+  </div>
+  <a class="study-art" href="/blog/walkthrough/" data-walkthrough-open aria-label="See how automation helps your institutional research"><svg viewBox="0 0 400 260" font-family="JetBrains Mono,monospace" aria-hidden="true">
+    <text x="0" y="14" fill="#8b919e" font-size="10" letter-spacing="1.5">COST PER REPORT, ₹ LAKH</text>
+    <text x="400" y="14" fill="#b8965a" font-size="10" text-anchor="end" letter-spacing="1.5">★ 5 STEPS</text>
+    <g stroke="rgba(255,255,255,.06)"><line x1="0" x2="400" y1="60" y2="60"/><line x1="0" x2="400" y1="110" y2="110"/><line x1="0" x2="400" y1="160" y2="160"/></g>
+    <g fill="#b8965a" opacity=".55"><rect class="bar" x="14" y="66" width="42" height="144" rx="3" style="transition-delay:.05s"/><rect class="bar" x="86" y="118" width="42" height="92" rx="3" style="transition-delay:.15s"/><rect class="bar" x="158" y="148" width="42" height="62" rx="3" style="transition-delay:.25s"/><rect class="bar" x="230" y="166" width="42" height="44" rx="3" style="transition-delay:.35s"/><rect class="bar" x="302" y="176" width="42" height="34" rx="3" style="transition-delay:.45s"/></g>
+    <path class="ln" d="M10,50 C80,96 140,138 220,156 S340,174 396,178" fill="none" stroke="#e8e4dc" stroke-width="2.5"/>
+    <path class="ln" d="M10,104 C80,146 140,170 220,182 S340,192 396,194" fill="none" stroke="#34d399" stroke-width="2.5" style="transition-delay:.9s"/>
+    <line x1="0" x2="400" y1="210" y2="210" stroke="rgba(255,255,255,.18)"/>
+    <text x="0" y="232" fill="#e8e4dc" font-size="10">— Manual desk</text><text x="120" y="232" fill="#34d399" font-size="10">— With automation</text>
+    <text x="400" y="252" fill="#8b919e" font-size="10" text-anchor="end">companies covered →</text></svg></a>
+</div></section>
 
 <section class="block" id="offering"><div class="container">
   <div class="head reveal"><span class="eyebrow">01 · The offering</span><h2>An extension of your investment team</h2><p>Family offices need a lot of research but rarely have the headcount to do it. We supply a research team that adapts to your mandate, whether you need a single report or ongoing coverage.</p></div>
@@ -163,8 +244,14 @@ footer{padding:50px 0 40px;border-top:1px solid var(--border);margin-top:110px}
   </div>
 </div></section>
 
-<section class="block alt" id="team"><div class="container">
-  <div class="head reveal"><span class="eyebrow">04 · Leadership</span><h2>Founder-led, research-first</h2></div>
+<section class="block alt" id="research"><div class="container">
+  <div class="head reveal"><span class="eyebrow">04 · Research library</span><h2>Read how we work, in the open</h2><p>Guides on institutional-grade research in India, research automation and how family offices organise research.</p></div>
+  <!-- research:start --><div class="rgrid"><a class="rcard reveal" href="/blog/institutional-grade-equity-research-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh0" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><text x="24" y="20" fill="#8b919e" font-size="8" letter-spacing=".08em" text-anchor="start">INSTITUTIONAL STANDARD</text><rect x="60" y="31" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,37 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="40" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">SOURCED</text><rect x="210" y="34" width="40" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="53" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,59 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="62" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">MODELLED</text><rect x="210" y="56" width="63" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="75" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,81 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="84" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">REVIEWED</text><rect x="210" y="78" width="86" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="97" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,103 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="106" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">DISCLOSED</text><rect x="210" y="100" width="59" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/></svg></div><div class="b"><span class="eyebrow">Institutional Research, Decoded</span><h3>What Makes Equity Research “Institutional-Grade”? A 12-Point Standard for Indian Markets</h3></div></a><a class="rcard reveal" href="/blog/research-desk-cost-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><rect class="tb" x="30" y="26" width="46" height="96" rx="2" fill="#b8965a" opacity="0.45"/><text x="53.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">IN-HOUSE</text><rect class="tb" x="137" y="56" width="46" height="66" rx="2" fill="#b8965a" opacity="0.45"/><text x="160.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">OUTSOURCED</text><rect class="tb" x="244" y="88" width="46" height="34" rx="2" fill="#b8965a" opacity="1"/><text x="267.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">AUTOMATED</text><line x1="16" x2="304" y1="122" y2="122" stroke="rgba(255,255,255,.18)"/></svg></div><div class="b"><span class="eyebrow">Research Automation</span><h3>What a Research Desk Really Costs in India (and the Leaner Alternatives)</h3></div></a><a class="rcard reveal" href="/blog/family-office-research-function-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><line x1="160" y1="70" x2="160" y2="22" stroke="rgba(184,150,90,.35)"/><rect x="126" y="13" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="160.0" y="25.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MEMO</text><line x1="160" y1="70" x2="264" y2="70" stroke="rgba(184,150,90,.35)"/><rect x="230" y="61" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="264.0" y="73.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">DEALS</text><line x1="160" y1="70" x2="160" y2="118" stroke="rgba(184,150,90,.35)"/><rect x="126" y="109" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="160.0" y="121.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MANAGERS</text><line x1="160" y1="70" x2="56" y2="70" stroke="rgba(184,150,90,.35)"/><rect x="22" y="61" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="56.0" y="73.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MONITOR</text><circle cx="160" cy="70" r="20" fill="#b8965a"/><text x="160" y="73" fill="#0c1220" font-size="8" letter-spacing=".08em" text-anchor="middle">CIO</text></svg></div><div class="b"><span class="eyebrow">Family Office Playbook</span><h3>How Indian Family Offices Should Organise Their Research Function</h3></div></a></div><!-- research:end -->
+  <div class="more"><a class="btn ghost" href="/blog/">Browse the research library →</a></div>
+</div></section>
+
+<section class="block" id="team"><div class="container">
+  <div class="head reveal"><span class="eyebrow">05 · Leadership</span><h2>Founder-led, research-first</h2></div>
   <div class="founder reveal">
     <img src="/assets/img/founder.jpg" alt="Parth Khanna, Founder of Goldfib Capital">
     <div>
@@ -183,8 +270,8 @@ footer{padding:50px 0 40px;border-top:1px solid var(--border);margin-top:110px}
   <div class="cta-box reveal">
     <span class="eyebrow">Partner with Goldfib</span>
     <h2>Give your family office a research bench.</h2>
-    <p>For collaborations, research mandates or a pilot project, contact us at partners@goldfibcapital.in.</p>
-    <div class="cta-row"><a class="btn" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Partnership">partners@goldfibcapital.in</a></div>
+    <p>Run the 5-step study on your own coverage list, or write to us at partners@goldfibcapital.in for collaborations, research mandates or a pilot project.</p>
+    <div class="cta-row"><a class="btn" href="/blog/walkthrough/" data-walkthrough-open>See how automation helps your institutional research →</a><a class="btn ghost" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Partnership">Say hi to Goldfib Capital →</a></div>
   </div>
 </div></section>
 </main>
@@ -195,7 +282,7 @@ footer{padding:50px 0 40px;border-top:1px solid var(--border);margin-top:110px}
 </div></footer>
 <script>
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal,.study-art').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>

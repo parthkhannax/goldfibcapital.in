@@ -42,6 +42,9 @@
     '.wt-nav{display:none;justify-content:space-between;align-items:center;margin-top:24px}.wt-nav.on{display:flex}' +
     '.wt-back{background:none;border:0;color:var(--text-secondary,#a3a9b5);font:inherit;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.wt-back:hover{color:#fff}' +
     '.wt-next{background:' + GOLD + ';color:#0c1220;border:0;border-radius:8px;padding:12px 22px;font:inherit;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}' +
+    '.wt-study{margin-top:4px;border:1px solid rgba(184,150,90,.3);border-radius:12px;background:rgba(184,150,90,.05);padding:0 16px}.wt-study summary{cursor:pointer;padding:13px 0;font-size:.86rem;font-weight:600;color:' + GOLD + ';list-style:none}.wt-study summary::-webkit-details-marker{display:none}.wt-study summary::before{content:"+ ";font-family:"JetBrains Mono",monospace}.wt-study[open] summary::before{content:"\\2212  "}' +
+    '.wt-study p{font-size:.88rem;color:var(--text-secondary,#a3a9b5);margin:0 0 10px;font-weight:300}.wt-study p b{color:var(--text-primary,#e8e4dc);font-weight:600}.wt-study-fine{font-size:.76rem!important;color:var(--text-muted,#6c7586)!important}' +
+    '.wt-study-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.wt-study-grid div{background:rgba(255,255,255,.04);border-radius:8px;padding:10px}.wt-study-grid b{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.3rem;color:' + GOLD + '}.wt-study-grid span{font-size:.72rem;color:var(--text-secondary,#a3a9b5);line-height:1.3;display:block}' +
     '.wt-fine{font-size:.68rem;color:var(--text-muted,#6c7586);line-height:1.6;margin-top:22px}' +
     '.wt-done{display:none}.wt-done.on{display:block}.wt-done a{display:block;padding:10px 0;border-top:1px solid rgba(255,255,255,.07);color:' + GOLD + ';font-size:.9rem}' +
     '.wt-draw{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:wtDraw 1.4s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0s)}@keyframes wtDraw{to{stroke-dashoffset:0}}' +
@@ -55,14 +58,20 @@
     '@media(prefers-reduced-motion:reduce){.wt-draw,.wt-fade,.wt-grow,.wt-step.on,.wt-pulse{animation:none!important;opacity:1;transform:none;stroke-dashoffset:0}}';
 
   var HTML =
-    '<div class="wt-in"><div class="wt-top"><span class="eyebrow">Goldfib · 5-step research walkthrough</span><button class="wt-x" data-wt-close aria-label="Close">&times;</button></div>' +
+    '<div class="wt-in"><div class="wt-top"><span class="eyebrow">&#9733; 5 steps · See how automation helps your institutional research</span><button class="wt-x" data-wt-close aria-label="Close">&times;</button></div>' +
     '<div class="wt-dots">' + '<span class="wt-dot"></span>'.repeat(5) + '</div>' +
 
-    '<section class="wt-step" data-s="1"><p class="wt-k">Step 1 of 5 · Your coverage</p><h3>How many companies do you want covered properly?</h3>' +
-    '<p>We\'ll price an in-house research desk for that list, show where analyst hours go, and what changes when the mechanical work is automated.</p>' +
-    '<label class="wt-field">Companies to cover <output id="wt-n-o"></output><input id="wt-n" type="range" min="4" max="60" step="1" value="20"></label>' +
+    '<section class="wt-step" data-s="1"><p class="wt-k">Step 1 of 5 · Your coverage</p><h3>See how automation helps your institutional research</h3>' +
+    '<p>Tell us how many companies you want covered properly. We\'ll price an in-house research desk for that list, show where analyst hours go, and what changes when the mechanical work is automated.</p>' +
+    '<details class="wt-study"><summary>About the study behind these numbers</summary>' +
+    '<div class="wt-study-grid"><div><b>50h</b><span>one analyst week</span></div><div><b>6</b><span>task types timed</span></div><div><b>2</b><span>scenarios: manual vs automated</span></div></div>' +
+    '<p><b>What we looked at.</b> One analyst\'s 50-hour working week covering Indian listed companies, split into six tasks: collecting filings and extracting tables, updating models, reading, analysis and thesis work, writing, and verification.</p>' +
+    '<p><b>How we ran it.</b> We built a desk around that week (salary, data seats, overheads and a senior reviewer\'s time) and costed it for the coverage list you choose. Then we re-ran the same week with collection, extraction and model updates automated, and an explicit verification step added.</p>' +
+    '<p><b>What came out.</b> Mechanical work falls from about 27 hours to 6, analysis time rises from 8 to 20 hours, and each analyst finishes about twice as many full reports a year (24 instead of 12). Steps 2 to 5 apply that to your list.</p>' +
+    '<p class="wt-study-fine">This is a model built from stated assumptions, not a survey of firms. The assumptions are listed at the bottom of every step, so you can swap in your own.</p></details>' +
+    '<label class="wt-field" style="margin-top:18px">Companies to cover <output id="wt-n-o"></output><input id="wt-n" type="range" min="4" max="60" step="1" value="20"></label>' +
     '<div class="wt-field">Where they sit<div class="wt-chips" id="wt-focus"><button type="button" class="wt-chip" data-v="large">Large caps</button><button type="button" class="wt-chip on" data-v="small">Small &amp; mid caps</button><button type="button" class="wt-chip" data-v="unlisted">Unlisted &amp; pre-IPO</button></div></div>' +
-    '<button class="wt-go" data-wt-start>Start the walkthrough</button></section>' +
+    '<button class="wt-go" data-wt-start>Run the study on my list →</button></section>' +
 
     '<section class="wt-step" data-s="2"><p class="wt-k">Step 2 of 5 · The in-house desk</p><h3>What it costs to cover <span class="wt-N"></span> companies yourself</h3>' +
     '<p>At about 12 full reports per analyst a year, you need <b class="wt-man"></b>. Salaries are only part of the bill: data seats, overheads and a senior reviewer\'s time come with every desk.</p>' +
@@ -85,7 +94,7 @@
     '<div class="wt-chart" data-chart="pipe"></div>' +
     '<div class="wt-nums"><div class="wt-num hl"><span>Initiation reports</span><b data-count="N"></b></div><div class="wt-num"><span>Quarterly result notes</span><b data-count="q"></b></div><div class="wt-num"><span>Pledge &amp; holding checks</span><b data-count="q"></b></div></div>' +
     '<form id="wt-form" style="margin-top:20px"><input class="wt-text" name="name" placeholder="Your name"><input class="wt-text" name="org" placeholder="Family office / fund / organisation">' +
-    '<button type="submit" class="wt-go">Email this plan to Goldfib</button></form>' +
+    '<button type="submit" class="wt-go">Say hi to Goldfib Capital →</button><p class="wt-note" style="margin-top:10px">Opens your email with this plan filled in, addressed to partners@goldfibcapital.in.</p></form>' +
     '<div class="wt-done"><p class="wt-note">Your email app should have opened with the plan filled in. If it didn\'t, write to <b>partners@goldfibcapital.in</b>. Meanwhile, read more:</p>' +
     '<a class="wt-focus-link" href="#"></a><a href="/blog/research-desk-cost-india/">What a research desk really costs →</a><a href="/blog/ai-investment-research-automation-india/">AI &amp; research automation: what works →</a></div></section>' +
 
@@ -256,7 +265,7 @@
         '- With automation: ' + d.nA + ' analyst(s), ' + inr(d.cprA) + ' per report\n' +
         '- Plan: ' + d.N + ' initiation reports, ' + d.q + ' quarterly result notes, ' + d.q + ' pledge & shareholding checks\n\n' +
         'I would like to talk about a research plan for this list.\n\n' + (who ? who + '\n' : 'Name / organisation:\n');
-      location.href = 'mailto:partners@goldfibcapital.in?subject=' + encodeURIComponent('Research plan: ' + d.N + ' companies (' + FOCUS[d.focus][0] + ')') + '&body=' + encodeURIComponent(body);
+      location.href = 'mailto:partners@goldfibcapital.in?subject=' + encodeURIComponent('Hi Goldfib Capital: research plan for ' + d.N + ' companies (' + FOCUS[d.focus][0] + ')') + '&body=' + encodeURIComponent(body);
       f.style.display = 'none'; $('.wt-done', card).classList.add('on');
     });
 
@@ -265,7 +274,7 @@
       try {
         if (!sessionStorage.getItem('gf_wt_nudge')) {
           nudge = document.createElement('div'); nudge.id = 'wt-nudge';
-          nudge.innerHTML = '<button class="wt-x" data-wt-nudge-x aria-label="Close">&times;</button><span class="eyebrow">Interactive guide</span><p>Price a research desk for your coverage list and see what automation changes, in 5 steps.</p><button class="wt-next" data-walkthrough-open>Start the 5 steps</button>';
+          nudge.innerHTML = '<button class="wt-x" data-wt-nudge-x aria-label="Close">&times;</button><span class="eyebrow">Interactive guide</span><p>Price a research desk for your coverage list and see what automation changes, in 5 steps.</p><button class="wt-next" data-walkthrough-open>See how automation helps →</button>';
           document.body.appendChild(nudge);
           setTimeout(function () { if (!wrap.classList.contains('on')) nudge.classList.add('on'); try { sessionStorage.setItem('gf_wt_nudge', '1'); } catch (x) {} }, 90000);
         }
