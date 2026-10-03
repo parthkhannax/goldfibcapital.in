@@ -44,14 +44,15 @@ h1,h2,h3{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spaci
 .hero{position:relative;color:#fff;background:var(--navy);overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url(/assets/img/photos/towers.jpg) center/cover;opacity:.16}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,var(--navy) 35%,rgba(15,29,49,.75))}
-.hero .container{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;padding-top:84px;padding-bottom:130px}
+.hero .container{position:relative;z-index:1;max-width:1240px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:80px;padding-bottom:88px}
 .hero h1{font-size:clamp(2.1rem,3.8vw,3rem);margin:16px 0 20px}
 .hero h1 em{font-style:normal;color:var(--gold-2)}
-.hero .lead{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:520px;margin-bottom:32px}
+.hero .lead{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:540px;margin-bottom:32px}
+.hero .cta-row{flex-wrap:nowrap}
 .hero .kicker{color:var(--gold-2)}
-.laptop{position:relative;margin-right:-30px}
+.laptop{position:relative;padding-bottom:28px}
 .laptop svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45))}
-.fix{position:absolute;right:20px;bottom:-92px;background:#fff;color:var(--text);border-radius:var(--r);padding:14px 18px;width:240px;box-shadow:0 18px 40px rgba(0,0,0,.35);border-top:3px solid var(--gold)}
+.fix{position:absolute;right:-12px;bottom:0;background:#fff;color:var(--text);border-radius:var(--r);padding:14px 18px;width:262px;box-shadow:0 18px 40px rgba(0,0,0,.35);border-top:3px solid var(--gold)}
 .fix b{display:block;font-family:'Source Serif 4',serif;font-size:1rem;margin-bottom:8px}
 .fix ul{display:grid;grid-template-columns:1fr;}.fix li{list-style:none;line-height:1.4;font-size:.82rem;color:var(--muted);padding:3px 0 3px 20px;position:relative}
 .fix li::before{content:'';position:absolute;left:2px;top:9px;width:9px;height:5px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
@@ -65,7 +66,7 @@ section.block{padding:96px 0}
 .head p{color:var(--muted);font-size:1.04rem}
 .dark .head p{color:rgba(255,255,255,.68)}
 /* trust */
-.trust{padding:72px 0;border-bottom:1px solid var(--line)}
+.trust{padding:64px 0;border-bottom:1px solid var(--line)}
 .trust .head{margin-bottom:36px}
 .proof{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .pcard{border:1px solid var(--line);border-radius:var(--r);padding:30px;background:#fff;display:grid;grid-template-columns:72px 1fr;gap:22px;align-items:start}
@@ -116,7 +117,11 @@ section.block{padding:96px 0}
 .rcard div.b{padding:18px 22px 22px}
 .rcard .eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-2)}
 .rcard h3{font-size:1.08rem;line-height:1.4;margin-top:8px;color:#fff}
-.more{margin-top:30px;text-align:center}
+.more{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.sec-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.sec-cta.center{justify-content:center}
+.sec-cta span{color:var(--muted);font-size:.95rem}
+.fine a{color:var(--gold);text-decoration:underline}
 /* founder */
 .founder{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center}
 .founder img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%}
@@ -140,9 +145,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
 .foot nav{display:flex;gap:22px}.foot a:hover{color:#fff}
 .disclaimer{font-size:.74rem;color:rgba(255,255,255,.45);line-height:1.7;border-top:1px solid var(--line-dark);padding-top:20px}
 @media(max-width:1100px){.nav-cta .long{display:none}.nav-cta .short{display:inline}}
-@media(max-width:960px){.laptop{margin-right:0}.fix{left:auto;right:8px}.hero .container,.study,.founder{grid-template-columns:1fr}.fix{right:8px}.proof,.ps,.rgrid{grid-template-columns:1fr 1fr}.ps article:last-child{grid-column:1/-1}.steps{grid-template-columns:1fr 1fr}.nav-links{display:none}.founder img{max-width:280px}}
-@media(max-width:640px){.container,.nav-inner{padding:0 16px}section.block{padding:72px 0}.proof,.ps,.rgrid,.steps{grid-template-columns:1fr}.pcard{grid-template-columns:1fr}.nums b{font-size:1.35rem}.facts{grid-template-columns:1fr}.facts div+div{border-left:0;border-top:1px solid var(--line)}.fix{position:relative;right:auto;bottom:auto;width:auto;margin-top:16px}.nav-cta{display:none}.hero .container{padding-top:56px;padding-bottom:64px}}
+@media(max-width:1180px){.hero .cta-row{flex-wrap:wrap}}
+@media(max-width:960px){.hero .container{padding-bottom:72px}.fix{left:auto;right:8px}.hero .container,.study,.founder{grid-template-columns:1fr}.fix{right:8px}.proof,.ps,.rgrid{grid-template-columns:1fr 1fr}.ps article:last-child{grid-column:1/-1}.steps{grid-template-columns:1fr 1fr}.nav-links{display:none}.founder img{max-width:280px}}
+@media(max-width:640px){.container,.nav-inner{padding:0 16px}section.block{padding:72px 0}.proof,.ps,.rgrid,.steps{grid-template-columns:1fr}.pcard{grid-template-columns:1fr}.nums b{font-size:1.35rem}.facts{grid-template-columns:1fr}.facts div+div{border-left:0;border-top:1px solid var(--line)}.laptop{padding-bottom:0}.fix{position:relative;right:auto;bottom:auto;width:auto;margin-top:16px}.hero .cta-row .btn{width:100%;justify-content:center;text-align:center}.nav-cta{display:none}.hero .container{padding-top:56px;padding-bottom:64px}}
 </style>
+<script src="/assets/mail.js" defer></script>
 <script src="/assets/walkthrough.js" defer></script>
 </head>
 <body>
@@ -184,14 +191,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
         <rect x="440" y="166" width="56" height="16" rx="8" fill="#f7e3e0"/><text x="468" y="177" fill="#b4483c" text-anchor="middle">Missing</text>
         <rect x="440" y="196" width="56" height="16" rx="8" fill="#f7ecd8"/><text x="468" y="207" fill="#b7832a" text-anchor="middle">Manual</text>
       </g>
-      <rect x="82" y="234" width="210" height="64" rx="4" fill="#f6f4ef"/>
-      <text x="94" y="252" font-size="8.5" font-weight="600" fill="#5b6575">TOTAL PORTFOLIO VALUE</text>
+      <rect x="82" y="228" width="210" height="76" rx="4" fill="#f6f4ef"/>
+      <text x="94" y="246" font-size="8.5" font-weight="600" fill="#5b6575">TOTAL PORTFOLIO VALUE</text>
       <text x="94" y="282" font-size="20" font-weight="600" fill="#b4483c">₹ ??? Cr</text>
-      <rect x="306" y="234" width="212" height="64" rx="4" fill="#fdf6f5" stroke="#f0d2cd"/>
-      <text x="318" y="252" font-size="8.5" font-weight="600" fill="#b4483c">3 THINGS YOUR CIO ASKED THIS WEEK</text>
-      <text x="318" y="268" font-size="9.5" fill="#1a2433">What is our real exposure to banks?</text>
-      <text x="318" y="284" font-size="9.5" fill="#1a2433">Is the pre-IPO deal worth it?</text>
-      <text x="318" y="300" font-size="9.5" fill="#1a2433">Why did the PMS lag the index?</text>
+      <rect x="306" y="228" width="212" height="76" rx="4" fill="#fdf6f5" stroke="#f0d2cd"/>
+      <text x="318" y="245" font-size="8.5" font-weight="600" fill="#b4483c">3 THINGS YOUR CIO ASKED THIS WEEK</text>
+      <text x="318" y="262" font-size="9.5" fill="#1a2433">What is our real exposure to banks?</text>
+      <text x="318" y="278" font-size="9.5" fill="#1a2433">Is the pre-IPO deal worth it?</text>
+      <text x="318" y="294" font-size="9.5" fill="#1a2433">Why did the PMS lag the index?</text>
       <path d="M20,326 H580 L560,350 Q556,356 546,356 H54 Q44,356 40,350 Z" fill="#c9ccd2"/>
       <rect x="250" y="326" width="100" height="7" rx="3" fill="#a9adb5"/>
     </svg>
@@ -206,6 +213,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
     <div class="pcard"><img src="/assets/img/logos/embark-funds.webp" alt="Embark Funds logo"><div><h3>Embark Funds</h3><p class="what">Fund platform, research and investor funnel</p><div class="nums"><div><b>20</b><span>fund research articles shipped in one week</span></div><div><b>4</b><span>channels for each calculator push: web, WhatsApp, social, email</span></div><div><b>Live</b><span>investor funnel with automated follow-ups</span></div></div></div></div>
   </div>
   <div class="also"><span>Our team has also worked with</span><img src="/assets/img/logos/amazon-india.svg" alt="Amazon India" loading="lazy"><img src="/assets/img/logos/costa.png" alt="Costa Coffee India" class="sq" loading="lazy"><img src="/assets/img/logos/oberoi.png" alt="The Oberoi Group" loading="lazy"><img src="/assets/img/logos/rtaf.png" alt="Real Time Angel Fund" loading="lazy"><img src="/assets/img/logos/1-5-degree.avif" alt="1.5 Degree" class="sq" loading="lazy"></div>
+  <div class="sec-cta center"><span>Want the same systems for your family office?</span><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20research%20and%20automation%20for%20our%20family%20office">Inquire now →</a></div>
 </div></section>
 
 <section class="block paper" id="what"><div class="container">
@@ -215,6 +223,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
     <article><img src="/assets/img/photos/dashboard.jpg" alt="Laptop showing a portfolio dashboard" loading="lazy"><div class="b"><h3>Portfolio monitoring</h3><p class="pain"><span class="tag">Today</span>Holdings sit across brokers, PMS, AIFs and private deals.</p><p class="gain"><span class="tag">With Goldfib</span>One consolidated view, refreshed automatically.</p></div></article>
     <article><img src="/assets/img/photos/signing.jpg" alt="Investment committee member signing a memo" loading="lazy"><div class="b"><h3>Decision records</h3><p class="pain"><span class="tag">Today</span>Why you invested lives in one person's head.</p><p class="gain"><span class="tag">With Goldfib</span>Memos, IC notes and a decision log the family can audit.</p></div></article>
   </div>
+  <div class="sec-cta"><span>Facing one of these today?</span><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20deal%20diligence%20and%20portfolio%20monitoring">Inquire now →</a></div>
 </div></section>
 
 <section class="block" id="study"><div class="container study">
@@ -223,8 +232,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
     <h2>See how automation helps your institutional research</h2>
     <p>We modelled one analyst's 50-hour week, then re-ran it with filing collection, data extraction and model updates automated.</p>
     <div class="facts"><div><b>27h → 6h</b><span>mechanical work a week</span></div><div><b>8h → 20h</b><span>time on analysis</span></div><div><b>2×</b><span>reports per analyst a year</span></div></div>
-    <div class="cta-row"><a class="btn" href="/blog/walkthrough/" data-walkthrough-open>See how automation helps your institutional research →</a><a class="btn line" href="/blog/walkthrough/#study">Read the study</a></div>
-    <p class="fine">An illustrative model built from stated assumptions, not a survey of firms. All inputs are shown in the walkthrough.</p>
+    <div class="cta-row"><a class="btn" href="/blog/walkthrough/" data-walkthrough-open>See how automation helps your institutional research →</a><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20automating%20our%20research%20workflow">Inquire now →</a></div>
+    <p class="fine">An illustrative model built from stated assumptions, not a survey of firms. <a href="/blog/walkthrough/#study">Read the study</a> to see every input.</p>
   </div>
   <a class="chart" href="/blog/walkthrough/" data-walkthrough-open aria-label="See how automation helps your institutional research"><svg viewBox="0 0 400 270" font-family="Inter,Arial,sans-serif" aria-hidden="true">
     <text x="0" y="14" fill="#5b6575" font-size="11" font-weight="600">Analyst week, hours by task</text>
@@ -247,12 +256,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
     <div><b>03</b><h3>Connect</h3><p>We pull your statements into one automated view.</p></div>
     <div><b>04</b><h3>Run</h3><p>Memos on demand and a quarterly portfolio review.</p></div>
   </div>
+  <div class="sec-cta"><span>Step 01 is a 30-minute call.</span><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20scoping%20call%20with%20Goldfib">Inquire now →</a></div>
 </div></section>
 
 <section class="block dark" id="research"><div class="container">
   <div class="head"><span class="kicker" style="color:var(--gold-2)">Research library</span><h2>How we think, in the open</h2><p>Guides on diligence, portfolio monitoring and research automation for Indian family offices.</p></div>
   <!-- research:start --><div class="rgrid"><a class="rcard reveal" href="/blog/institutional-grade-equity-research-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh0" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><text x="24" y="20" fill="#8b919e" font-size="8" letter-spacing=".08em" text-anchor="start">INSTITUTIONAL STANDARD</text><rect x="60" y="31" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,37 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="40" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">SOURCED</text><rect x="210" y="34" width="40" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="53" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,59 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="62" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">MODELLED</text><rect x="210" y="56" width="63" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="75" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,81 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="84" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">REVIEWED</text><rect x="210" y="78" width="86" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><rect x="60" y="97" width="12" height="12" rx="3" fill="none" stroke="#b8965a"/><path d="M62.5,103 l3,3 l5,-6" fill="none" stroke="#b8965a" stroke-width="1.6"/><text x="84" y="106" fill="#d3d0c9" font-size="8" letter-spacing=".08em" text-anchor="start">DISCLOSED</text><rect x="210" y="100" width="59" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/></svg></div><div class="b"><span class="eyebrow">Institutional Research, Decoded</span><h3>What Makes Equity Research “Institutional-Grade”? A 12-Point Standard for Indian Markets</h3></div></a><a class="rcard reveal" href="/blog/research-desk-cost-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><rect class="tb" x="30" y="26" width="46" height="96" rx="2" fill="#b8965a" opacity="0.45"/><text x="53.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">IN-HOUSE</text><rect class="tb" x="137" y="56" width="46" height="66" rx="2" fill="#b8965a" opacity="0.45"/><text x="160.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">OUTSOURCED</text><rect class="tb" x="244" y="88" width="46" height="34" rx="2" fill="#b8965a" opacity="1"/><text x="267.0" y="134" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">AUTOMATED</text><line x1="16" x2="304" y1="122" y2="122" stroke="rgba(255,255,255,.18)"/></svg></div><div class="b"><span class="eyebrow">Research Automation</span><h3>What a Research Desk Really Costs in India (and the Leaner Alternatives)</h3></div></a><a class="rcard reveal" href="/blog/family-office-research-function-india/"><div class="thumb"><svg viewBox="0 0 320 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace"><defs><linearGradient id="gh2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b8965a" stop-opacity=".28"/><stop offset="1" stop-color="#b8965a" stop-opacity="0"/></linearGradient></defs><line x1="16" x2="304" y1="30" y2="30" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="62" y2="62" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="94" y2="94" stroke="rgba(255,255,255,.06)"/><line x1="16" x2="304" y1="126" y2="126" stroke="rgba(255,255,255,.06)"/><line x1="160" y1="70" x2="160" y2="22" stroke="rgba(184,150,90,.35)"/><rect x="126" y="13" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="160.0" y="25.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MEMO</text><line x1="160" y1="70" x2="264" y2="70" stroke="rgba(184,150,90,.35)"/><rect x="230" y="61" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="264.0" y="73.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">DEALS</text><line x1="160" y1="70" x2="160" y2="118" stroke="rgba(184,150,90,.35)"/><rect x="126" y="109" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="160.0" y="121.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MANAGERS</text><line x1="160" y1="70" x2="56" y2="70" stroke="rgba(184,150,90,.35)"/><rect x="22" y="61" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/><text x="56.0" y="73.0" fill="#8b919e" font-size="7" letter-spacing=".08em" text-anchor="middle">MONITOR</text><circle cx="160" cy="70" r="20" fill="#b8965a"/><text x="160" y="73" fill="#0c1220" font-size="8" letter-spacing=".08em" text-anchor="middle">CIO</text></svg></div><div class="b"><span class="eyebrow">Family Office Playbook</span><h3>How Indian Family Offices Should Organise Their Research Function</h3></div></a></div><!-- research:end -->
-  <div class="more"><a class="btn line" href="/blog/">Browse the research library →</a></div>
+  <div class="more"><a class="btn line" href="/blog/">Browse the research library →</a><a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Inquiry%3A%20research%20question%20for%20Goldfib">Inquire now →</a></div>
 </div></section>
 
 <section class="block" id="team"><div class="container">
@@ -264,7 +274,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px;bor
       <div class="role">Founder, Goldfib Capital · Investment Research &amp; Product, Proflex</div>
       <p>Parth runs institutional-grade research and managed portfolios (~$30Mn AUM context) for a Silicon Valley multi-strategy firm. He founded Goldfib in 2023 to bring the same rigour, and the automation behind it, to Indian family offices.</p>
       <p style="margin-bottom:26px">CFA Level III candidate with 15+ podium finishes in competitions judged by Bain, Kearney, BlackRock, CPP and Cornell.</p>
-      <a class="btn line" href="https://parthkhannax.github.io/opus6portfolio.html" target="_blank" rel="noopener">Full profile →</a>
+      <div class="cta-row"><a class="btn" href="mailto:parth@proflexfinance.com?subject=Hi%20Parth%2C%20reaching%20out%20via%20Goldfib%20Capital">Reach out to us →</a><a class="btn line" href="https://parthkhannax.github.io/opus6portfolio.html" target="_blank" rel="noopener">Full profile →</a></div>
     </div>
   </div>
 </div></section>

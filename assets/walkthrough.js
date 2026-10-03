@@ -265,7 +265,8 @@
         '- With automation: ' + d.nA + ' analyst(s), ' + inr(d.cprA) + ' per report\n' +
         '- Plan: ' + d.N + ' initiation reports, ' + d.q + ' quarterly result notes, ' + d.q + ' pledge & shareholding checks\n\n' +
         'I would like to talk about a research plan for this list.\n\n' + (who ? who + '\n' : 'Name / organisation:\n');
-      location.href = 'mailto:partners@goldfibcapital.in?subject=' + encodeURIComponent('Hi Goldfib Capital: research plan for ' + d.N + ' companies (' + FOCUS[d.focus][0] + ')') + '&body=' + encodeURIComponent(body);
+      var mail = 'mailto:partners@goldfibcapital.in?subject=' + encodeURIComponent('Hi Goldfib Capital: research plan for ' + d.N + ' companies (' + FOCUS[d.focus][0] + ')') + '&body=' + encodeURIComponent(body);
+      if (window.gfMail) gfMail(mail); else location.href = mail;
       f.style.display = 'none'; $('.wt-done', card).classList.add('on');
     });
 
