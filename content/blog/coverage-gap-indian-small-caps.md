@@ -114,7 +114,7 @@ stages:
 caption: "Illustrative counts. The step from 120 to 35 is where analyst judgement matters most. Everything before it can be largely automated."
 ```
 
-The first four stages are mostly data work and can be automated. We describe how in building stock screens for Indian markets and [building a research data pipeline from NSE and BSE filings](/blog/nse-bse-filings-research-data-pipeline/). The last two stages need analysts who read annual reports properly and write to a standard. See [what makes research institutional-grade](/blog/institutional-grade-equity-research-india/).
+The first four stages are mostly data work and can be automated. We describe how in [building stock screens for Indian markets](/blog/stock-screening-india-factor-models/) and [building a research data pipeline from NSE and BSE filings](/blog/nse-bse-filings-research-data-pipeline/). The last two stages need analysts who read annual reports properly and write to a standard. See [what makes research institutional-grade](/blog/institutional-grade-equity-research-india/).
 
 ## Governance checks first
 

@@ -129,4 +129,4 @@ caption: "Hypothetical company. Showing the range and the driver behind each cas
 - **Capex cycles.** Capacity-led businesses such as cement, chemicals and metals invest in lumps. Normalise free cash flow over a cycle before capitalising it.
 - **Minority interests and cross-holdings.** These are common in group structures. Subtract minorities and add investments at fair value.
 
-A DCF is a tool for organising assumptions, not for producing truth. Used that way, with a sensitivity grid, a range and a clear variant view, it meets [institutional standards](/blog/institutional-grade-equity-research-india/). For how this fits into a decision document, see the investment memo template.
+A DCF is a tool for organising assumptions, not for producing truth. Used that way, with a sensitivity grid, a range and a clear variant view, it meets [institutional standards](/blog/institutional-grade-equity-research-india/). For how this fits into a decision document, see the [investment memo template](/blog/investment-memo-template-family-office/).

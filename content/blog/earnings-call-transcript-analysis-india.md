@@ -121,7 +121,7 @@ The fix is a workflow rule rather than a better prompt: every AI-extracted numbe
 
 1. Start with your five largest holdings and build eight quarters of trackers.
 2. Score each management team's hit rate and note any quietly dropped guidance.
-3. Add one line to each investment memo: *Management credibility: hit rate X%, key slippages Y.*
+3. Add one line to each [investment memo](/blog/investment-memo-template-family-office/): *Management credibility: hit rate X%, key slippages Y.*
 4. Refresh within a week of each results season.
 
 Done this way, transcripts stop being a quarterly reading chore and become one of the most useful inputs in your [research process](/blog/institutional-grade-equity-research-india/).

@@ -145,6 +145,6 @@ If you are starting from zero, automate in this order. Each step pays for itself
 2. **Shareholding and pledge tracking.** See [promoter pledging signals](/blog/promoter-pledging-shareholding-signals/).
 3. **Financial table extraction** into model history, with verification.
 4. **Transcript guidance tracking.**
-5. **Screens and peer tables.** See stock screening for Indian markets.
+5. **Screens and peer tables.** See [stock screening for Indian markets](/blog/stock-screening-india-factor-models/).
 
 Automation is half of how a lean team can produce [institutional-grade research](/blog/institutional-grade-equity-research-india/) at a fraction of the usual cost. The other half is a disciplined analyst bench, which is the premise of the [student-led research model](/blog/student-led-equity-research-model/).
