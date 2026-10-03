@@ -5,6 +5,7 @@ seo_title: "Equity Research Skills for Students in India: A Roadmap"
 short: "Day-one equity research skills"
 description: "The equity research skills that matter for students in India: a ranked skill stack, a 12-week roadmap, and a portfolio that gets noticed."
 cluster: talent
+level: beginner
 order: 2
 date: 2026-10-03
 keywords: [equity research skills, how to become equity research analyst India, equity research for students, financial modelling skills, equity research internship India, CFA vs practical skills]

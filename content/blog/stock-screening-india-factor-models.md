@@ -5,6 +5,7 @@ seo_title: "Stock Screening for Indian Markets: A Factor-Based Guide"
 short: "Stock screens for Indian markets"
 description: "How to build stock screens for Indian equities: quality, value and momentum factors, India-specific governance and liquidity filters, and pitfalls."
 cluster: automation
+level: intermediate
 order: 4
 date: 2026-10-03
 keywords: [stock screener India, stock screening criteria, factor investing India, quality stocks screen, ROCE screen, small cap screen India]

@@ -5,6 +5,7 @@ seo_title: "AI for Investment Research in India: What to Automate"
 short: "AI & research automation: what works"
 description: "A task-by-task map of what AI can automate in equity research, from filings and transcripts to models, and where analyst judgement stays essential."
 cluster: automation
+level: intermediate
 pillar: true
 order: 1
 date: 2026-10-03

@@ -5,6 +5,7 @@ seo_title: "Promoter Pledging & Shareholding Pattern Signals Explained"
 short: "Promoter pledges & shareholding signals"
 description: "How to read promoter holding, pledged shares and shareholding patterns in Indian stocks: the pledge spiral, a signal matrix and a checklist."
 cluster: research
+level: intermediate
 order: 4
 date: 2026-10-03
 keywords: [promoter pledging, pledged shares meaning, shareholding pattern analysis, promoter holding increase, FII DII holding change, encumbered shares SEBI]

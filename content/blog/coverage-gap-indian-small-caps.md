@@ -5,6 +5,7 @@ seo_title: "Analyst Coverage Gap in Indian Small Caps, Explained"
 short: "The small-cap coverage gap"
 description: "Thousands of Indian listed companies have little or no analyst coverage. Why the gap exists, why it creates mispricing, and how investors can fill it."
 cluster: research
+level: beginner
 order: 2
 date: 2026-10-03
 keywords: [analyst coverage India, small cap research India, under-researched stocks, uncovered stocks NSE BSE, small cap mispricing]

@@ -5,6 +5,7 @@ seo_title: "What an In-House Research Desk Costs in India"
 short: "What a research desk really costs"
 description: "The full cost of an in-house equity research desk in India: salaries, data, overheads and review time, with an interactive cost-per-report calculator."
 cluster: automation
+level: beginner
 order: 3
 date: 2026-10-03
 keywords: [research desk cost India, equity research analyst salary India, outsource investment research, cost of in-house research, family office research cost, research outsourcing India]

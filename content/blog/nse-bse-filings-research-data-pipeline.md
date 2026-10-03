@@ -5,6 +5,7 @@ seo_title: "Research Data Pipeline from NSE & BSE Filings: A Blueprint"
 short: "A data pipeline from NSE/BSE filings"
 description: "A blueprint for a research data pipeline on Indian listed companies: what filings exist, when they land, how to store and verify them, and what it unlocks."
 cluster: automation
+level: advanced
 order: 2
 date: 2026-10-03
 keywords: [NSE BSE filings data, corporate announcements India, XBRL financial data India, research data pipeline, quarterly results data India, shareholding pattern data]

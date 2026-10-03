@@ -5,6 +5,7 @@ seo_title: "Pre-IPO & Unlisted Shares in India: Due Diligence Guide"
 short: "Pre-IPO & unlisted share diligence"
 description: "How to diligence pre-IPO and unlisted shares in India: grey-market risks, a 30-point checklist, valuation discounts, lock-ins and exit paths."
 cluster: family-office
+level: advanced
 order: 4
 date: 2026-10-03
 keywords: [pre-IPO shares India, unlisted shares due diligence, buying unlisted shares India, pre-IPO investment risks, unlisted shares valuation, IPO lock-in period]

@@ -5,6 +5,7 @@ seo_title: "How to Read an Indian Annual Report: Buy-Side Checklist"
 short: "Reading an annual report like the buy side"
 description: "A page-by-page method for reading Indian annual reports: where the real signals hide, the red-flag heatmap, and a 90-minute reading order analysts use."
 cluster: research
+level: intermediate
 order: 3
 date: 2026-10-03
 keywords: [how to read annual report India, annual report analysis, related party transactions, CARO report, contingent liabilities, red flags annual report]

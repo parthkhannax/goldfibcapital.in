@@ -5,6 +5,7 @@ seo_title: "Investment Memo Template for Family Office Committees"
 short: "An investment memo template that works"
 description: "A one-page-first investment memo template for family office investment committees: eight sections, a scoring rubric and a pre-mortem that catches bad calls."
 cluster: family-office
+level: intermediate
 order: 2
 date: 2026-10-03
 keywords: [investment memo template, investment committee memo, family office investment memo, investment thesis template, pre-mortem investing, IC memo format]

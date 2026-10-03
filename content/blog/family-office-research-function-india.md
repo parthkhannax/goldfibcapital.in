@@ -5,6 +5,7 @@ seo_title: "Family Office Research in India: How to Organise It"
 short: "Organising a family office research function"
 description: "A practical design for the research function of an Indian family office: what to keep in-house, what to outsource, the operating rhythm and the maturity path."
 cluster: family-office
+level: intermediate
 pillar: true
 order: 1
 date: 2026-10-03

@@ -5,6 +5,7 @@ seo_title: "DCF Valuation for Indian Companies: A Practitioner's Guide"
 short: "DCF for Indian companies"
 description: "How to build a DCF for an Indian company: rupee cost of equity, country risk without double-counting, terminal growth and an interactive tool."
 cluster: research
+level: advanced
 order: 6
 date: 2026-10-03
 keywords: [DCF valuation India, cost of equity India, equity risk premium India, terminal growth rate India, WACC India, country risk premium]

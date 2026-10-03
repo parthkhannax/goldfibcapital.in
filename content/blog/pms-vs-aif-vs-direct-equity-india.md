@@ -5,6 +5,7 @@ seo_title: "PMS vs AIF vs Direct Equity in India: Fees and Control"
 short: "PMS vs AIF vs direct equity"
 description: "Compare PMS, AIFs and direct equity for Indian HNIs and family offices: minimums, structure, tax treatment, control, and an interactive fee-drag simulator."
 cluster: family-office
+level: intermediate
 order: 3
 date: 2026-10-03
 keywords: [PMS vs AIF, PMS vs direct equity, portfolio management services India, AIF category III, PMS fees performance fee, family office allocation India]

@@ -30,6 +30,10 @@
 - [The Equity Research Skills That Make a Student Analyst Useful on Day One](https://goldfibcapital.in/blog/equity-research-skills-students-india/): A student becomes useful in equity research on day one by being able to read an annual report and its notes, build a driver-based three-statement model that reconciles to filings, write a clear one-page thesis, and source every number. Next come valuation, Python or spreadsheet automation, and presentation. Certifications help, but a portfolio of real, reviewed research work is the strongest signal.
 - [Student-Led Equity Research: How the Model Works and Where It Beats Traditional Outsourcing](https://goldfibcapital.in/blog/student-led-equity-research-model/): A student-led research desk staffs research with strong finance and engineering students from top universities, supervised by experienced reviewers and supported by automation. Students bring time, effort and recent training. Process provides the quality: fixed templates, model audits and senior sign-off. The result is tailored, institutional-standard research at a fraction of the cost of an in-house desk, best suited to theses, initiations, screens and diligence support.
 
+## Interactive
+
+- [5-step research desk walkthrough](https://goldfibcapital.in/blog/walkthrough/): Price an in-house equity research desk for an Indian coverage list and compare cost per report with an automated workflow.
+
 ## Company
 
 - [Home](https://goldfibcapital.in/): Offering, process and founder

@@ -5,6 +5,7 @@ seo_title: "Institutional-Grade Equity Research in India: A 12-Point Test"
 short: "What 'institutional-grade' really means"
 description: "A practical 12-point standard for institutional-grade equity research on Indian companies, covering sourcing, models, variant views, risks and review."
 cluster: research
+level: beginner
 pillar: true
 order: 1
 date: 2026-10-03

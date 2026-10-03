@@ -5,6 +5,7 @@ seo_title: "Earnings Call Transcript Analysis for Indian Stocks"
 short: "Earnings call transcripts at scale"
 description: "How to analyse Indian earnings call transcripts: a guidance-vs-delivery tracker, tone shifts, evasive answers, and using AI without blind trust."
 cluster: research
+level: intermediate
 order: 5
 date: 2026-10-03
 keywords: [earnings call transcript analysis, concall analysis India, management guidance tracking, AI transcript analysis, earnings call red flags]

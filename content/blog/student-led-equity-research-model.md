@@ -5,6 +5,7 @@ seo_title: "Student-Led Equity Research: How the Model Works"
 short: "How student-led research works"
 description: "How a student-led research desk delivers institutional-grade work for family offices: the talent case, the quality controls, the economics and the limits."
 cluster: talent
+level: beginner
 pillar: true
 order: 1
 date: 2026-10-03
