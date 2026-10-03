@@ -1,0 +1,32 @@
+<defs><linearGradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c8a76a" stop-opacity=".35"/><stop offset="1" stop-color="#c8a76a" stop-opacity="0"/></linearGradient></defs>
+          <rect width="640" height="416" fill="#0b1626"/>
+          <rect width="640" height="34" fill="#0f1d31"/>
+          <circle cx="18" cy="17" r="4.5" fill="#e0675a"/><circle cx="33" cy="17" r="4.5" fill="#e6b84a"/><circle cx="48" cy="17" r="4.5" fill="#5fbf6e"/>
+          <rect x="200" y="8" width="240" height="18" rx="9" fill="#16273f"/><text x="320" y="21" font-size="10" fill="#8a93a1" text-anchor="middle">desk.goldfibcapital.in/portfolio</text>
+          <rect y="34" width="54" height="382" fill="#0d1a2c"/>
+          <rect x="15" y="50" width="24" height="24" rx="7" fill="#c8a76a"/><text x="27" y="66.5" font-size="11" font-weight="700" fill="#0f1d31" text-anchor="middle">G</text>
+          <rect x="13" y="94" width="28" height="28" rx="8" fill="#1d3150"/>
+          <g fill="#3a4c66"><rect x="21" y="102" width="12" height="12" rx="3" fill="#c8a76a"/><rect x="21" y="142" width="12" height="12" rx="3"/><rect x="21" y="178" width="12" height="12" rx="3"/><rect x="21" y="214" width="12" height="12" rx="3"/></g>
+          <text x="74" y="66" font-size="17" font-weight="600" fill="#fff" letter-spacing="-.4">Family portfolio</text>
+          <rect x="500" y="51" width="118" height="20" rx="10" fill="rgba(95,211,154,.12)" stroke="rgba(95,211,154,.35)"/><circle cx="513" cy="61" r="3.5" fill="#5fd39a"/><text x="522" y="65" font-size="9.5" fill="#5fd39a">Synced 2 min ago</text>
+          <g font-size="9" fill="#8a93a1" letter-spacing=".6">
+            <rect x="74" y="86" width="176" height="64" rx="10" fill="#122238" stroke="#1d3150"/><text x="88" y="104">NET WORTH</text>
+            <rect x="260" y="86" width="176" height="64" rx="10" fill="#122238" stroke="#1d3150"/><text x="274" y="104">SOURCES</text>
+            <rect x="446" y="86" width="172" height="64" rx="10" fill="#122238" stroke="#1d3150"/><text x="460" y="104">IC QUEUE</text>
+          </g>
+          <g font-weight="600" fill="#fff" letter-spacing="-.6"><text x="88" y="133" font-size="21">₹412.6 Cr</text><text x="274" y="133" font-size="21">11 → 1</text><text x="460" y="133" font-size="21">3 memos</text></g>
+          <g font-size="9.5"><text x="196" y="133" fill="#5fd39a">▲ 2.4%</text><text x="342" y="133" fill="#8a93a1">one view</text><text x="562" y="133" fill="#c8a76a">ready</text></g>
+          <rect x="74" y="162" width="340" height="232" rx="10" fill="#122238" stroke="#1d3150"/>
+          <text x="88" y="184" font-size="11" font-weight="600" fill="#fff">Portfolio value</text>
+          <g font-size="8.5" fill="#8a93a1"><rect x="306" y="173" width="30" height="16" rx="5" fill="#1d3150"/><text x="321" y="184" text-anchor="middle" fill="#fff">1Y</text><text x="355" y="184" text-anchor="middle">3Y</text><text x="388" y="184" text-anchor="middle">All</text></g>
+          <g stroke="#1d3150"><line x1="88" x2="400" y1="230" y2="230"/><line x1="88" x2="400" y1="276" y2="276"/><line x1="88" x2="400" y1="322" y2="322"/><line x1="88" x2="400" y1="368" y2="368"/></g>
+          <path d="M88,340 C112,334 124,322 146,326 S182,300 206,304 S240,288 262,276 S298,286 318,262 S356,232 376,226 S392,214 400,210 L400,368 L88,368 Z" fill="url(#ar)"/>
+          <path d="M88,340 C112,334 124,322 146,326 S182,300 206,304 S240,288 262,276 S298,286 318,262 S356,232 376,226 S392,214 400,210" fill="none" stroke="#c8a76a" stroke-width="2.4"/>
+          <circle cx="400" cy="210" r="4.5" fill="#c8a76a" stroke="#0b1626" stroke-width="2"/>
+          <rect x="426" y="162" width="192" height="232" rx="10" fill="#122238" stroke="#1d3150"/>
+          <text x="440" y="184" font-size="11" font-weight="600" fill="#fff">Diligence</text>
+          <g font-size="10" fill="#fff">
+            <rect x="436" y="198" width="172" height="52" rx="8" fill="#16273f"/><text x="448" y="218">Pre-IPO · fintech</text><rect x="448" y="226" width="70" height="15" rx="7.5" fill="rgba(95,211,154,.14)"/><text x="483" y="236.5" font-size="8.5" fill="#5fd39a" text-anchor="middle">Memo ready</text>
+            <rect x="436" y="258" width="172" height="52" rx="8" fill="#16273f"/><text x="448" y="278">Real estate fund III</text><rect x="448" y="286" width="62" height="15" rx="7.5" fill="rgba(200,167,106,.16)"/><text x="479" y="296.5" font-size="8.5" fill="#c8a76a" text-anchor="middle">In review</text>
+            <rect x="436" y="318" width="172" height="52" rx="8" fill="#16273f"/><text x="448" y="338">Private credit AIF</text><rect x="448" y="346" width="70" height="15" rx="7.5" fill="rgba(95,211,154,.14)"/><text x="483" y="356.5" font-size="8.5" fill="#5fd39a" text-anchor="middle">Memo ready</text>
+          </g>
