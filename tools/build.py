@@ -44,7 +44,7 @@ CLUSTERS = {
 }
 
 LEVELS = {"beginner": "Beginner", "intermediate": "Intermediate", "advanced": "Advanced"}
-SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/mail.js" defer></script>\n<script src="/assets/walkthrough.js?v=c70c765" defer></script>\n'
+SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/mail.js" defer></script>\n<script src="/assets/walkthrough.js?v=ebook1" defer></script>\n'
 WT_URL = "/blog/walkthrough/"
 CTA_TEXT = "See how automation helps your institutional research"
 HI_TEXT = "Say hi to Goldfib Capital"

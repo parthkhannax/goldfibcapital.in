@@ -70,7 +70,7 @@
     '<p><b>What came out.</b> Mechanical work falls from about 27 hours to 6, analysis time rises from 8 to 20 hours, and each analyst finishes about twice as many full reports a year (24 instead of 12). Steps 2 to 5 apply that to your list.</p>' +
     '<p class="wt-study-fine">This is a model built from stated assumptions, not a survey of firms. The assumptions are listed at the bottom of every step, so you can swap in your own.</p></details>' +
     '<label class="wt-field" style="margin-top:18px">Companies to cover <output id="wt-n-o"></output><input id="wt-n" type="range" min="4" max="60" step="1" value="20"></label>' +
-    '<button class="wt-go" data-wt-start>Run the study on my list →</button><p class="wt-note" style="margin-top:10px">One slider. We do the rest, and you get a free 3-page PDF report at the end.</p></section>' +
+    '<button class="wt-go" data-wt-start>Run the study on my list →</button><p class="wt-note" style="margin-top:10px">One slider. We do the rest, and you get a free personalised PDF ebook at the end.</p></section>' +
 
     '<section class="wt-step" data-s="2"><p class="wt-k">Step 2 of 5 · The in-house desk</p><h3>What it costs to cover <span class="wt-N"></span> companies yourself</h3>' +
     '<p>At about 12 full reports per analyst a year, you need <b class="wt-man"></b>. Salaries are only part of the bill: data seats, overheads and a senior reviewer\'s time come with every desk.</p>' +
@@ -92,8 +92,8 @@
     '<p>Every filing flows through the same pipeline. Machines do the volume work; a person signs off wherever a number becomes a decision.</p>' +
     '<div class="wt-chart" data-chart="pipe"></div>' +
     '<div class="wt-nums"><div class="wt-num hl"><span>Initiation reports</span><b data-count="N"></b></div><div class="wt-num"><span>Quarterly result notes</span><b data-count="q"></b></div><div class="wt-num"><span>Pledge &amp; holding checks</span><b data-count="q"></b></div></div>' +
-    '<form id="wt-form" style="margin-top:20px"><p class="wt-k">Your free 3-page report</p><input class="wt-text" name="org" required autocomplete="organization" placeholder="Your organisation, e.g. Mehta Family Office">' +
-    '<button type="submit" class="wt-go">Download my 3-page PDF report →</button><p class="wt-note" style="margin-top:10px">Built instantly in your browser with your numbers and charts. No email needed.</p></form>' +
+    '<form id="wt-form" style="margin-top:20px"><p class="wt-k">Your free research plan (PDF)</p><input class="wt-text" name="org" required autocomplete="organization" placeholder="Your organisation, e.g. Mehta Family Office">' +
+    '<button type="submit" class="wt-go">Download my research plan (PDF) →</button><p class="wt-note" style="margin-top:10px">Built instantly in your browser with your numbers and charts. No email needed.</p></form>' +
     '<div class="wt-done"><p class="wt-note">Your report is ready. Choose <b>Save as PDF</b> in the print window. Want us to run this for real? <a href="#" data-wt-mail style="display:inline;border:0;padding:0">Email partners@goldfibcapital.in →</a></p>' +
     '<a class="wt-focus-link" href="#"></a><a href="/blog/research-desk-cost-india/">What a research desk really costs →</a><a href="/blog/ai-investment-research-automation-india/">AI &amp; research automation: what works →</a></div></section>' +
 
@@ -105,7 +105,7 @@
   function model() {
     var N = +$('#wt-n', card).value, focus = 'small';
     var desk = function (n, tools) { return n * (SEAT.salary + SEAT.data + SEAT.over) + REVIEW + (tools ? TOOLS : 0); };
-    var nM = Math.ceil(N / MANUAL), nA = Math.ceil(N / AUTO);
+    var nM = N / MANUAL, nA = N / AUTO;
     d = { N: N, focus: focus, nM: nM, nA: nA, desk: desk(nM), deskA: desk(nA, 1), q: N * 4, deskFn: desk };
     d.cprM = d.desk / N; d.cprA = d.deskA / N;
   }
@@ -130,7 +130,7 @@
       if (w > 60) s += txt(x + 10, 74, inr(g[1]), INK, { size: 13, cls: 'wt-fade', d: .4 + i * .25 });
       x += w;
     });
-    s += txt(20, 26, 'Annual cost of a ' + d.nM + '-analyst desk', SUB);
+    s += txt(20, 26, 'Annual cost of a ' + d.nM.toFixed(1) + '-FTE desk', SUB);
     s += txt(W - 20, 26, inr(d.desk) + ' / yr', '#fff', { anchor: 'end', size: 13, cls: 'wt-fade', d: 1.2 });
     segs.forEach(function (g, i) {
       var col = i % 2, row = Math.floor(i / 2), xx = 20 + col * (W / 2 - 10), yy = 136 + row * 32;
@@ -164,10 +164,10 @@
 
   function chartCurve() {
     var L = 58, R = 18, T = 20, B = 36, a = 4, b = 60, lo = 0, hi = 0, xs = [];
-    for (var n = a; n <= b; n++) { xs.push(n); hi = Math.max(hi, d.deskFn(Math.ceil(n / MANUAL)) / n); }
+    for (var n = a; n <= b; n++) { xs.push(n); hi = Math.max(hi, d.deskFn(n / MANUAL) / n); }
     hi = Math.ceil(hi / 2) * 2;
     var sx = function (v) { return L + (v - a) / (b - a) * (W - L - R); }, sy = function (v) { return H - B - (v - lo) / (hi - lo) * (H - T - B); };
-    var path = function (per, tools) { return 'M' + xs.map(function (n) { return sx(n).toFixed(1) + ',' + sy(d.deskFn(Math.ceil(n / per), tools) / n).toFixed(1); }).join('L'); };
+    var path = function (per, tools) { return 'M' + xs.map(function (n) { return sx(n).toFixed(1) + ',' + sy(d.deskFn(n / per, tools) / n).toFixed(1); }).join('L'); };
     var s = '';
     for (var i = 0; i <= 4; i++) { var v = lo + (hi - lo) * i / 4, y = sy(v); s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '" stroke="rgba(255,255,255,.06)"/>' + txt(L - 8, y + 4, '₹' + v.toFixed(0) + 'L', SUB, { size: 11, anchor: 'end' }); }
     [4, 12, 24, 36, 48, 60].forEach(function (n) { s += txt(sx(n), H - B + 18, n, SUB, { size: 11, anchor: 'middle' }); });
@@ -197,11 +197,11 @@
   }
 
   var CH = { cost: chartCost, hours: chartHours, curve: chartCurve, pipe: chartPipe };
-  var FMT = { desk: inr, cprM: inr, cprA: inr, nM: function (v) { return Math.round(v) + ''; }, nA: function (v) { return Math.round(v) + ''; }, N: function (v) { return Math.round(v) + ''; }, q: function (v) { return Math.round(v) + ''; } };
+  var FMT = { desk: inr, cprM: inr, cprA: inr, nM: function (v) { return v.toFixed(1); }, nA: function (v) { return v.toFixed(1); }, N: function (v) { return Math.round(v) + ''; }, q: function (v) { return Math.round(v) + ''; } };
 
   function fill() {
     $$('.wt-N', card).forEach(function (e) { e.textContent = d.N; });
-    $('.wt-man', card).textContent = d.nM + (d.nM === 1 ? ' analyst' : ' analysts');
+    $('.wt-man', card).textContent = d.nM.toFixed(1) + ' analyst FTE';
     $('.wt-save', card).textContent = inr(d.cprM - d.cprA) + ' (' + Math.round((1 - d.cprA / d.cprM) * 100) + '%)';
     var f = FOCUS[d.focus], l = $('.wt-focus-link', card); l.href = f[1]; l.textContent = f[2] + ' →';
   }
@@ -247,56 +247,9 @@
       .replace(/rgba\(255,255,255,\.12\)/g, '#e5e7eb').replace(/<circle r="4"[\s\S]*?<\/circle>/g, '');
   }
   function report() {
-    var w0 = W, n0 = NARROW; W = 600; NARROW = false;
-    var c = { cost: light(chartCost()), hours: light(chartHours()), curve: light(chartCurve()), pipe: light(chartPipe()) };
-    W = w0; NARROW = n0;
-    var org = esc(d.org), date = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
-    var save = Math.round((1 - d.cprA / d.cprM) * 100), saveYr = d.desk - d.deskA;
-    var stat = function (k, v, hl) { return '<div class="st' + (hl ? ' hl' : '') + '"><span>' + k + '</span><b>' + v + '</b></div>'; };
-    var head = function (n, t) { return '<header><img src="' + location.origin + '/assets/logo.svg" alt=""><span>Goldfib Capital · Research plan for ' + org + '</span><span>' + n + ' / 3</span></header><p class="k">' + t + '</p>'; };
-    var foot = '<footer>Illustrative model, not a quote or benchmark. Assumes ₹22 L CTC, ₹6 L data and 30% overheads per analyst seat, 15% of an ₹80 L PM\'s time for review, 12 reports per analyst a year manually and 24 automated, plus ₹4 L tooling. goldfibcapital.in · partners@goldfibcapital.in</footer>';
-    var html = '<!doctype html><html><head><meta charset="utf-8"><title>Goldfib Capital - Research plan for ' + org + '</title>' +
-      '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>' +
-      '@page{size:A4;margin:0}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,Arial,sans-serif;color:#1a2433;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
-      '.pg{width:210mm;height:297mm;padding:16mm 16mm 12mm;position:relative;page-break-after:always;overflow:hidden}.pg:last-child{page-break-after:auto}' +
-      'header{display:flex;align-items:center;gap:10px;font:500 9px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#64748b;border-bottom:1px solid #e3ded3;padding-bottom:8px;margin-bottom:12mm}header img{height:20px}header span:last-child{margin-left:auto;color:' + GOLD + '}' +
-      '.k{font:500 10px "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:' + GOLD + ';margin-bottom:6px}' +
-      'h1{font:700 34px/1.12 "Playfair Display",serif;color:' + INK + ';margin-bottom:10px}h2{font:600 24px/1.2 "Space Grotesk",sans-serif;color:' + INK + ';margin-bottom:8px}' +
-      'p.l{font-size:12.5px;line-height:1.65;color:#475569;margin-bottom:14px}p.l b{color:' + INK + '}' +
-      '.cover{background:' + INK + ';color:#fff;border-radius:14px;padding:12mm;margin-bottom:9mm}.cover h1{color:#fff}.cover p{color:#c9c3b6;font-size:13px}.cover .k{color:#d4b47a}' +
-      '.sts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 9mm}.st{border:1px solid #e3ded3;border-radius:10px;padding:10px 12px}.st.hl{background:rgba(184,150,90,.1);border-color:' + GOLD + '}' +
-      '.st span{display:block;font:500 8.5px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:3px}.st b{font:600 20px "Space Grotesk",sans-serif;color:' + INK + '}.st.hl b{color:#8a6a2e}' +
-      '.ch{border:1px solid #e3ded3;border-radius:12px;padding:12px;margin-bottom:8mm;background:#fbfaf7}.ch svg{width:100%;height:auto;display:block}.ch .cap{font-size:10px;color:#64748b;margin-top:6px}' +
-      '.cta{background:' + INK + ';color:#fff;border-radius:12px;padding:9mm 10mm}.cta h2{color:#fff}.cta p{color:#c9c3b6;font-size:12px;line-height:1.6}.cta b{color:#d4b47a}' +
-      'footer{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:7.5px;line-height:1.5;color:#94a3b8;border-top:1px solid #eee;padding-top:5px}' +
-      '</style></head><body>' +
-      // page 1
-      '<section class="pg">' + head(1, 'Prepared ' + date) +
-      '<div class="cover"><p class="k">Personalised research plan</p><h1>Covering ' + d.N + ' companies: what it costs, and what automation changes</h1><p>Prepared for <b style="color:#fff">' + org + '</b> by Goldfib Capital</p></div>' +
-      '<div class="sts">' + stat('In-house desk / year', inr(d.desk)) + stat('Analysts needed', d.nM + ' → ' + d.nA) + stat('Cost per report saved', save + '%', 1) + '</div>' +
-      '<h2>The in-house desk for ' + org + '</h2><p class="l">At about 12 full reports per analyst a year, covering <b>' + d.N + ' companies</b> takes <b>' + d.nM + ' analyst' + (d.nM > 1 ? 's' : '') + '</b>. Salaries are only part of the bill: data seats, overheads and a senior reviewer\'s time come with every desk.</p>' +
-      '<div class="ch">' + c.cost + '</div>' + foot + '</section>' +
-      // page 2
-      '<section class="pg">' + head(2, 'Where the hours go') +
-      '<h2>Half the analyst\'s week is mechanical</h2><p class="l">In a 50-hour week, collecting filings, extracting tables and updating models take about <b>27 hours</b>. Automate that layer and analysis time rises from <b>8 to 20 hours</b>, with 6 hours of explicit verification added.</p>' +
-      '<div class="ch">' + c.hours + '<p class="cap">One analyst week, hours by task: manual (top) vs automated (bottom).</p></div>' +
-      '<div class="sts">' + stat('Mechanical hours / week', '27h → 6h') + stat('Analysis hours / week', '8h → 20h') + stat('Reports / analyst / yr', '12 → 24', 1) + '</div>' +
-      '<p class="l">For ' + org + ', that means the same ' + d.N + '-company list needs <b>' + d.nA + ' analyst' + (d.nA > 1 ? 's' : '') + ' instead of ' + d.nM + '</b>, or the same team covers twice the list with deeper work on each name.</p>' + foot + '</section>' +
-      // page 3
-      '<section class="pg">' + head(3, 'Cost per report and your year of coverage') +
-      '<h2>Throughput is the biggest cost lever</h2><p class="l">The gold line is the same coverage with automation doing collection and extraction. At your ' + d.N + ' companies, cost per report falls from <b>' + inr(d.cprM) + '</b> to <b>' + inr(d.cprA) + '</b>, about <b>' + inr(saveYr) + '</b> a year.</p>' +
-      '<div class="ch">' + c.curve + '</div>' +
-      '<div class="ch">' + c.pipe + '<p class="cap">Your year: ' + d.N + ' initiation reports, ' + d.q + ' quarterly result notes and ' + d.q + ' pledge &amp; shareholding checks.</p></div>' +
-      '<div class="cta"><p class="k" style="color:#d4b47a">Next step</p><h2>Run this on ' + org + '\'s real list</h2><p>A 30-minute scoping call on your portfolio, live deals and gaps, then a pilot memo on one live deal so you can judge the work. Write to <b>partners@goldfibcapital.in</b> or visit <b>goldfibcapital.in</b>.</p></div>' + foot + '</section>' +
-      '</body></html>';
-    var old = document.getElementById('wt-print'); if (old) old.remove();
-    var f = document.createElement('iframe'); f.id = 'wt-print'; f.setAttribute('aria-hidden', 'true');
-    f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden';
-    document.body.appendChild(f);
-    var doc = f.contentWindow.document; doc.open(); doc.write(html); doc.close();
-    var done = false, go2 = function () { if (done) return; done = true; var t = document.title; document.title = 'Goldfib Capital - Research plan for ' + d.org; f.contentWindow.focus(); f.contentWindow.print(); setTimeout(function () { document.title = t; }, 1000); };
-    f.onload = function () { (doc.fonts && doc.fonts.ready ? doc.fonts.ready : Promise.resolve()).then(function () { setTimeout(go2, 150); }); };
-    setTimeout(go2, 2500);
+    var run = function () { gfReport({ N: d.N, org: d.org, fteM: d.nM, fteA: d.nA, desk: d.desk, deskA: d.deskA, cprM: d.cprM, cprA: d.cprA, seat: SEAT, review: REVIEW, tools: TOOLS, manual: MANUAL, auto: AUTO }); };
+    if (window.gfReport) return run();
+    var sc = document.createElement('script'); sc.src = '/assets/report.js?v=2'; sc.onload = run; document.head.appendChild(sc);
   }
 
   function init() {
