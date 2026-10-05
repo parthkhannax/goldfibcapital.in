@@ -35,6 +35,10 @@ CLUSTERS = {
                    "Where software and AI take the grunt work out of research, and where analyst judgement still has to do the job."),
     "family-office": ("Family Office Playbook",
                       "How Indian family offices organise research, write investment memos and evaluate managers and deals."),
+    "investor-tax": ("Investor Tax & Accounts",
+                     "Capital gains, ESOPs, AIS and demat mechanics for Indian investors: the paperwork behind every portfolio."),
+    "markets": ("Markets & Macro, Explained",
+                "Recessions, GDP, inflation, bear markets and volatility, explained with Indian data and what they mean for portfolios."),
     "talent": ("The Student Research Model",
                "Why student-led desks work, how quality is controlled, and the skills that make an analyst useful on day one."),
 }
