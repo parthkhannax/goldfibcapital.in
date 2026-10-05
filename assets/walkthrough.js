@@ -62,7 +62,7 @@
     '<div class="wt-dots">' + '<span class="wt-dot"></span>'.repeat(5) + '</div>' +
 
     '<section class="wt-step" data-s="1"><p class="wt-k">Step 1 of 5 · Your coverage</p><h3>See how automation helps your institutional research</h3>' +
-    '<p>Tell us how many companies you want covered properly. We\'ll price an in-house research desk for that list, show where analyst hours go, and what changes when the mechanical work is automated.</p>' +
+    '<p>Drag the slider to the number of companies you want covered properly. We\'ll price an in-house research desk for that list, show where analyst hours go, and what changes when the mechanical work is automated.</p>' +
     '<details class="wt-study"><summary>About the study behind these numbers</summary>' +
     '<div class="wt-study-grid"><div><b>50h</b><span>one analyst week</span></div><div><b>6</b><span>task types timed</span></div><div><b>2</b><span>scenarios: manual vs automated</span></div></div>' +
     '<p><b>What we looked at.</b> One analyst\'s 50-hour working week covering Indian listed companies, split into six tasks: collecting filings and extracting tables, updating models, reading, analysis and thesis work, writing, and verification.</p>' +
@@ -70,8 +70,7 @@
     '<p><b>What came out.</b> Mechanical work falls from about 27 hours to 6, analysis time rises from 8 to 20 hours, and each analyst finishes about twice as many full reports a year (24 instead of 12). Steps 2 to 5 apply that to your list.</p>' +
     '<p class="wt-study-fine">This is a model built from stated assumptions, not a survey of firms. The assumptions are listed at the bottom of every step, so you can swap in your own.</p></details>' +
     '<label class="wt-field" style="margin-top:18px">Companies to cover <output id="wt-n-o"></output><input id="wt-n" type="range" min="4" max="60" step="1" value="20"></label>' +
-    '<div class="wt-field">Where they sit<div class="wt-chips" id="wt-focus"><button type="button" class="wt-chip" data-v="large">Large caps</button><button type="button" class="wt-chip on" data-v="small">Small &amp; mid caps</button><button type="button" class="wt-chip" data-v="unlisted">Unlisted &amp; pre-IPO</button></div></div>' +
-    '<button class="wt-go" data-wt-start>Run the study on my list →</button></section>' +
+    '<button class="wt-go" data-wt-start>Run the study on my list →</button><p class="wt-note" style="margin-top:10px">One slider. We do the rest, and you get a free 3-page PDF report at the end.</p></section>' +
 
     '<section class="wt-step" data-s="2"><p class="wt-k">Step 2 of 5 · The in-house desk</p><h3>What it costs to cover <span class="wt-N"></span> companies yourself</h3>' +
     '<p>At about 12 full reports per analyst a year, you need <b class="wt-man"></b>. Salaries are only part of the bill: data seats, overheads and a senior reviewer\'s time come with every desk.</p>' +
@@ -93,9 +92,9 @@
     '<p>Every filing flows through the same pipeline. Machines do the volume work; a person signs off wherever a number becomes a decision.</p>' +
     '<div class="wt-chart" data-chart="pipe"></div>' +
     '<div class="wt-nums"><div class="wt-num hl"><span>Initiation reports</span><b data-count="N"></b></div><div class="wt-num"><span>Quarterly result notes</span><b data-count="q"></b></div><div class="wt-num"><span>Pledge &amp; holding checks</span><b data-count="q"></b></div></div>' +
-    '<form id="wt-form" style="margin-top:20px"><input class="wt-text" name="name" placeholder="Your name"><input class="wt-text" name="org" placeholder="Family office / fund / organisation">' +
-    '<button type="submit" class="wt-go">Say hi to Goldfib Capital →</button><p class="wt-note" style="margin-top:10px">Opens your email with this plan filled in, addressed to partners@goldfibcapital.in.</p></form>' +
-    '<div class="wt-done"><p class="wt-note">Your email app should have opened with the plan filled in. If it didn\'t, write to <b>partners@goldfibcapital.in</b>. Meanwhile, read more:</p>' +
+    '<form id="wt-form" style="margin-top:20px"><p class="wt-k">Your free 3-page report</p><input class="wt-text" name="org" required autocomplete="organization" placeholder="Your organisation, e.g. Mehta Family Office">' +
+    '<button type="submit" class="wt-go">Download my 3-page PDF report →</button><p class="wt-note" style="margin-top:10px">Built instantly in your browser with your numbers and charts. No email needed.</p></form>' +
+    '<div class="wt-done"><p class="wt-note">Your report is ready. Choose <b>Save as PDF</b> in the print window. Want us to run this for real? <a href="#" data-wt-mail style="display:inline;border:0;padding:0">Email partners@goldfibcapital.in →</a></p>' +
     '<a class="wt-focus-link" href="#"></a><a href="/blog/research-desk-cost-india/">What a research desk really costs →</a><a href="/blog/ai-investment-research-automation-india/">AI &amp; research automation: what works →</a></div></section>' +
 
     '<div class="wt-nav"><button class="wt-back" data-wt-back>← Back</button><button class="wt-next" data-wt-next>Next →</button></div>' +
@@ -104,7 +103,7 @@
   var card, wrap, step = 1, d = {}, inline = false;
 
   function model() {
-    var N = +$('#wt-n', card).value, focus = ($('.wt-chip.on', card) || {}).dataset.v || 'small';
+    var N = +$('#wt-n', card).value, focus = 'small';
     var desk = function (n, tools) { return n * (SEAT.salary + SEAT.data + SEAT.over) + REVIEW + (tools ? TOOLS : 0); };
     var nM = Math.ceil(N / MANUAL), nA = Math.ceil(N / AUTO);
     d = { N: N, focus: focus, nM: nM, nA: nA, desk: desk(nM), deskA: desk(nA, 1), q: N * 4, deskFn: desk };
@@ -230,6 +229,76 @@
   var nudge;
   function hideNudge() { if (nudge) nudge.classList.remove('on'); }
 
+  function mail() {
+    var body = 'Hi Goldfib team,\n\nI went through the research walkthrough. My numbers:\n\n' +
+      '- Companies to cover: ' + d.N + '\n' +
+      '- In-house desk estimate: ' + d.nM + ' analyst(s), ' + inr(d.desk) + ' a year, ' + inr(d.cprM) + ' per report\n' +
+      '- With automation: ' + d.nA + ' analyst(s), ' + inr(d.cprA) + ' per report\n\n' +
+      'I would like to talk about a research plan for this list.\n\n' + (d.org || '');
+    var m = 'mailto:partners@goldfibcapital.in?subject=' + encodeURIComponent('Research plan for ' + (d.org || 'us') + ' (' + d.N + ' companies)') + '&body=' + encodeURIComponent(body);
+    if (window.gfMail) gfMail(m); else location.href = m;
+  }
+
+  // 3-page personalised PDF report, printed from a hidden iframe (vector charts, no libraries)
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  function light(svgs) {
+    return svgs.replace(/class="wt-[a-z]+"/g, '').replace(/#d3d0c9/g, '#334155').replace(/fill="#fff"/g, 'fill="' + INK + '"')
+      .replace(/rgba\(255,255,255,\.6\)/g, '#64748b').replace(/rgba\(255,255,255,\.7\)/g, '#64748b').replace(/rgba\(255,255,255,\.0?6\)/g, '#e5e7eb')
+      .replace(/rgba\(255,255,255,\.12\)/g, '#e5e7eb').replace(/<circle r="4"[\s\S]*?<\/circle>/g, '');
+  }
+  function report() {
+    var w0 = W, n0 = NARROW; W = 600; NARROW = false;
+    var c = { cost: light(chartCost()), hours: light(chartHours()), curve: light(chartCurve()), pipe: light(chartPipe()) };
+    W = w0; NARROW = n0;
+    var org = esc(d.org), date = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+    var save = Math.round((1 - d.cprA / d.cprM) * 100), saveYr = d.desk - d.deskA;
+    var stat = function (k, v, hl) { return '<div class="st' + (hl ? ' hl' : '') + '"><span>' + k + '</span><b>' + v + '</b></div>'; };
+    var head = function (n, t) { return '<header><img src="' + location.origin + '/assets/logo.svg" alt=""><span>Goldfib Capital · Research plan for ' + org + '</span><span>' + n + ' / 3</span></header><p class="k">' + t + '</p>'; };
+    var foot = '<footer>Illustrative model, not a quote or benchmark. Assumes ₹22 L CTC, ₹6 L data and 30% overheads per analyst seat, 15% of an ₹80 L PM\'s time for review, 12 reports per analyst a year manually and 24 automated, plus ₹4 L tooling. goldfibcapital.in · partners@goldfibcapital.in</footer>';
+    var html = '<!doctype html><html><head><meta charset="utf-8"><title>Goldfib Capital - Research plan for ' + org + '</title>' +
+      '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>' +
+      '@page{size:A4;margin:0}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,Arial,sans-serif;color:#1a2433;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+      '.pg{width:210mm;height:297mm;padding:16mm 16mm 12mm;position:relative;page-break-after:always;overflow:hidden}.pg:last-child{page-break-after:auto}' +
+      'header{display:flex;align-items:center;gap:10px;font:500 9px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#64748b;border-bottom:1px solid #e3ded3;padding-bottom:8px;margin-bottom:12mm}header img{height:20px}header span:last-child{margin-left:auto;color:' + GOLD + '}' +
+      '.k{font:500 10px "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:' + GOLD + ';margin-bottom:6px}' +
+      'h1{font:700 34px/1.12 "Playfair Display",serif;color:' + INK + ';margin-bottom:10px}h2{font:600 24px/1.2 "Space Grotesk",sans-serif;color:' + INK + ';margin-bottom:8px}' +
+      'p.l{font-size:12.5px;line-height:1.65;color:#475569;margin-bottom:14px}p.l b{color:' + INK + '}' +
+      '.cover{background:' + INK + ';color:#fff;border-radius:14px;padding:12mm;margin-bottom:9mm}.cover h1{color:#fff}.cover p{color:#c9c3b6;font-size:13px}.cover .k{color:#d4b47a}' +
+      '.sts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 9mm}.st{border:1px solid #e3ded3;border-radius:10px;padding:10px 12px}.st.hl{background:rgba(184,150,90,.1);border-color:' + GOLD + '}' +
+      '.st span{display:block;font:500 8.5px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:3px}.st b{font:600 20px "Space Grotesk",sans-serif;color:' + INK + '}.st.hl b{color:#8a6a2e}' +
+      '.ch{border:1px solid #e3ded3;border-radius:12px;padding:12px;margin-bottom:8mm;background:#fbfaf7}.ch svg{width:100%;height:auto;display:block}.ch .cap{font-size:10px;color:#64748b;margin-top:6px}' +
+      '.cta{background:' + INK + ';color:#fff;border-radius:12px;padding:9mm 10mm}.cta h2{color:#fff}.cta p{color:#c9c3b6;font-size:12px;line-height:1.6}.cta b{color:#d4b47a}' +
+      'footer{position:absolute;left:16mm;right:16mm;bottom:9mm;font-size:7.5px;line-height:1.5;color:#94a3b8;border-top:1px solid #eee;padding-top:5px}' +
+      '</style></head><body>' +
+      // page 1
+      '<section class="pg">' + head(1, 'Prepared ' + date) +
+      '<div class="cover"><p class="k">Personalised research plan</p><h1>Covering ' + d.N + ' companies: what it costs, and what automation changes</h1><p>Prepared for <b style="color:#fff">' + org + '</b> by Goldfib Capital</p></div>' +
+      '<div class="sts">' + stat('In-house desk / year', inr(d.desk)) + stat('Analysts needed', d.nM + ' → ' + d.nA) + stat('Cost per report saved', save + '%', 1) + '</div>' +
+      '<h2>The in-house desk for ' + org + '</h2><p class="l">At about 12 full reports per analyst a year, covering <b>' + d.N + ' companies</b> takes <b>' + d.nM + ' analyst' + (d.nM > 1 ? 's' : '') + '</b>. Salaries are only part of the bill: data seats, overheads and a senior reviewer\'s time come with every desk.</p>' +
+      '<div class="ch">' + c.cost + '</div>' + foot + '</section>' +
+      // page 2
+      '<section class="pg">' + head(2, 'Where the hours go') +
+      '<h2>Half the analyst\'s week is mechanical</h2><p class="l">In a 50-hour week, collecting filings, extracting tables and updating models take about <b>27 hours</b>. Automate that layer and analysis time rises from <b>8 to 20 hours</b>, with 6 hours of explicit verification added.</p>' +
+      '<div class="ch">' + c.hours + '<p class="cap">One analyst week, hours by task: manual (top) vs automated (bottom).</p></div>' +
+      '<div class="sts">' + stat('Mechanical hours / week', '27h → 6h') + stat('Analysis hours / week', '8h → 20h') + stat('Reports / analyst / yr', '12 → 24', 1) + '</div>' +
+      '<p class="l">For ' + org + ', that means the same ' + d.N + '-company list needs <b>' + d.nA + ' analyst' + (d.nA > 1 ? 's' : '') + ' instead of ' + d.nM + '</b>, or the same team covers twice the list with deeper work on each name.</p>' + foot + '</section>' +
+      // page 3
+      '<section class="pg">' + head(3, 'Cost per report and your year of coverage') +
+      '<h2>Throughput is the biggest cost lever</h2><p class="l">The gold line is the same coverage with automation doing collection and extraction. At your ' + d.N + ' companies, cost per report falls from <b>' + inr(d.cprM) + '</b> to <b>' + inr(d.cprA) + '</b>, about <b>' + inr(saveYr) + '</b> a year.</p>' +
+      '<div class="ch">' + c.curve + '</div>' +
+      '<div class="ch">' + c.pipe + '<p class="cap">Your year: ' + d.N + ' initiation reports, ' + d.q + ' quarterly result notes and ' + d.q + ' pledge &amp; shareholding checks.</p></div>' +
+      '<div class="cta"><p class="k" style="color:#d4b47a">Next step</p><h2>Run this on ' + org + '\'s real list</h2><p>A 30-minute scoping call on your portfolio, live deals and gaps, then a pilot memo on one live deal so you can judge the work. Write to <b>partners@goldfibcapital.in</b> or visit <b>goldfibcapital.in</b>.</p></div>' + foot + '</section>' +
+      '</body></html>';
+    var old = document.getElementById('wt-print'); if (old) old.remove();
+    var f = document.createElement('iframe'); f.id = 'wt-print'; f.setAttribute('aria-hidden', 'true');
+    f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden';
+    document.body.appendChild(f);
+    var doc = f.contentWindow.document; doc.open(); doc.write(html); doc.close();
+    var done = false, go2 = function () { if (done) return; done = true; var t = document.title; document.title = 'Goldfib Capital - Research plan for ' + d.org; f.contentWindow.focus(); f.contentWindow.print(); setTimeout(function () { document.title = t; }, 1000); };
+    f.onload = function () { (doc.fonts && doc.fonts.ready ? doc.fonts.ready : Promise.resolve()).then(function () { setTimeout(go2, 150); }); };
+    setTimeout(go2, 2500);
+  }
+
   function init() {
     var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
     var host = $('[data-walkthrough-inline]');
@@ -250,6 +319,7 @@
       var chip = e.target.closest('.wt-chip');
       if (chip) { $$('.wt-chip', card).forEach(function (c) { c.classList.toggle('on', c === chip); }); return; }
       if (e.target.closest('[data-wt-close]')) return close();
+      if (e.target.closest('[data-wt-mail]')) { e.preventDefault(); return mail(); }
       if (e.target.closest('[data-wt-start]')) { model(); fill(); return go(2); }
       if (e.target.closest('[data-wt-next]')) return go(Math.min(5, step + 1));
       if (e.target.closest('[data-wt-back]')) return go(Math.max(1, step - 1));
@@ -258,16 +328,9 @@
 
     $('#wt-form', card).addEventListener('submit', function (e) {
       e.preventDefault();
-      var f = e.target, who = [f.name.value.trim(), f.org.value.trim()].filter(Boolean).join(', ');
-      var body = 'Hi Goldfib team,\n\nI went through the research walkthrough. My numbers:\n\n' +
-        '- Companies to cover: ' + d.N + ' (' + FOCUS[d.focus][0] + ')\n' +
-        '- In-house desk estimate: ' + d.nM + ' analyst(s), ' + inr(d.desk) + ' a year, ' + inr(d.cprM) + ' per report\n' +
-        '- With automation: ' + d.nA + ' analyst(s), ' + inr(d.cprA) + ' per report\n' +
-        '- Plan: ' + d.N + ' initiation reports, ' + d.q + ' quarterly result notes, ' + d.q + ' pledge & shareholding checks\n\n' +
-        'I would like to talk about a research plan for this list.\n\n' + (who ? who + '\n' : 'Name / organisation:\n');
-      var mail = 'mailto:partners@goldfibcapital.in?subject=' + encodeURIComponent('Hi Goldfib Capital: research plan for ' + d.N + ' companies (' + FOCUS[d.focus][0] + ')') + '&body=' + encodeURIComponent(body);
-      if (window.gfMail) gfMail(mail); else location.href = mail;
-      f.style.display = 'none'; $('.wt-done', card).classList.add('on');
+      d.org = e.target.org.value.trim() || 'Your organisation';
+      report();
+      $('.wt-done', card).classList.add('on');
     });
 
     if (!inline && /[?&]walkthrough=1/.test(location.search)) setTimeout(open, 400);
