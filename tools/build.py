@@ -44,9 +44,9 @@ CLUSTERS = {
 }
 
 LEVELS = {"beginner": "Beginner", "intermediate": "Intermediate", "advanced": "Advanced"}
-SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/mail.js" defer></script>\n<script src="/assets/walkthrough.js?v=ebook1" defer></script>\n'
+SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/mail.js" defer></script>\n<script src="/assets/walkthrough.js?v=cta2" defer></script>\n'
 WT_URL = "/blog/walkthrough/"
-CTA_TEXT = "See how automation helps your institutional research"
+CTA_TEXT = "Get your personalised research report"
 HI_TEXT = "Say hi to Goldfib Capital"
 CTA_BTN = f'<a class="btn" href="{WT_URL}" data-walkthrough-open>{CTA_TEXT} →</a>'
 
@@ -108,7 +108,7 @@ def cta_box(a, end=False):
 
 NAV = ('<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="30" height="30">Goldfib <span>Capital</span></a>'
        '<ul class="nav-links"><li><a href="/#offering">Offering</a></li><li><a href="/#process">Process</a></li><li><a href="/blog/">Research</a></li></ul>'
-       f'<a class="btn nav-cta" href="{WT_URL}" data-walkthrough-open><span class="long">{CTA_TEXT}</span><span class="short">See how automation helps</span> →</a>'
+       f'<a class="btn nav-cta" href="{WT_URL}" data-walkthrough-open><span class="long">{CTA_TEXT}</span><span class="short">Get your free report</span> →</a>'
        '<button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button></div></header>')
 
 FOOT = ('<footer><div class="container"><div class="foot"><a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="30" height="30">Goldfib <span>Capital</span></a>'
@@ -306,7 +306,7 @@ def build_index(arts):
 
 def build_walkthrough():
     url = f"{SITE}{WT_URL}"
-    title = "See how automation helps your institutional research: a 5-step study"
+    title = "Get your personalised research report: a 5-step study"
     desc = "Interactive 5-step walkthrough: price an in-house equity research desk for your Indian coverage list and see what automation does to cost per report."
     faq = [
         ("How much does an in-house equity research desk cost in India?",
@@ -338,7 +338,7 @@ def build_walkthrough():
 <header class="art-head"><div class="container narrow">
   <nav class="crumbs" aria-label="breadcrumb"><a href="/">Goldfib</a><span>/</span><a href="/blog/">Research</a><span>/</span><span>Walkthrough</span></nav>
   <div class="meta-row"><span class="level level-beginner">Beginner</span><span class="tag">Interactive guide</span><span>5 steps · 3 min</span></div>
-  <h1>See how automation helps your institutional research</h1>
+  <h1>Get your personalised research report</h1>
   <p class="dek">A 5-step study on your own coverage list. We cost the in-house desk, show where analyst hours go, and what automating the mechanical work does to cost per report.</p>
   <div class="answer"><span class="eyebrow">Short answer</span><p>{esc(faq[0][1])}</p></div>
   <div class="wt-page" data-walkthrough-inline></div>

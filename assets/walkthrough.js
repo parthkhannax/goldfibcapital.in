@@ -58,10 +58,10 @@
     '@media(prefers-reduced-motion:reduce){.wt-draw,.wt-fade,.wt-grow,.wt-step.on,.wt-pulse{animation:none!important;opacity:1;transform:none;stroke-dashoffset:0}}';
 
   var HTML =
-    '<div class="wt-in"><div class="wt-top"><span class="eyebrow">&#9733; 5 steps · See how automation helps your institutional research</span><button class="wt-x" data-wt-close aria-label="Close">&times;</button></div>' +
+    '<div class="wt-in"><div class="wt-top"><span class="eyebrow">&#9733; 5 steps · Get your personalised research report</span><button class="wt-x" data-wt-close aria-label="Close">&times;</button></div>' +
     '<div class="wt-dots">' + '<span class="wt-dot"></span>'.repeat(5) + '</div>' +
 
-    '<section class="wt-step" data-s="1"><p class="wt-k">Step 1 of 5 · Your coverage</p><h3>See how automation helps your institutional research</h3>' +
+    '<section class="wt-step" data-s="1"><p class="wt-k">Step 1 of 5 · Your coverage</p><h3>Get your personalised research report</h3>' +
     '<p>Drag the slider to the number of companies you want covered properly. We\'ll price an in-house research desk for that list, show where analyst hours go, and what changes when the mechanical work is automated.</p>' +
     '<details class="wt-study"><summary>About the study behind these numbers</summary>' +
     '<div class="wt-study-grid"><div><b>50h</b><span>one analyst week</span></div><div><b>6</b><span>task types timed</span></div><div><b>2</b><span>scenarios: manual vs automated</span></div></div>' +
@@ -291,7 +291,7 @@
       try {
         if (!sessionStorage.getItem('gf_wt_nudge')) {
           nudge = document.createElement('div'); nudge.id = 'wt-nudge';
-          nudge.innerHTML = '<button class="wt-x" data-wt-nudge-x aria-label="Close">&times;</button><span class="eyebrow">Interactive guide</span><p>Price a research desk for your coverage list and see what automation changes, in 5 steps.</p><button class="wt-next" data-walkthrough-open>See how automation helps →</button>';
+          nudge.innerHTML = '<button class="wt-x" data-wt-nudge-x aria-label="Close">&times;</button><span class="eyebrow">Interactive guide</span><p>Price a research desk for your coverage list and see what automation changes, in 5 steps.</p><button class="wt-next" data-walkthrough-open>Get your free report →</button>';
           document.body.appendChild(nudge);
           setTimeout(function () { if (!wrap.classList.contains('on')) nudge.classList.add('on'); try { sessionStorage.setItem('gf_wt_nudge', '1'); } catch (x) {} }, 90000);
         }
