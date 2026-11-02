@@ -92,8 +92,16 @@
     '<p>Every filing flows through the same pipeline. Machines do the volume work; a person signs off wherever a number becomes a decision.</p>' +
     '<div class="wt-chart" data-chart="pipe"></div>' +
     '<div class="wt-nums"><div class="wt-num hl"><span>Initiation reports</span><b data-count="N"></b></div><div class="wt-num"><span>Quarterly result notes</span><b data-count="q"></b></div><div class="wt-num"><span>Pledge &amp; holding checks</span><b data-count="q"></b></div></div>' +
-    '<form id="wt-form" style="margin-top:20px"><p class="wt-k">Your free research plan (PDF)</p><input class="wt-text" name="org" required autocomplete="organization" placeholder="Your organisation, e.g. Mehta Family Office">' +
-    '<button type="submit" class="wt-go">Download my research plan (PDF) →</button><p class="wt-note" style="margin-top:10px">Built instantly in your browser with your numbers and charts. No email needed.</p></form>' +
+    '<form id="wt-form" style="margin-top:20px"><p class="wt-k">Your free research plan (PDF)</p>' +
+    '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">' +
+    '<input class="wt-text" type="email" name="email" required autocomplete="email" placeholder="Your work email, e.g. mehta@familyoffice.in">' +
+    '<div style="display:flex;gap:10px">' +
+    '<input class="wt-text" type="text" name="firstname" autocomplete="name" placeholder="Your name (e.g. Rajesh Mehta)" style="flex:1">' +
+    '<input class="wt-text" type="text" name="org" required autocomplete="organization" placeholder="Organisation / Family Office" style="flex:1">' +
+    '</div>' +
+    '<input type="hidden" name="form_name" value="Goldfib Research Walkthrough Plan">' +
+    '</div>' +
+    '<button type="submit" class="wt-go">Download my research plan (PDF) →</button><p class="wt-note" style="margin-top:10px">Built instantly in your browser with your numbers and charts. We will also save a copy to your organisation file.</p></form>' +
     '<div class="wt-done"><p class="wt-note">Your report is ready. Choose <b>Save as PDF</b> in the print window. Want us to run this for real? <a href="#" data-wt-mail style="display:inline;border:0;padding:0">Email partners@goldfibcapital.in →</a></p>' +
     '<a class="wt-focus-link" href="#"></a><a href="/blog/research-desk-cost-india/">What a research desk really costs →</a><a href="/blog/ai-investment-research-automation-india/">AI &amp; research automation: what works →</a></div></section>' +
 
@@ -281,7 +289,38 @@
 
     $('#wt-form', card).addEventListener('submit', function (e) {
       e.preventDefault();
-      d.org = e.target.org.value.trim() || 'Your organisation';
+      d.org = (e.target.org && e.target.org.value.trim()) || 'Your organisation';
+      var email = (e.target.email && e.target.email.value.trim()) || '';
+      var name = (e.target.firstname && e.target.firstname.value.trim()) || '';
+
+      try {
+        var leads = JSON.parse(localStorage.getItem('goldfib_leads') || '[]');
+        leads.push({
+          source: 'walkthrough_step5',
+          email: email,
+          name: name,
+          company: d.org,
+          coverage: d.N,
+          desk_cost: d.desk,
+          cost_per_report: d.cprM,
+          url: location.href,
+          timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('goldfib_leads', JSON.stringify(leads));
+
+        if (window._hsq && email) {
+          window._hsq.push(['identify', {
+            email: email,
+            firstname: name,
+            company: d.org
+          }]);
+          window._hsq.push(['trackEvent', {
+            id: 'Goldfib Walkthrough Plan Generated',
+            value: d.N + ' companies'
+          }]);
+        }
+      } catch (err) {}
+
       report();
       $('.wt-done', card).classList.add('on');
     });

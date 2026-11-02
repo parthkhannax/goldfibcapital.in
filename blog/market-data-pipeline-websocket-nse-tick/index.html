@@ -19,7 +19,7 @@
 <link rel="alternate" type="application/rss+xml" title="Goldfib Capital Research" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/article.css?v=cta3">
+<link rel="stylesheet" href="/assets/article.css?v=hs1">
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -27,13 +27,14 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "x1wdvvovcj");
 </script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247824830.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "High-Throughput Market Data Ingestion: Building Tick-Level WebSocket Pipelines on NSE", "description": "How quantitative desks build low-latency market data pipelines on NSE: WebSocket streaming, tick-level order book reconstruction, and Redis time-series storage.", "datePublished": "2026-11-02", "dateModified": "2026-11-02", "author": {"@type": "Organization", "name": "Goldfib Capital Research", "url": "https://goldfibcapital.in/"}, "publisher": {"@type": "Organization", "name": "Goldfib Capital", "url": "https://goldfibcapital.in/", "logo": {"@type": "ImageObject", "url": "https://goldfibcapital.in/assets/logo.svg"}}, "mainEntityOfPage": "https://goldfibcapital.in/blog/market-data-pipeline-websocket-nse-tick/", "keywords": "nse websocket market data pipeline python, tick level order book reconstruction india, low latency market data ingestion nse, redis time series tick storage python, zerodha kite dhan websocket streamer, quantitative trading infrastructure india, market depth l2 l3 data nse", "articleSection": "Research Automation", "about": ["nse websocket market data pipeline python", "tick level order book reconstruction india", "low latency market data ingestion nse"], "inLanguage": "en-IN", "wordCount": 659, "isPartOf": {"@type": "Blog", "name": "Goldfib Capital Research", "url": "https://goldfibcapital.in/blog/"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://goldfibcapital.in/"}, {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://goldfibcapital.in/blog/"}, {"@type": "ListItem", "position": 3, "name": "High-Throughput Market Data Ingestion: Building Tick-Level WebSocket Pipelines on NSE", "item": "https://goldfibcapital.in/blog/market-data-pipeline-websocket-nse-tick/"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between Level 1, Level 2, and Level 3 market data on the NSE?", "acceptedAnswer": {"@type": "Answer", "text": "Level 1 data provides the best bid and ask price with traded volume. Level 2 (L2) data provides the top 5 bids and asks with corresponding quantities (standard market depth). Level 3 (L3 / tick-by-tick) provides individual order additions, modifications, and cancellations across the entire order book, typically accessible only via direct exchange co-location."}}, {"@type": "Question", "name": "Why is asynchronous programming (asyncio) essential for Indian market data pipelines?", "acceptedAnswer": {"@type": "Answer", "text": "During market openings, the NSE generates tens of thousands of tick updates per second across cash and derivative contracts. Synchronous blocking code causes buffer overflows and network packet drops. Asynchronous event loops (`asyncio` / `aiohttp`) ingest network streams without blocking strategy computation."}}, {"@type": "Question", "name": "How should tick data be stored efficiently without consuming terabytes of disk space?", "acceptedAnswer": {"@type": "Answer", "text": "Desks use specialized columnar time-series databases (such as QuestDB, ClickHouse, or TimescaleDB) that utilize delta-of-delta timestamp compression and Gorillas floating-point compression, reducing raw tick storage footprints by over 80%."}}]}</script>
 <meta property="article:published_time" content="2026-11-02">
 <script src="/assets/site.js" defer></script>
-<script src="/assets/mail.js" defer></script>
-<script src="/assets/walkthrough.js?v=cta2" defer></script>
+<script src="/assets/mail.js?v=hs1" defer></script>
+<script src="/assets/walkthrough.js?v=hs1" defer></script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
