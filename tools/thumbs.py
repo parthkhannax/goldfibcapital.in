@@ -576,6 +576,28 @@ THUMBS = {
     "current-account-deficit-and-rupee-depreciation": bars(("GOODS TRADE", "SERVICES NET", "REMITTANCES", "NET CAD <2%"), 3, (90, 60, 45, 25), (RED, GREEN, GREEN, GOLD)),
     "fii-vs-dii-liquidity-flow-dynamics": bars(("FII SELLING", "DII BUYING", "MONTHLY SIP", "NET RESILIENCE"), 2, (85, 90, 80, 95), (RED, GREEN, GOLD, GREEN)),
     "rbi-monetary-policy-transmission-repo-mclr": pipeline(("RBI REPO", "EBLR LOANS", "DEPOSIT LAG", "PEAK NIM")),
+
+    # ── Batch 6: IPO & Pre-IPO Intelligence Suite ──
+    "hyundai-motor-india-ipo-valuation-analysis": bars(("HYUNDAI", "MARUTI", "TATA MOTORS"), 0, (88, 70, 52)),
+    "swiggy-ipo-valuation-unit-economics-vs-zomato": bars(("FOOD DEL", "INSTAMART", "AD REVENUE"), 1, (64, 86, 42)),
+    "ntpc-green-energy-ipo-renewable-valuation": line("rise", ("SOLAR", "WIND", "HYBRID", "10 GW")),
+    "ola-electric-ipo-post-listing-analysis-risks": line("decay", ("LISTING", "+1M", "+3M", "DROP")),
+    "waaree-energies-ipo-solar-module-valuation": bars(("DOMESTIC", "US EXPORTS", "CELL CAPEX"), 1, (52, 92, 60)),
+    "bajaj-housing-finance-ipo-valuation-peer-comparison": bars(("BAJAJ HFC", "HDFC BANK", "LIC HSG"), 0, (94, 60, 36)),
+    "tata-technologies-ipo-post-listing-reality-check": line("kink", ("₹1200", "PEAK", "FADE", "₹950")),
+    "honasa-consumer-mamaearth-ipo-post-mortem": line("diverge", ("AD SPEND", "NET PROFIT")),
+    "brainbees-solutions-firstcry-ipo-retail-economics": funnel(("ONLINE", "OFFLINE STORES", "MIDDLE EAST", "PAT")),
+    "afcons-infrastructure-ipo-order-book-valuation": pipeline(("ORDER BOOK", "EXECUTION", "WORKING CAP", "CASH")),
+    "ather-energy-upcoming-ipo-drhp-valuation": bars(("ATHER", "OLA", "TVS", "BAJAJ"), 0, (68, 86, 74, 62)),
+    "lenskart-upcoming-ipo-omnichannel-valuation": pipeline(("FACTORY", "RETAIL STORES", "ONLINE", "PROFIT")),
+    "zepto-upcoming-ipo-quick-commerce-burn-rate": funnel(("ORDERS", "AOV ₹480", "DELIVERY", "EBITDA")),
+    "meesho-upcoming-ipo-e-commerce-logistics-economics": bars(("COMMISSION 0%", "ADS TAKE", "VALMO LOGISTICS"), 2, (30, 68, 88)),
+    "how-to-read-drhp-sebi-prospectus-checklist": checks("DRHP 10-STEP CHECK", ["PROMOTER", "CARO NOTES", "RPT", "DILUTION"]),
+    "ipo-grey-market-premium-gmp-truth-vs-myth": line("diverge", ("GMP RUMOUR", "LISTING PRICE")),
+    "anchor-investor-lock-in-period-india-trading-impact": timeline(("ALLOTMENT", "30-DAY 50%", "90-DAY 100%", "FREE FLOAT")),
+    "offer-for-sale-ofs-vs-fresh-issue-ipo-signals": donut("ISSUE BREAKDOWN"),
+    "sme-ipo-investing-risks-sebi-regulations-india": bars(("RETAIL BID", "OPERATOR DUMP", "CIRCUIT DOWN"), 1, (90, 84, 28)),
+    "post-ipo-underperformance-india-why-stocks-crash": line("decay", ("DAY 1", "+6M", "+12M", "-24%")),
 }
 
 

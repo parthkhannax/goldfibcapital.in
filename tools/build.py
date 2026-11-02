@@ -29,6 +29,8 @@ EMAIL = "partners@goldfibcapital.in"
 AUTHOR = {"@type": "Organization", "name": "Goldfib Capital Research", "url": f"{SITE}/"}
 
 CLUSTERS = {
+    "ipo": ("IPO & Pre-IPO Intelligence",
+            "Forensic DRHP analysis, valuation multiples, anchor lock-in mechanics and teardowns of recent and upcoming Indian market listings."),
     "research": ("Institutional Research, Decoded",
                  "How buy-side-quality research on Indian companies is actually built: standards, sources, signals and valuation."),
     "automation": ("Research Automation",
