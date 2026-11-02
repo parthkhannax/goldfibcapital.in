@@ -536,6 +536,18 @@ THUMBS = {
     "insider-trading-automated-surveillance-sebi": compliance_ceiling("SEBI PIT SURVEILLANCE"),
     "custom-backtesting-engine-python-nse": line("diverge", ("STRATEGY", "NSE 500")),
     "corporate-actions-automation-demergers-dividends": pipeline(("EX-DATE", "RECORD", "RATIO", "BOOK-VALUE")),
+
+    # ── Batch 3: Fund Automation, Engineering & Valuation Suite ──
+    "automated-esg-scoring-indian-listed-firms": checks("BRSR ESG SCORING", ["SCOPE 1/2", "WATER REC", "BOARD INDEP", "SEBI CORE"]),
+    "shadow-nav-and-accounting-system": ops_engine("SHADOW NAV RECONCILIATION"),
+    "automated-broker-contract-note-parser": doc("CONTRACT NOTE STT/GST", (1, 2, 4)),
+    "market-data-pipeline-websocket-nse-tick": pipeline(("NSE WS TICK", "ORDER BOOK", "REDIS MEM", "SIGNAL")),
+    "fund-investor-reporting-automation-lp-portal": doc("LP QUARTERLY REPORT", (0, 3, 5)),
+    "credit-rating-migration-tracking-engine": ladder(("AAA", "AA+", "AA-", "WATCHLIST")),
+    "automated-dcf-financial-model-builder": line("kink", ("HISTORICAL", "PROJECTIONS", "TERMINAL")),
+    "derivative-margin-optimization-span-var": bars(("SPAN BASE", "EXPOSURE", "SPREAD BENEFIT", "FREE CASH"), 2, (75, 45, 90, 85), (STEEL, RED, GREEN, GOLD)),
+    "sebi-mishandling-and-trade-allocation-audit": checks("PRO-RATA ALLOCATION AUDIT", ["TIME PRIORITY", "VWAP FILLS", "ZERO SKEW", "SEBI COMPLIANT"]),
+    "reverse-dcf-valuation-model-india": funnel(("MARKET CAP", "IMPLIED FCF", "EXPECTED ROCE", "REALITY CHECK")),
 }
 
 
