@@ -591,7 +591,7 @@ main {
   color: var(--dark);
 }
 
-.prose a {
+.prose a:not(.btn):not(.rel):not(.toc-wt) {
   color: var(--navy);
   text-decoration: underline;
   text-decoration-color: rgba(26, 47, 74, 0.3);
@@ -599,9 +599,15 @@ main {
   font-weight: 500;
 }
 
-.prose a:hover {
+.prose a:not(.btn):not(.rel):not(.toc-wt):hover {
   color: var(--goldl);
   text-decoration-color: var(--goldl);
+}
+
+.prose a.btn,
+.prose .btn,
+a.btn {
+  text-decoration: none !important;
 }
 
 .prose ul, .prose ol {
@@ -827,6 +833,84 @@ tr:hover td {
   font-size: 0.8rem;
   color: rgba(245, 245, 240, 0.6);
   font-family: var(--font-mono);
+  display: block;
+  margin-top: 14px;
+}
+
+/* CTA Callout Buttons (High Contrast & Tactile) */
+.cta .cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Primary Walkthrough CTA Button inside dark callout: Signature Gold */
+.cta .btn:not(.ghost):not(.line),
+.cta-end .btn:not(.ghost):not(.line) {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  padding: 11px 22px !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid #ebd49b !important;
+  background: linear-gradient(180deg, #dfc384 0%, #c9a961 100%) !important;
+  color: #0c1220 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 16px rgba(201, 169, 97, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  cursor: pointer !important;
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-spring),
+              background var(--duration-fast) !important;
+}
+
+.cta .btn:not(.ghost):not(.line):hover,
+.cta-end .btn:not(.ghost):not(.line):hover {
+  background: linear-gradient(180deg, #ebd49b 0%, #b89650 100%) !important;
+  border-color: #f7e2af !important;
+  color: #080c14 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 22px rgba(201, 169, 97, 0.55) !important;
+  text-decoration: none !important;
+}
+
+/* Secondary Action inside dark callout: Crisp High-Contrast White Pill */
+.cta .btn.ghost,
+.cta .btn.line,
+.cta-end .btn.ghost,
+.cta-end .btn.line {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  border-radius: var(--radius-md) !important;
+  background: #ffffff !important;
+  color: var(--dark) !important;
+  border: 1px solid #ffffff !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  cursor: pointer !important;
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-spring),
+              background var(--duration-fast) !important;
+}
+
+.cta .btn.ghost:hover,
+.cta .btn.line:hover,
+.cta-end .btn.ghost:hover,
+.cta-end .btn.line:hover {
+  background: #fbfbf8 !important;
+  color: #0c1220 !important;
+  border-color: #f0f0ea !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+  text-decoration: none !important;
 }
 
 /* FAQ Accordion */
