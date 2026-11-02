@@ -46,7 +46,7 @@ CLUSTERS = {
 }
 
 LEVELS = {"beginner": "Beginner", "intermediate": "Intermediate", "advanced": "Advanced"}
-SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/mail.js?v=hs1" defer></script>\n<script src="/assets/walkthrough.js?v=hs1" defer></script>\n'
+SCRIPTS = '<script src="/assets/site.js" defer></script>\n<script src="/assets/mail.js?v=hs2" defer></script>\n<script src="/assets/walkthrough.js?v=hs2" defer></script>\n'
 WT_URL = "/blog/walkthrough/"
 CTA_TEXT = "Get your personalised research report"
 HI_TEXT = "Say hi to Goldfib Capital"
@@ -141,7 +141,7 @@ def head(title, desc, url, extra="", og_type="article"):
 <link rel="alternate" type="application/rss+xml" title="Goldfib Capital Research" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/article.css?v=hs1">
+<link rel="stylesheet" href="/assets/article.css?v=hs2">
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){{
         c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};
