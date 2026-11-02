@@ -560,6 +560,18 @@ THUMBS = {
     "identifying-moats-in-indian-b2b-manufacturing": funnel(("OEM AUDIT", "SWITCHING COST", "PRICING POWER", "25% ROCE")),
     "promoter-capital-allocation-track-record": bars(("ROCE 26%", "COST OF CAP", "EVA SPREAD"), 0, (92, 50, 75), (GOLD, STEEL, GREEN)),
     "institutional-sell-discipline-stop-loss": drawdown("PORTFOLIO STOP LOSS", (("PEAK", "0%"), ("TRIM", "-8%"), ("CUT", "-15%"))),
+
+    # ── Batch 5: Investor Tax, Wealth Structuring, Macro Transmission & Demat ──
+    "angel-tax-abolition-section-56-impact": checks("SECTION 56(2)(viib) REPEAL", ["RULE 11UA FMV", "0% ANGEL TAX", "COMMERCIAL VAL", "SECTION 68 OK"]),
+    "section-54f-capital-gains-tax-exemption": bars(("NET PROCEEDS", "REINVESTED", "LTCG EXEMPT", "RESIDUAL TAX"), 2, (95, 95, 95, 10), (STEEL, GOLD, GREEN, RED)),
+    "set-off-and-carry-forward-losses-india": ladder(("STCL -> STCG", "STCL -> LTCG", "LTCL -> LTCG", "8-YR CARRY")),
+    "foreign-tax-credit-ftc-form-67-india": checks("RULE 128 FTC / FORM 67", ["US 25% WHT", "FORM 1042-S", "FORM 67 FILED", "SCHEDULE FA"]),
+    "gift-taxation-rules-for-family-wealth": nodes("PATRIARCH", ["SPOUSE", "CHILDREN", "GRANDCHILDREN", "TRUST"]),
+    "demat-transmission-vs-transfer-nominee": transfer_bridge("DEMAT TRANSMISSION BY OPERATION OF LAW"),
+    "india-yield-curve-inversion-signals": line("diverge", ("91D T-BILL", "1Y T-BILL", "5Y G-SEC", "10Y BENCH")),
+    "current-account-deficit-and-rupee-depreciation": bars(("GOODS TRADE", "SERVICES NET", "REMITTANCES", "NET CAD <2%"), 3, (90, 60, 45, 25), (RED, GREEN, GREEN, GOLD)),
+    "fii-vs-dii-liquidity-flow-dynamics": bars(("FII SELLING", "DII BUYING", "MONTHLY SIP", "NET RESILIENCE"), 2, (85, 90, 80, 95), (RED, GREEN, GOLD, GREEN)),
+    "rbi-monetary-policy-transmission-repo-mclr": pipeline(("RBI REPO", "EBLR LOANS", "DEPOSIT LAG", "PEAK NIM")),
 }
 
 
