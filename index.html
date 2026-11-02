@@ -37,71 +37,6 @@
   align-items: center;
 }
 
-/* Kicker Badge: Anti-AI, bespoke institutional pill */
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 14px;
-  background: #ffffff;
-  border: 1px solid rgba(20, 28, 37, 0.12);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--dark);
-  margin-bottom: 22px;
-  box-shadow: 0 2px 8px rgba(20, 28, 37, 0.04);
-}
-
-.badge-radar {
-  position: relative;
-  width: 8px;
-  height: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.badge-ping {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold);
-  opacity: 0.5;
-  animation: badgePulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--goldl);
-}
-
-@keyframes badgePulse {
-  0% { transform: scale(0.6); opacity: 0.9; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-.badge-geo {
-  font-weight: 700;
-  color: var(--dark);
-}
-
-.badge-divider {
-  color: rgba(20, 28, 37, 0.25);
-  font-weight: 400;
-}
-
-.badge-sub {
-  color: var(--text-muted);
-  font-size: 0.68rem;
-}
-
 /* Main Heading */
 .hero h1 {
   font-family: var(--font-serif);
@@ -156,7 +91,7 @@
 }
 
 /* ==========================================================================
-   Goldfib Memo Automation Engine (AI + Analyst Infographic WOW Factor)
+   Goldfib Memo Engine (Big Bold Text & Institutional Family Office Image)
    ========================================================================== */
 .memo-engine {
   background: #ffffff;
@@ -192,6 +127,7 @@
   width: 100%;
 }
 
+/* Box Header with Family Office Tower Image in Logo */
 .engine-head {
   padding: 12px 18px;
   background: var(--navy);
@@ -199,65 +135,68 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .engine-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+}
+
+.fo-box-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.fo-box-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.engine-title {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.ai-sparkle {
-  color: var(--gold);
-  font-size: 0.95rem;
-  display: inline-block;
-  animation: sparkleSpin 3s ease-in-out infinite;
-}
-
-@keyframes sparkleSpin {
-  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
-  50% { transform: scale(1.25) rotate(15deg); opacity: 1; }
-}
-
-.ai-badge {
-  background: rgba(201, 169, 97, 0.2);
-  color: var(--gold);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+  color: #ffffff;
 }
 
 .engine-live-step {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.68rem;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   color: #34d399;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .step-pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #34d399;
-  box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
   animation: pulseDot 1.8s infinite;
 }
 
-/* Timeline Navigation */
+/* Timeline Navigation: Big Bold Steps */
 .engine-timeline {
   display: flex;
   align-items: center;
   background: #f7f7f3;
   border-bottom: 1px solid var(--border);
-  padding: 8px 16px;
+  padding: 10px 16px;
+  gap: 8px;
 }
 
 .step-btn {
@@ -266,27 +205,27 @@
   gap: 8px;
   background: transparent;
   border: none;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
   font-family: var(--font-sans);
-  font-size: 0.74rem;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 700;
   color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .step-circle {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: rgba(20, 28, 37, 0.1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 800;
   color: var(--dark);
   transition: all 0.2s ease;
 }
@@ -294,7 +233,7 @@
 .step-btn.active {
   background: #ffffff;
   color: var(--dark);
-  box-shadow: 0 1px 4px rgba(20, 28, 37, 0.08);
+  box-shadow: 0 2px 6px rgba(20, 28, 37, 0.08);
 }
 
 .step-btn.active .step-circle {
@@ -321,9 +260,9 @@
 
 /* Body & Stage Panels */
 .engine-body {
-  padding: 18px;
+  padding: 24px;
   background: #ffffff;
-  min-height: 285px;
+  min-height: 280px;
 }
 
 .engine-panel {
@@ -335,414 +274,334 @@
   display: block;
 }
 
-/* Step 1: Prompt Card */
-.prompt-card {
-  background: #fbfbf8;
+/* Step 1: Big Bold Prompt with Family Office Image */
+.big-prompt-card {
+  background: #fafaf7;
   border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  box-shadow: 0 2px 8px rgba(20, 28, 37, 0.04);
+}
+
+.fo-user-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.fo-photo-badge {
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 12px;
+  overflow: hidden;
+  border: 2px solid var(--goldl);
+  box-shadow: 0 2px 8px rgba(20, 28, 37, 0.12);
+  flex-shrink: 0;
 }
 
-.prompt-user-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.prompt-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.prompt-role {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--goldl);
+.fo-photo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+}
+
+.fo-client-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+}
+
+.fo-client-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--goldl);
+  font-weight: 700;
   letter-spacing: 0.06em;
 }
 
-.prompt-target {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-}
-
-.prompt-bubble {
+.big-prompt-text {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.32;
   color: var(--dark);
-  padding: 10px 14px;
-  background: #ffffff;
-  border-radius: 8px;
-  border: 1px solid rgba(20, 28, 37, 0.08);
   margin-bottom: 12px;
-  position: relative;
 }
 
-.prompt-quote {
-  font-size: 1.4rem;
-  color: var(--goldl);
-  line-height: 0;
-  vertical-align: -4px;
-  margin-right: 4px;
-}
-
-.prompt-chips {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.p-chip {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  background: rgba(26, 47, 74, 0.06);
-  color: var(--navy);
-  padding: 3px 8px;
-  border-radius: 4px;
-}
-
-.prompt-footer {
-  display: flex;
-  justify-content: space-between;
+.big-prompt-deal {
+  display: inline-flex;
   align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
-.pf-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.pf-next-btn {
-  background: var(--navy);
-  color: #ffffff;
-  border: none;
+  gap: 8px;
+  background: rgba(201, 169, 97, 0.18);
+  border: 1px solid rgba(201, 169, 97, 0.35);
+  color: var(--dark);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 700;
   padding: 6px 14px;
   border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.pf-next-btn:hover {
-  background: #141c25;
-  transform: translateY(-1px);
-}
-
-/* Step 2: Analysing */
-.analysing-strip {
+/* Step 2: Analysing - Focus on Big Status & Big Numbers */
+.big-analysing-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #fbfbf8;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin-bottom: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-}
-
-.an-beacon {
-  position: relative;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.beacon-ring {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold);
-  opacity: 0.5;
-  animation: badgePulse 1.8s infinite;
-}
-
-.beacon-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--goldl);
-}
-
-.an-text {
-  font-weight: 600;
-  color: var(--dark);
-  flex: 1;
-}
-
-.an-pct {
-  color: var(--green);
-  font-weight: 700;
-}
-
-.chart-deck {
-  display: flex;
-  flex-direction: column;
   gap: 10px;
-}
-
-.chart-box {
-  background: #fbfbf8;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-}
-
-.cb-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.cb-title {
-  letter-spacing: 0.06em;
-}
-
-.cb-tag.gold {
-  color: var(--goldl);
-  background: rgba(201, 169, 97, 0.15);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.cb-svg {
-  width: 100%;
-  height: 98px;
-  display: block;
-}
-
-.forensic-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-}
-
-.fg-item {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: var(--font-sans);
-  font-size: 0.74rem;
-  color: var(--dark);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.fg-chk {
-  color: var(--green);
-  font-weight: 800;
-}
-
-/* Step 3: Done */
-.done-banner {
-  background: rgba(22, 163, 74, 0.1);
-  border: 1px solid rgba(22, 163, 74, 0.25);
-  color: var(--green);
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.done-content {
-  background: #fbfbf8;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 16px;
-}
-
-.dc-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 14px;
-}
-
-.dc-title {
-  font-family: var(--font-serif);
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 2px;
-}
-
-.dc-meta {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-muted);
-}
-
-.dc-badge {
-  background: var(--navy);
-  color: #ffffff;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-}
-
-.dc-metrics-strip {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.dc-metric {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px 10px;
-}
-
-.dc-metric.green-left { border-left: 3px solid var(--green); }
-.dc-metric.navy-left { border-left: 3px solid var(--navy); }
-.dc-metric.gold-left { border-left: 3px solid var(--goldl); }
-
-.dcm-lbl {
-  font-family: var(--font-sans);
-  font-size: 0.66rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: block;
-}
-
-.dcm-val {
   font-family: var(--font-sans);
   font-size: 1.25rem;
   font-weight: 800;
   color: var(--dark);
-  display: block;
-  margin: 2px 0;
+  margin-bottom: 14px;
 }
 
-.dcm-sub {
+.pulse-bead-big {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--goldl);
+  box-shadow: 0 0 12px rgba(201, 169, 97, 0.8);
+  animation: pulseDot 1.8s infinite;
+}
+
+.chart-big-box {
+  background: #fbfbf8;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.chart-big-title {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-  display: block;
-}
-
-.dc-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-}
-
-.dc-btn {
-  color: var(--navy);
-  font-weight: 700;
-  text-decoration: none;
-  font-family: var(--font-sans);
   font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
-.dc-btn:hover {
-  text-decoration: underline;
-  color: var(--goldl);
+.big-cb-svg {
+  width: 100%;
+  height: 105px;
+  display: block;
 }
 
-.engine-foot {
-  padding: 10px 18px;
+.big-checks-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.big-check-pill {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(20, 28, 37, 0.04);
+}
+
+.big-check-pill b {
+  color: var(--green);
+  font-size: 1.1rem;
+}
+
+/* Step 3: Done - Huge Metrics */
+.big-done-banner {
+  background: rgba(22, 163, 74, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.3);
+  color: var(--green);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.huge-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.huge-metric-card {
+  background: #fbfbf8;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.huge-metric-card.green-border { border-top: 4px solid var(--green); }
+.huge-metric-card.navy-border { border-top: 4px solid var(--navy); }
+.huge-metric-card.gold-border { border-top: 4px solid var(--goldl); }
+
+.hm-val {
+  font-family: var(--font-sans);
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.hm-val.green { color: var(--green); }
+.hm-val.navy { color: var(--navy); }
+.hm-val.gold { color: var(--goldl); }
+
+.hm-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+/* Bottom CTA in Card */
+.engine-cta-bar {
+  padding: 12px 20px;
   background: #f7f7f3;
   border-top: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.ef-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  display: inline-block;
-  margin-right: 6px;
+.engine-cta-link {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--navy);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.engine-cta-link:hover {
+  color: var(--goldl);
+  text-decoration: underline;
 }
 
 @media (max-width: 960px) {
   .hero .container {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-content {
+    display: contents;
+  }
+  .hero-content h1 {
+    order: 1;
+    margin-bottom: 24px;
   }
   .memo-engine {
+    order: 2;
     max-width: 580px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 auto 28px;
+  }
+  .hero-content .lead {
+    order: 3;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .hero-content .cta-row {
+    order: 4;
   }
 }
 
 @media (max-width: 600px) {
   .hero {
-    padding: 84px 0 48px;
+    padding: 52px 0 40px;
   }
-  .hero-badge {
-    white-space: normal;
-    font-size: 0.68rem;
-    padding: 6px 12px;
-    line-height: 1.4;
+  .hero-content h1 {
+    font-size: clamp(2rem, 7.5vw, 2.45rem);
+    margin-bottom: 20px;
+  }
+  .memo-engine {
+    margin: 0 auto 24px;
+    border-radius: 12px;
+  }
+  .engine-head {
+    padding: 10px 14px;
   }
   .engine-timeline {
-    padding: 6px 10px;
+    padding: 8px 10px;
+    gap: 4px;
   }
-  .step-label {
-    display: none;
+  .step-btn {
+    padding: 6px 8px;
+    font-size: 0.76rem;
   }
-  .dc-metrics-strip {
+  .step-circle {
+    width: 20px;
+    height: 20px;
+    font-size: 0.68rem;
+  }
+  .engine-body {
+    padding: 16px;
+    min-height: 270px;
+  }
+  .big-prompt-card {
+    padding: 16px;
+  }
+  .big-prompt-text {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+  .big-prompt-deal {
+    font-size: 0.82rem;
+  }
+  .big-checks-row,
+  .huge-metrics-grid {
     grid-template-columns: 1fr;
-    gap: 6px;
+    gap: 8px;
   }
-  .forensic-grid {
-    grid-template-columns: 1fr;
+  .huge-metric-card {
+    padding: 12px;
+  }
+  .hm-val {
+    font-size: 1.6rem;
+  }
+  .hero-content .lead {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .engine-cta-bar {
+    padding: 11px 16px;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  .engine-cta-bar .fo-client-sub {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+  }
+  .engine-cta-link {
+    font-size: 0.78rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 }
 
@@ -1198,7 +1057,7 @@
 
 /* Responsive */
 @media (max-width: 980px) {
-  .hero .container, .study, .founder {
+  .study, .founder {
     grid-template-columns: 1fr;
   }
   .ps, .steps, .proof {
@@ -1250,13 +1109,6 @@
 <!-- HERO: Institutional Operating System -->
 <section class="hero"><div class="container">
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-radar"><span class="badge-ping"></span><span class="badge-dot"></span></span>
-      <span class="badge-geo">MUMBAI (BKC) ⇄ DUBAI (DIFC)</span>
-      <span class="badge-divider">/</span>
-      <span class="badge-sub">FAMILY OFFICE RESEARCH &amp; AUTOMATION</span>
-    </div>
-
     <h1>
       Your family office runs on spreadsheets and WhatsApp.
       <span class="hero-emphasis">
@@ -1288,20 +1140,21 @@
     </div>
   </div>
 
-  <!-- AI Memo Automation Engine (Infographic WOW Factor) -->
+  <!-- AI Memo Automation Engine (Big Bold Text + Family Office Image) -->
   <div class="memo-engine" id="memoEngine" data-tilt>
     <div class="engine-gold-bar"></div>
 
-    <!-- Top Telemetry Header -->
+    <!-- Top Bar with Family Office Tower Image in Logo -->
     <div class="engine-head">
       <div class="engine-brand">
-        <span class="ai-sparkle">✦</span>
+        <div class="fo-box-logo" title="Single & Multi-Family Office Portal">
+          <img src="/assets/img/photos/towers.jpg" alt="Family Office Towers">
+        </div>
         <span class="engine-title">GOLDFIB MEMO ENGINE</span>
-        <span class="ai-badge">AI + ANALYST</span>
       </div>
       <div class="engine-live-step" id="engineLiveStep">
         <span class="step-pulse-dot"></span>
-        <span id="stepStatusText">STEP 2: GOLDFIB TEAM ANALYSING</span>
+        <span id="stepStatusText">TEAM ANALYSING</span>
       </div>
     </div>
 
@@ -1309,159 +1162,117 @@
     <div class="engine-timeline">
       <button class="step-btn" data-step="1" id="stepBtn1">
         <span class="step-circle">1</span>
-        <span class="step-label">Automate Memo</span>
+        <span>Automate Memo</span>
       </button>
       <div class="step-connector active" id="stepConn1"></div>
       <button class="step-btn active" data-step="2" id="stepBtn2">
         <span class="step-circle">2</span>
-        <span class="step-label">Team Analysing</span>
+        <span>Team Analysing</span>
       </button>
       <div class="step-connector" id="stepConn2"></div>
       <button class="step-btn" data-step="3" id="stepBtn3">
         <span class="step-circle">3</span>
-        <span class="step-label">IC Ready · Done</span>
+        <span>IC Approved</span>
       </button>
     </div>
 
     <!-- Engine Stage Panels -->
     <div class="engine-body">
-      <!-- STEP 1: USER REQUEST / PROMPT -->
+      <!-- STEP 1: BIG BOLD PROMPT WITH FAMILY OFFICE IMAGE -->
       <div class="engine-panel" id="panelStep1">
-        <div class="prompt-card">
-          <div class="prompt-user-row">
-            <div class="prompt-avatar">FO</div>
-            <div class="prompt-meta">
-              <span class="prompt-role">INVESTMENT COMMITTEE PROMPT</span>
-              <span class="prompt-target">Single Family Office (Dubai / Mumbai)</span>
+        <div class="big-prompt-card">
+          <div class="fo-user-bar">
+            <div class="fo-photo-badge">
+              <img src="/assets/img/photos/towers.jpg" alt="Family Office Headquarters">
             </div>
-          </div>
-          <div class="prompt-bubble">
-            <span class="prompt-quote">“</span>
-            I want to automate our investment memo for a <b>₹25 Cr</b> co-investment in <b>Specialty Chemicals B2B</b>. Run 10-year forensic ROC checks, reverse DCF sensitivity, and promoter governance audits.
-          </div>
-          <div class="prompt-chips">
-            <span class="p-chip">📁 ROC &amp; DRHP Ingested</span>
-            <span class="p-chip">📊 10Y Normalized P&amp;L</span>
-            <span class="p-chip">⚡ SEBI AIF / IC Template</span>
-          </div>
-        </div>
-        <div class="prompt-footer">
-          <span class="pf-status"><span class="pf-dot"></span> Ingestion Complete · Ready for Synthesis</span>
-          <button class="pf-next-btn" id="btnNextToAnalysis">Watch Analysis ➔</button>
-        </div>
-      </div>
-
-      <!-- STEP 2: GOLDFIB TEAM & AI ANALYSING (CHARTS & FORENSICS) -->
-      <div class="engine-panel active" id="panelStep2">
-        <div class="analysing-strip">
-          <div class="an-beacon"><span class="beacon-ring"></span><span class="beacon-dot"></span></div>
-          <span class="an-text">Goldfib Senior Analysts &amp; Valuation Model Analysing...</span>
-          <span class="an-pct" id="anPct">88% SYNTHESIZED</span>
-        </div>
-
-        <!-- Amazing Financial Charts -->
-        <div class="chart-deck">
-          <div class="chart-box">
-            <div class="cb-header">
-              <span class="cb-title">REVERSE DCF EXIT VALUATION &amp; IRR SCENARIOS</span>
-              <span class="cb-tag gold">BASE CASE: 22.4% IRR</span>
-            </div>
-            <svg class="cb-svg" viewBox="0 0 440 105" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#c9a961"/>
-                  <stop offset="100%" stop-color="#a68a3e"/>
-                </linearGradient>
-              </defs>
-              <line x1="0" y1="25" x2="440" y2="25" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
-              <line x1="0" y1="55" x2="440" y2="55" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
-              <line x1="0" y1="85" x2="440" y2="85" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
-
-              <!-- Bar 1: FY24 Actual -->
-              <rect x="30" y="58" width="48" height="32" rx="4" fill="#1a2f4a" opacity="0.9"/>
-              <text x="54" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#141c25">₹16.8 Cr</text>
-              <text x="54" y="101" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#64748b">FY24</text>
-
-              <!-- Bar 2: FY25E Base -->
-              <rect x="115" y="42" width="48" height="48" rx="4" fill="#3b6b8a" opacity="0.95"/>
-              <text x="139" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#141c25">₹23.5 Cr</text>
-              <text x="139" y="101" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#64748b">FY25E</text>
-
-              <!-- Bar 3: FY26E Target -->
-              <rect x="200" y="26" width="48" height="64" rx="4" fill="#c9a961"/>
-              <text x="224" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#a68a3e">₹34.2 Cr</text>
-              <text x="224" y="101" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#64748b">FY26E</text>
-
-              <!-- Bar 4: 4Y Exit Bull -->
-              <rect x="285" y="12" width="48" height="78" rx="4" fill="#16a34a"/>
-              <text x="309" y="8" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#16a34a">₹48.0 Cr</text>
-              <text x="309" y="101" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#64748b">Exit Target</text>
-
-              <!-- Connecting Trajectory Spline -->
-              <path d="M 54,58 Q 139,38 224,24 T 309,12" fill="none" stroke="#141c25" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 3"/>
-            </svg>
-          </div>
-
-          <!-- Forensic Multi-Gate Checklist -->
-          <div class="forensic-grid">
-            <div class="fg-item"><span class="fg-chk">✓</span> <b>10Y ROC Audited</b> (Clean Opinion)</div>
-            <div class="fg-item"><span class="fg-chk">✓</span> <b>0 RPT Discrepancies</b> Found</div>
-            <div class="fg-item"><span class="fg-chk">✓</span> <b>Working Capital</b> 52 Days</div>
-            <div class="fg-item"><span class="fg-chk">✓</span> <b>Asset Cover</b> 2.4x Senior</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 3: DONE - IC READY MEMO -->
-      <div class="engine-panel" id="panelStep3">
-        <div class="done-banner">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>DONE · DILIGENCE MEMO APPROVED FOR IC</span>
-        </div>
-        <div class="done-content">
-          <div class="dc-top">
             <div>
-              <div class="dc-title">Specialty Chemicals B2B Co-Investment Memo</div>
-              <div class="dc-meta">34-Page Institutional Memo · Model Code: GFC-2026-CH04</div>
-            </div>
-            <span class="dc-badge">IC APPROVED ✓</span>
-          </div>
-
-          <div class="dc-metrics-strip">
-            <div class="dc-metric green-left">
-              <span class="dcm-lbl">Base Case IRR</span>
-              <b class="dcm-val">26.4%</b>
-              <span class="dcm-sub">4.2 Yr Horizon</span>
-            </div>
-            <div class="dc-metric navy-left">
-              <span class="dcm-lbl">Target Multiple</span>
-              <b class="dcm-val">2.85x</b>
-              <span class="dcm-sub">Gross MOIC</span>
-            </div>
-            <div class="dc-metric gold-left">
-              <span class="dcm-lbl">Downside Cover</span>
-              <b class="dcm-val">2.2x</b>
-              <span class="dcm-sub">Asset-Backed</span>
+              <div class="fo-client-title">SINGLE FAMILY OFFICE</div>
+              <div class="fo-client-sub">INVESTMENT COMMITTEE</div>
             </div>
           </div>
+          <div class="big-prompt-text">
+            “I want to automate our investment memo.”
+          </div>
+          <div class="big-prompt-deal">
+            ₹25 Cr Co-Investment · Specialty Chemicals B2B
+          </div>
+        </div>
+      </div>
 
-          <div class="dc-footer">
-            <span class="dc-note">Signed off by Goldfib Principal &amp; Senior Analyst Desk</span>
-            <a class="dc-btn" href="/blog/walkthrough/" data-walkthrough-open>Automate Your Memos ➔</a>
+      <!-- STEP 2: GOLDFIB TEAM ANALYSING (BIG CHARTS & BIG NUMBERS) -->
+      <div class="engine-panel active" id="panelStep2">
+        <div class="big-analysing-head">
+          <span class="pulse-bead-big"></span>
+          <span>Goldfib Team Analysing...</span>
+        </div>
+
+        <div class="chart-big-box">
+          <div class="chart-big-title">REVERSE DCF EXIT VALUATION (₹ CR)</div>
+          <svg class="big-cb-svg" viewBox="0 0 440 115" preserveAspectRatio="none">
+            <line x1="0" y1="30" x2="440" y2="30" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
+            <line x1="0" y1="60" x2="440" y2="60" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
+            <line x1="0" y1="90" x2="440" y2="90" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
+
+            <!-- Bar 1: FY24 Actual -->
+            <rect x="30" y="62" width="50" height="38" rx="4" fill="#1a2f4a"/>
+            <text x="55" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#141c25">₹16.8 Cr</text>
+            <text x="55" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#64748b">FY24</text>
+
+            <!-- Bar 2: FY25E Base -->
+            <rect x="115" y="46" width="50" height="54" rx="4" fill="#3b6b8a"/>
+            <text x="140" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#141c25">₹23.5 Cr</text>
+            <text x="140" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#64748b">FY25E</text>
+
+            <!-- Bar 3: FY26E Target -->
+            <rect x="200" y="32" width="50" height="68" rx="4" fill="#c9a961"/>
+            <text x="225" y="24" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#a68a3e">₹34.2 Cr</text>
+            <text x="225" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#64748b">FY26E</text>
+
+            <!-- Bar 4: Exit Bull -->
+            <rect x="285" y="18" width="50" height="82" rx="4" fill="#16a34a"/>
+            <text x="310" y="11" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#16a34a">₹48.0 Cr</text>
+            <text x="310" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#16a34a">Exit Target</text>
+
+            <!-- Spline Trajectory -->
+            <path d="M 55,62 Q 140,42 225,28 T 310,18" fill="none" stroke="#141c25" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+
+        <div class="big-checks-row">
+          <div class="big-check-pill"><b>✓</b> 10Y ROC Audited</div>
+          <div class="big-check-pill"><b>✓</b> 0 Red Flags</div>
+          <div class="big-check-pill"><b>✓</b> 2.4x Asset Cover</div>
+        </div>
+      </div>
+
+      <!-- STEP 3: DONE - HUGE METRICS -->
+      <div class="engine-panel" id="panelStep3">
+        <div class="big-done-banner">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>IC MEMO APPROVED</span>
+        </div>
+
+        <div class="huge-metrics-grid">
+          <div class="huge-metric-card green-border">
+            <div class="hm-val green">26.4%</div>
+            <div class="hm-label">Base IRR</div>
+          </div>
+          <div class="huge-metric-card navy-border">
+            <div class="hm-val navy">2.85x</div>
+            <div class="hm-label">MOIC</div>
+          </div>
+          <div class="huge-metric-card gold-border">
+            <div class="hm-val gold">2.2x</div>
+            <div class="hm-label">Cover</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Engine Footer -->
-    <div class="engine-foot">
-      <div class="ef-item">
-        <span class="ef-dot"></span>
-        <span>Turnaround: <b>48 Hours</b> vs 3 Weeks Traditional IB</span>
-      </div>
-      <div class="ef-item ef-right">
-        <span>SEBI AIF Cat II &amp; Family Office IC Compliant</span>
-      </div>
+    <!-- Engine Footer: Clean Single Action -->
+    <div class="engine-cta-bar">
+      <span class="fo-client-sub">GOLDFIB RESEARCH DESK</span>
+      <a class="engine-cta-link" href="/blog/walkthrough/" data-walkthrough-open>Automate Your Memos ➔</a>
     </div>
   </div>
 </div></section>

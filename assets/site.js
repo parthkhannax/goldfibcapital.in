@@ -198,9 +198,9 @@
     var autoTimer = null;
 
     var stepDescriptions = [
-      'STEP 1: FO PROMPT SUBMITTED',
-      'STEP 2: GOLDFIB TEAM ANALYSING',
-      'STEP 3: IC-READY MEMO APPROVED'
+      'FO PROMPT',
+      'TEAM ANALYSING',
+      'IC APPROVED'
     ];
 
     function setStep(stepNum, userTriggered) {
