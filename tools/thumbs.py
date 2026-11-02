@@ -524,6 +524,18 @@ THUMBS = {
     "multi-family-office-vs-single-family-office": line("decay", ("₹50 CR", "₹100 CR", "₹250 CR (BREAKEVEN)", "₹500 CR")),
     "family-office-angel-syndicate-structuring": pipeline(("DEAL FLOW", "CAT 1 AIF", "SPV POOL", "20% CARRY")),
     "next-gen-wealth-transfer-family-office": ladder(("EXTERNAL WORK", "SHADOW IC", "SANDBOX", "TRUST VEST")),
+
+    # ── Batch 2: Treasury, Philanthropy & Operations Suite ──
+    "family-office-treasury-management-india": ladder(("T-BILLS", "ARBITRAGE", "A1+ CP", "YIELD")),
+    "philanthropy-and-csr-structuring-india": checks("SECTION 8 CSR FOUNDATION", ["12AB EXEMPT", "80G DONOR", "CSR-1 FILED", "SCHEDULE VII"]),
+    "family-office-direct-lending-mezzanine": bars(("SENIOR DEBT", "MEZZANINE 18%", "EQUITY KICKER"), 1, (60, 92, 45)),
+    "family-office-cybersecurity-data-privacy": checks("FAMILY OFFICE CYBER DEFENSE", ["MFA TOKEN", "VAULT ENCRYPT", "DUAL SIGN", "AIR GAPPED"]),
+    "family-office-offshore-banking-custody": bars(("DOMESTIC DP", "GIFT CUSTODY", "GLOBAL TIER 1"), 2, (50, 75, 95)),
+    "earnings-call-qa-sentiment-nlp": line("wave", ("PREPARED", "ANALYST Q", "EVASIVE", "SENTIMENT")),
+    "automated-portfolio-rebalancing-engine": pipeline(("DRIFT CHECK", "TAX HARVEST", "ORDER SLICE", "REBALANCED")),
+    "insider-trading-automated-surveillance-sebi": compliance_ceiling("SEBI PIT SURVEILLANCE"),
+    "custom-backtesting-engine-python-nse": line("diverge", ("STRATEGY", "NSE 500")),
+    "corporate-actions-automation-demergers-dividends": pipeline(("EX-DATE", "RECORD", "RATIO", "BOOK-VALUE")),
 }
 
 
