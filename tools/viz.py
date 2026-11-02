@@ -8,14 +8,18 @@ import html
 import json
 import math
 
-GOLD = "#b8965a"
-STEEL = "#4a6a94"
-PALETTE = ["#b8965a", "#60a5fa", "#34d399", "#f472b6", "#a78bfa", "#8b919e", "#fb923c"]
-TEXT = "#e8e4dc"
-SUB = "#8b919e"
-MUTED = "#5f6878"
-GRID = "rgba(255,255,255,.07)"
-FONT = "Outfit, system-ui, sans-serif"
+GOLD = "#c9a961"
+GOLDL = "#a68a3e"
+NAVY = "#1a2f4a"
+STEEL = "#3b6b8a"
+GREEN = "#16a34a"
+RED = "#dc2626"
+PALETTE = ["#1a2f4a", "#c9a961", "#3b6b8a", "#16a34a", "#dc2626", "#8aafc4", "#d97706"]
+TEXT = "#141c25"
+SUB = "#4a5568"
+MUTED = "#718096"
+GRID = "rgba(20,28,37,.08)"
+FONT = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
 MONO = "JetBrains Mono, ui-monospace, monospace"
 
 
@@ -152,7 +156,7 @@ def stacked(spec):
             w = plot * v / vmax
             out.append(f'<rect x="{x:.1f}" y="{y + 6}" width="{max(0, w - 1.5):.1f}" height="{row - 16}" fill="{PALETTE[i % len(PALETTE)]}"/>')
             if w > 44 and spec.get("segment_labels", True):
-                out.append(text(x + w / 2, y + 26, fmt(v, spec), size=11, fill="#0c1220", anchor="middle", weight=600, font=MONO))
+                out.append(text(x + w / 2, y + 26, fmt(v, spec), size=11, fill="#ffffff", anchor="middle", weight=600, font=MONO))
             x += w
         out.append(text(x + 8, y + 26, fmt(tot, spec), size=13, weight=700, font=MONO))
         y += row
@@ -220,13 +224,13 @@ def heatmap(spec):
         for j, v in enumerate(vals[i]):
             x, y = L + cw * j, T + ch * i
             if v is None:
-                out.append(f'<rect x="{x + 1}" y="{y + 1}" width="{cw - 2}" height="{ch - 2}" fill="#1a2c45"/>')
+                out.append(f'<rect x="{x + 1}" y="{y + 1}" width="{cw - 2}" height="{ch - 2}" fill="#f9f9f5" stroke="rgba(20,28,37,.08)"/>')
                 continue
             t = (v - lo) / (hi - lo) if hi > lo else .5
             fill = _lerp(cold, hot, t)
             stroke = f' stroke="{TEXT}" stroke-width="2"' if base and base == [i, j] else ""
             out.append(f'<rect x="{x + 1}" y="{y + 1}" width="{cw - 2}" height="{ch - 2}" rx="3" fill="{fill}"{stroke}/>')
-            out.append(text(x + cw / 2, y + ch / 2 + 4, fmt(v, spec), size=12, fill="#0c1220" if t > .55 else TEXT,
+            out.append(text(x + cw / 2, y + ch / 2 + 4, fmt(v, spec), size=12, fill="#ffffff" if t > .55 else TEXT,
                             anchor="middle", weight=600, font=MONO))
     return figure(spec, "".join(out), W, H, min_w=min(520, W))
 
@@ -285,9 +289,9 @@ def flow(spec):
     for i, s in enumerate(steps):
         sub = wrap(s.get("sub", ""), 88) if s.get("sub") else []
         h = 46 + len(sub) * 17
-        out.append(f'<rect x="60" y="{y}" width="{W - 70}" height="{h}" rx="9" fill="#1a2c45" stroke="rgba(255,255,255,.08)"/>')
+        out.append(f'<rect x="60" y="{y}" width="{W - 70}" height="{h}" rx="9" fill="#f9f9f5" stroke="rgba(20,28,37,.08)" stroke="rgba(20,28,37,.08)"/>')
         out.append(f'<circle cx="28" cy="{y + h / 2:.1f}" r="17" fill="{GOLD}"/>')
-        out.append(text(28, y + h / 2 + 5, f"{i + 1:02d}", size=12, fill="#0c1220", anchor="middle", weight=700, font=MONO))
+        out.append(text(28, y + h / 2 + 5, f"{i + 1:02d}", size=12, fill="#ffffff", anchor="middle", weight=700, font=MONO))
         out.append(text(78, y + 27, s["title"], size=15, weight=600))
         if s.get("tag"):
             out.append(text(W - 24, y + 27, s["tag"], size=11, fill=GOLD, anchor="end", font=MONO))
@@ -310,7 +314,7 @@ def funnel(spec):
         cx = 230
         col = _lerp(STEEL, GOLD, i / max(1, len(stages) - 1))
         out.append(f'<path d="M{cx - w1 / 2:.1f},{y} L{cx + w1 / 2:.1f},{y} L{cx + w2 / 2:.1f},{y + sh - 4} L{cx - w2 / 2:.1f},{y + sh - 4} Z" fill="{col}"/>')
-        out.append(text(cx, y + sh / 2 + 4, fmt(v, spec), size=15, fill="#0c1220" if i > len(stages) / 2 else TEXT, anchor="middle", weight=700, font=MONO))
+        out.append(text(cx, y + sh / 2 + 4, fmt(v, spec), size=15, fill="#ffffff" if i > len(stages) / 2 else TEXT, anchor="middle", weight=700, font=MONO))
         out.append(text(410, y + 22, label, size=14, weight=600))
         if note:
             out.append(text(410, y + 40, note[0], size=12, fill=SUB))
@@ -323,10 +327,10 @@ def quadrant(spec):
     W, H, L, B, T, R = 720, 470, 56, 46, 14, 20
     pw, ph = W - L - R, H - T - B
     q = spec.get("quadrants", ["", "", "", ""])  # TL, TR, BL, BR
-    out = [f'<rect x="{L}" y="{T}" width="{pw}" height="{ph}" fill="#1a2c45" rx="8"/>',
+    out = [f'<rect x="{L}" y="{T}" width="{pw}" height="{ph}" fill="#f9f9f5" stroke="rgba(20,28,37,.08)" rx="8"/>',
            f'<rect x="{L + pw / 2}" y="{T}" width="{pw / 2}" height="{ph / 2}" fill="{GOLD}" fill-opacity=".09"/>',
-           f'<line x1="{L + pw / 2}" x2="{L + pw / 2}" y1="{T}" y2="{T + ph}" stroke="rgba(255,255,255,.15)" stroke-dasharray="4 4"/>',
-           f'<line x1="{L}" x2="{L + pw}" y1="{T + ph / 2}" y2="{T + ph / 2}" stroke="rgba(255,255,255,.15)" stroke-dasharray="4 4"/>']
+           f'<line x1="{L + pw / 2}" x2="{L + pw / 2}" y1="{T}" y2="{T + ph}" stroke="rgba(20,28,37,.12)" stroke-dasharray="4 4"/>',
+           f'<line x1="{L}" x2="{L + pw}" y1="{T + ph / 2}" y2="{T + ph / 2}" stroke="rgba(20,28,37,.12)" stroke-dasharray="4 4"/>']
     for k, (qx, qy, anc) in enumerate([(L + 12, T + 22, "start"), (L + pw - 12, T + 22, "end"),
                                        (L + 12, T + ph - 12, "start"), (L + pw - 12, T + ph - 12, "end")]):
         out.append(text(qx, qy, q[k], size=11.5, fill=GOLD if k == 1 else MUTED, anchor=anc, weight=600, font=MONO))
@@ -336,7 +340,7 @@ def quadrant(spec):
     for p in spec["points"]:
         x, y = L + pw * p["x"], T + ph * (1 - p["y"])
         col = GOLD if p.get("hl") else "#60a5fa"
-        out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{9 if p.get("hl") else 7}" fill="{col}" fill-opacity=".9" stroke="#132338" stroke-width="2"/>')
+        out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{9 if p.get("hl") else 7}" fill="{col}" fill-opacity=".9" stroke="#ffffff" stroke-width="2"/>')
         anc = "end" if p["x"] > .72 else "start"
         dx = -14 if anc == "end" else 14
         out.append(mtext(x + dx, y + 4, wrap(p["label"], 24), size=12, anchor=anc, weight=600 if p.get("hl") else 400))
@@ -351,9 +355,9 @@ def timeline(spec):
         sub = wrap(e.get("sub", ""), 70)
         h = 34 + len(sub) * 17
         out.append(text(110, y + 18, e["when"], size=12, fill=GOLD, anchor="end", weight=600, font=MONO))
-        out.append(f'<circle cx="134" cy="{y + 13}" r="7" fill="{GOLD if e.get("hl") else STEEL}" stroke="#132338" stroke-width="3"/>')
+        out.append(f'<circle cx="134" cy="{y + 13}" r="7" fill="{GOLD if e.get("hl") else STEEL}" stroke="#ffffff" stroke-width="3"/>')
         if i < len(ev) - 1:
-            out.append(f'<line x1="134" x2="134" y1="{y + 22}" y2="{y + h + 6}" stroke="rgba(255,255,255,.14)" stroke-width="2"/>')
+            out.append(f'<line x1="134" x2="134" y1="{y + 22}" y2="{y + h + 6}" stroke="rgba(20,28,37,.12)" stroke-width="2"/>')
         out.append(text(156, y + 18, e["title"], size=14.5, weight=600))
         out.append(mtext(156, y + 38, sub, size=12.5, lh=1.36, fill=SUB))
         y += h + 10

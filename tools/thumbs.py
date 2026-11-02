@@ -6,22 +6,26 @@ Thumbnails are decorative: aria-hidden, no data claims, rendered in SVG with zer
 import hashlib
 import math
 
-GOLD = "#b8965a"
-STEEL = "#4a6a94"
-GREEN = "#34d399"
-RED = "#f87171"
-PURPLE = "#a78bfa"
-BLUE = "#60a5fa"
-SUB = "#8b919e"
-TEXT = "#e8e4dc"
-GRID = "rgba(255,255,255,.06)"
+GOLD = "#c9a961"
+GOLDL = "#a68a3e"
+STEEL = "#3b6b8a"
+NAVY = "#1a2f4a"
+GREEN = "#16a34a"
+RED = "#dc2626"
+PURPLE = "#7c3aed"
+BLUE = "#8aafc4"
+AMBER = "#d97706"
+DARK = "#141c25"
+SUB = "rgba(20,28,37,0.55)"
+TEXT = "#141c25"
+GRID = "rgba(20,28,37,0.06)"
 W, H = 320, 140
 
 
 def _wrap(inner, uid):
     grid = "".join(f'<line x1="16" x2="{W - 16}" y1="{y}" y2="{y}" stroke="{GRID}"/>' for y in (30, 62, 94, 126))
     return (f'<svg viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="JetBrains Mono,monospace">'
-            f'<defs><linearGradient id="g{uid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="{GOLD}" stop-opacity=".28"/>'
+            f'<defs><linearGradient id="g{uid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="{GOLD}" stop-opacity=".32"/>'
             f'<stop offset="1" stop-color="{GOLD}" stop-opacity="0"/></linearGradient>'
             f'<linearGradient id="r{uid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="{RED}" stop-opacity=".25"/>'
             f'<stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient></defs>{grid}{inner}</svg>')
@@ -44,7 +48,7 @@ def bars(labels, hi=-1, heights=(70, 52, 84), colors=None):
             col = (colors[i] if colors else (GOLD if on or hi == -1 else STEEL))
             s += f'<rect class="tb" x="{x:.0f}" y="{122 - h}" width="{bw}" height="{h}" rx="2" fill="{col}" opacity="{1 if on else .55}"/>'
             s += _t(x + bw / 2, 134, lab, anchor="middle", size=7)
-        return s + f'<line x1="16" x2="{W - 16}" y1="122" y2="122" stroke="rgba(255,255,255,.18)"/>'
+        return s + f'<line x1="16" x2="{W - 16}" y1="122" y2="122" stroke="rgba(20,28,37,.14)"/>'
     return f
 
 
@@ -63,7 +67,7 @@ def line(kind, labels=()):
         if kind == "diverge":
             s += f'<path class="tl" d="M16,100 C90,92 180,80 304,64" fill="none" stroke="{SUB}" stroke-width="1.6" stroke-dasharray="4 4"/>'
         if kind == "kink":
-            s += f'<path d="M16,100 L304,58" fill="none" stroke="{SUB}" stroke-width="1.2" stroke-dasharray="4 4"/><circle cx="150" cy="100" r="3.5" fill="#132338" stroke="{GOLD}" stroke-width="1.5"/>'
+            s += f'<path d="M16,100 L304,58" fill="none" stroke="{SUB}" stroke-width="1.2" stroke-dasharray="4 4"/><circle cx="150" cy="100" r="3.5" fill="#ffffff" stroke="{GOLD}" stroke-width="1.5"/>'
         s += f'<path class="tl" d="{d}" fill="none" stroke="{GOLD}" stroke-width="2.2"/>'
         for i, lab in enumerate(labels):
             s += _t(24 + i * (W - 48) / max(1, len(labels) - 1), 18, lab, GOLD if i == len(labels) - 1 else SUB,
@@ -76,11 +80,11 @@ def pipeline(labels):
     def f(u):
         n = len(labels)
         xs = [36 + i * (W - 72) / (n - 1) for i in range(n)]
-        s = f'<line x1="{xs[0]}" x2="{xs[-1]}" y1="70" y2="70" stroke="rgba(184,150,90,.4)" stroke-width="1.5"/>'
+        s = f'<line x1="{xs[0]}" x2="{xs[-1]}" y1="70" y2="70" stroke="rgba(201,169,97,.45)" stroke-width="1.5"/>'
         for i, (x, lab) in enumerate(zip(xs, labels)):
             last = i == n - 1
-            s += f'<circle cx="{x:.0f}" cy="70" r="11" fill="#132338" stroke="{"#34d399" if last else GOLD}" stroke-width="1.6"/>'
-            s += _t(x, 74, str(i + 1), "#34d399" if last else GOLD, "middle", 9) + _t(x, 102, lab, anchor="middle", size=7)
+            s += f'<circle cx="{x:.0f}" cy="70" r="11" fill="#ffffff" stroke="{"#16a34a" if last else GOLD}" stroke-width="1.6"/>'
+            s += _t(x, 74, str(i + 1), "#16a34a" if last else GOLD, "middle", 9) + _t(x, 102, lab, anchor="middle", size=7)
         s += f'<circle class="tdot" r="3" cy="70" cx="{xs[0]}" fill="{GOLD}"/>'
         return s
     return f
@@ -88,11 +92,11 @@ def pipeline(labels):
 
 def doc(label, marks=(1, 4)):
     def f(u):
-        s = f'<rect x="96" y="14" width="128" height="114" rx="6" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.14)"/>'
+        s = f'<rect x="96" y="14" width="128" height="114" rx="6" fill="#ffffff" stroke="rgba(20,28,37,.12)"/>'
         for i in range(7):
             y, w = 32 + i * 13, (96, 104, 70, 100, 88, 60, 98)[i]
             hl = i in marks
-            s += f'<rect x="110" y="{y}" width="{w}" height="{5}" rx="2.5" fill="{GOLD if hl else "rgba(255,255,255,.14)"}" opacity="{.9 if hl else 1}"/>'
+            s += f'<rect x="110" y="{y}" width="{w}" height="{5}" rx="2.5" fill="{GOLD if hl else "rgba(20,28,37,.12)"}" opacity="{.9 if hl else 1}"/>'
             if hl:
                 s += f'<circle cx="244" cy="{y + 2.5}" r="3" fill="{GOLD}"/><line x1="216" x2="240" y1="{y + 2.5}" y2="{y + 2.5}" stroke="{GOLD}" stroke-dasharray="2 3"/>'
         return s + _t(24, 20, label)
@@ -106,7 +110,7 @@ def donut(label, frac=.62, inner_frac=.4, sub_labels=("PROMOTER", "PLEDGED", "PU
         return f"M{x0:.1f},{y0:.1f} A{r},{r} 0 {1 if f1 - f0 > .5 else 0} 1 {x1:.1f},{y1:.1f}"
 
     def f(u):
-        return (f'<circle cx="150" cy="70" r="44" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="14"/>'
+        return (f'<circle cx="150" cy="70" r="44" fill="none" stroke="rgba(20,28,37,.08)" stroke-width="14"/>'
                 f'<path class="tl" d="{arc(0, frac, 44)}" fill="none" stroke="{GOLD}" stroke-width="14"/>'
                 f'<path d="{arc(0, frac * inner_frac, 44)}" fill="none" stroke="#f87171" stroke-width="14" opacity=".85"/>'
                 + _t(224, 56, sub_labels[0], GOLD) + _t(224, 70, sub_labels[1], "#f87171") + _t(224, 84, sub_labels[2]) + _t(24, 20, label))
@@ -132,7 +136,7 @@ def nodes(center, leaves):
             a = -math.pi / 2 + i * 2 * math.pi / n
             x, y = 160 + 104 * math.cos(a), 70 + 48 * math.sin(a)
             s += f'<line x1="160" y1="70" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(184,150,90,.35)"/>'
-            s += f'<rect x="{x - 34:.0f}" y="{y - 9:.0f}" width="68" height="18" rx="9" fill="#132338" stroke="rgba(255,255,255,.18)"/>' + _t(x, y + 3, lab, anchor="middle", size=7)
+            s += f'<rect x="{x - 34:.0f}" y="{y - 9:.0f}" width="68" height="18" rx="9" fill="#ffffff" stroke="rgba(20,28,37,.14)"/>' + _t(x, y + 3, lab, anchor="middle", size=7)
         return s + f'<circle cx="160" cy="70" r="20" fill="{GOLD}"/>' + _t(160, 73, center, "#0c1220", "middle", 8)
     return f
 
@@ -168,7 +172,7 @@ def checks(label, items):
             s += (f'<rect x="60" y="{y - 9}" width="12" height="12" rx="3" fill="none" stroke="{GOLD}"/>'
                   f'<path d="M62.5,{y - 3} l3,3 l5,-6" fill="none" stroke="{GOLD}" stroke-width="1.6"/>'
                   + _t(84, y, it, "#d3d0c9", size=8)
-                  + f'<rect x="210" y="{y - 6}" width="{40 + (i * 23) % 50}" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/>')
+                  + f'<rect x="210" y="{y - 6}" width="{40 + (i * 23) % 50}" height="5" rx="2.5" fill="rgba(20,28,37,.10)"/>')
         return s
     return f
 
@@ -218,7 +222,7 @@ def recession_dip(label):
     def f(u):
         s = _t(24, 20, label)
         # Zero baseline
-        s += f'<line x1="20" x2="{W - 20}" y1="74" y2="74" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>'
+        s += f'<line x1="20" x2="{W - 20}" y1="74" y2="74" stroke="rgba(20,28,37,.16)" stroke-width="1.2"/>'
         s += _t(24, 71, "0% GROWTH", SUB, size=7)
         # 5 quarterly bars: Q1 (+5.2%), Q2 (-1.8%), Q3 (-2.4%), Q4 (+1.5%), Q5 (+4.2%)
         quarters = [("Q1", 32, 5.2, GREEN), ("Q2", -18, -1.8, RED), ("Q3", -28, -2.4, RED),
@@ -250,7 +254,7 @@ def gdp_breakdown(label):
             s += f'<rect x="{x}" y="{118 - h:.0f}" width="68" height="{h:.0f}" rx="3" fill="{col}" opacity=".85"/>'
             s += _t(x + 34, 112 - h, pct, col, "middle", size=9, weight=600)
             s += _t(x + 34, 130, name, SUB, "middle", size=7)
-        s += f'<line x1="20" x2="{W - 20}" y1="118" y2="118" stroke="rgba(255,255,255,.2)"/>'
+        s += f'<line x1="20" x2="{W - 20}" y1="118" y2="118" stroke="rgba(20,28,37,.12)"/>'
         s += _t(W - 24, 20, "GVA SECTORS", GOLD, "end", size=7)
         return s
     return f
@@ -262,7 +266,7 @@ def tax_reconcile(label):
         s = _t(24, 20, label)
         docs = [("FORM 26AS", "TDS / TCS", 34), ("AIS / TIS", "SFT TRANSACTIONS", 126), ("ITR-2 / 3", "CAPITAL GAINS", 218)]
         for name, sub, x in docs:
-            s += f'<rect x="{x}" y="36" width="68" height="66" rx="4" fill="rgba(255,255,255,.04)" stroke="{GOLD}" stroke-width="1.2"/>'
+            s += f'<rect x="{x}" y="36" width="68" height="66" rx="4" fill="rgba(20,28,37,.04)" stroke="{GOLD}" stroke-width="1.2"/>'
             s += _t(x + 34, 56, name, GOLD, "middle", size=7, weight=600)
             s += _t(x + 34, 70, sub.split()[0], SUB, "middle", size=6)
             s += _t(x + 34, 80, sub.split()[-1] if len(sub.split()) > 1 else "", SUB, "middle", size=6)
@@ -284,7 +288,7 @@ def esop_ladder(label):
             s += f'<rect x="{x}" y="{y}" width="54" height="{122 - y}" rx="3" fill="{GOLD}" opacity="{.35 + i * .2:.2f}"/>'
             s += _t(x + 27, y - 6, st, GOLD if i >= 2 else TEXT, "middle", size=7, weight=600)
             s += _t(x + 27, 132, sub, SUB, "middle", size=6)
-        s += f'<line x1="20" x2="{W - 20}" y1="122" y2="122" stroke="rgba(255,255,255,.2)"/>'
+        s += f'<line x1="20" x2="{W - 20}" y1="122" y2="122" stroke="rgba(20,28,37,.12)"/>'
         return s
     return f
 
@@ -293,7 +297,7 @@ def slb_circuit(label):
     """Securities Lending & Borrowing exchange clearing loop."""
     def f(u):
         s = _t(24, 20, label)
-        s += f'<rect x="26" y="44" width="70" height="52" rx="4" fill="#132338" stroke="{GOLD}"/>'
+        s += f'<rect x="26" y="44" width="70" height="52" rx="4" fill="#ffffff" stroke="{GOLD}"/>'
         s += _t(61, 66, "LENDER", GOLD, "middle", size=8, weight=600)
         s += _t(61, 80, "EARNS FEE", SUB, "middle", size=6)
 
@@ -302,7 +306,7 @@ def slb_circuit(label):
         s += _t(160, 74, "NSCCL / ICCL", TEXT, "middle", size=6)
         s += _t(160, 88, "GUARANTEE", GREEN, "middle", size=6)
 
-        s += f'<rect x="224" y="44" width="70" height="52" rx="4" fill="#132338" stroke="{STEEL}"/>'
+        s += f'<rect x="224" y="44" width="70" height="52" rx="4" fill="#ffffff" stroke="{STEEL}"/>'
         s += _t(259, 66, "BORROWER", STEEL, "middle", size=8, weight=600)
         s += _t(259, 80, "SHORT / ARB", SUB, "middle", size=6)
 
@@ -318,7 +322,7 @@ def transfer_bridge(label):
     """Demat account in-kind transfer: Demat A -> CDSL/NSDL -> Demat B."""
     def f(u):
         s = _t(24, 20, label)
-        s += f'<rect x="30" y="44" width="74" height="54" rx="4" fill="#132338" stroke="{GOLD}"/>'
+        s += f'<rect x="30" y="44" width="74" height="54" rx="4" fill="#ffffff" stroke="{GOLD}"/>'
         s += _t(67, 66, "SOURCE DP", GOLD, "middle", size=7, weight=600)
         s += _t(67, 80, "DEMAT A", TEXT, "middle", size=7)
 
@@ -326,7 +330,7 @@ def transfer_bridge(label):
         s += _t(160, 68, "CDSL/NSDL", GREEN, "middle", size=7, weight=600)
         s += _t(160, 79, "EASIEST", SUB, "middle", size=6)
 
-        s += f'<rect x="216" y="44" width="74" height="54" rx="4" fill="#132338" stroke="{GOLD}"/>'
+        s += f'<rect x="216" y="44" width="74" height="54" rx="4" fill="#ffffff" stroke="{GOLD}"/>'
         s += _t(253, 66, "TARGET DP", GOLD, "middle", size=7, weight=600)
         s += _t(253, 80, "DEMAT B", TEXT, "middle", size=7)
 
@@ -357,14 +361,14 @@ def cross_border(label):
     def f(u):
         s = _t(24, 20, label)
         # GIFT City Tower
-        s += f'<rect x="36" y="38" width="80" height="74" rx="4" fill="#132338" stroke="{GOLD}" stroke-width="1.4"/>'
+        s += f'<rect x="36" y="38" width="80" height="74" rx="4" fill="#ffffff" stroke="{GOLD}" stroke-width="1.4"/>'
         s += _t(76, 58, "GIFT IFSCA", GOLD, "middle", size=8, weight=600)
         s += _t(76, 72, "USD / INR", TEXT, "middle", size=7)
         s += _t(76, 86, "10Y TAX HOLIDAY", GREEN, "middle", size=6)
         s += _t(76, 98, "FIF VEHICLE", SUB, "middle", size=6)
 
         # Dubai Tower
-        s += f'<rect x="204" y="38" width="80" height="74" rx="4" fill="#132338" stroke="{BLUE}" stroke-width="1.4"/>'
+        s += f'<rect x="204" y="38" width="80" height="74" rx="4" fill="#ffffff" stroke="{BLUE}" stroke-width="1.4"/>'
         s += _t(244, 58, "DIFC / ADGM", BLUE, "middle", size=8, weight=600)
         s += _t(244, 72, "COMMON LAW", TEXT, "middle", size=7)
         s += _t(244, 86, "0% CT SFO", GREEN, "middle", size=6)
@@ -382,13 +386,13 @@ def trust_foundation(label):
     """Indian Trust vs UAE Foundation comparison."""
     def f(u):
         s = _t(24, 20, label)
-        s += f'<rect x="32" y="38" width="112" height="74" rx="4" fill="#132338" stroke="{STEEL}"/>'
+        s += f'<rect x="32" y="38" width="112" height="74" rx="4" fill="#ffffff" stroke="{STEEL}"/>'
         s += _t(88, 56, "INDIAN TRUST", STEEL, "middle", size=8, weight=600)
         s += _t(88, 70, "Trusts Act 1882", SUB, "middle", size=6)
         s += _t(88, 84, "Fiduciary Contract", TEXT, "middle", size=6)
         s += _t(88, 98, "MMR 42.7% Drag", RED, "middle", size=6)
 
-        s += f'<rect x="176" y="38" width="112" height="74" rx="4" fill="#132338" stroke="{GOLD}"/>'
+        s += f'<rect x="176" y="38" width="112" height="74" rx="4" fill="#ffffff" stroke="{GOLD}"/>'
         s += _t(232, 56, "UAE FOUNDATION", GOLD, "middle", size=8, weight=600)
         s += _t(232, 70, "DIFC / ADGM Law", SUB, "middle", size=6)
         s += _t(232, 84, "Legal Body Corporate", TEXT, "middle", size=6)
@@ -406,7 +410,7 @@ def ops_engine(label):
         nodes_ = [("FIX / OMS", 34), ("BROKER REC", 104), ("CUSTODIAN", 174), ("SHADOW NAV", 244)]
         for i, (name, x) in enumerate(nodes_):
             col = GREEN if i == 3 else GOLD
-            s += f'<rect x="{x}" y="52" width="56" height="38" rx="3" fill="#132338" stroke="{col}"/>'
+            s += f'<rect x="{x}" y="52" width="56" height="38" rx="3" fill="#ffffff" stroke="{col}"/>'
             s += _t(x + 28, 68, name.split()[0], col, "middle", size=7, weight=600)
             s += _t(x + 28, 80, name.split()[-1] if len(name.split()) > 1 else "", SUB, "middle", size=6)
             if i < len(nodes_) - 1:
@@ -424,7 +428,7 @@ def factor_trio(label):
         pts = [(160, 36, "MOMENTUM", GOLD), (90, 102, "QUALITY", GREEN), (230, 102, "LOW VOL", BLUE)]
         s += f'<polygon points="160,36 90,102 230,102" fill="rgba(184,150,90,.06)" stroke="{GOLD}" stroke-width="1.2"/>'
         for x, y, name, col in pts:
-            s += f'<circle cx="{x}" cy="{y}" r="22" fill="#132338" stroke="{col}" stroke-width="1.6"/>'
+            s += f'<circle cx="{x}" cy="{y}" r="22" fill="#ffffff" stroke="{col}" stroke-width="1.6"/>'
             s += _t(x, y + 4, name, col, "middle", size=7, weight=600)
         s += _t(160, 84, "NSE 500 ALPHA", TEXT, "middle", size=7, weight=600)
         s += _t(W / 2, 132, "ENSEMBLE MULTI-FACTOR MODEL", GOLD, "middle", size=7)
@@ -466,7 +470,7 @@ def waterfall_exit(label):
             s += f'<rect x="{x}" y="{y:.0f}" width="44" height="{h:.0f}" rx="2" fill="{col}" opacity=".85"/>'
             s += _t(x + 22, y - 5, f"{val:+d}" if i > 0 else f"{val}", col, "middle", size=7, weight=600)
             s += _t(x + 22, 132, name, SUB, "middle", size=6)
-        s += f'<line x1="20" x2="{W - 20}" y1="118" y2="118" stroke="rgba(255,255,255,.2)"/>'
+        s += f'<line x1="20" x2="{W - 20}" y1="118" y2="118" stroke="rgba(20,28,37,.12)"/>'
         return s
     return f
 
@@ -619,6 +623,6 @@ def walkthrough(uid="wt"):
     for i, h in enumerate((84, 58, 42, 32, 26)):
         s += f'<rect class="tb" x="{34 + i * 52}" y="{122 - h}" width="30" height="{h}" rx="2" fill="{GOLD}" opacity=".45"/>'
     s += f'<path class="tl" d="M30,30 C90,62 140,86 200,96 S280,104 300,106" fill="none" stroke="#e8e4dc" stroke-width="2"/>'
-    s += f'<path class="tl" d="M30,62 C90,92 140,104 200,110 S280,114 300,115" fill="none" stroke="#34d399" stroke-width="2"/>'
+    s += f'<path class="tl" d="M30,62 C90,92 140,104 200,110 S280,114 300,115" fill="none" stroke="#16a34a" stroke-width="2"/>'
     s += _t(24, 18, "COST PER REPORT") + _t(296, 18, "★ 5 STEPS", GOLD, "end")
     return _wrap(s, uid)
