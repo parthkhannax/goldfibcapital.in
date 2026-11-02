@@ -548,6 +548,18 @@ THUMBS = {
     "derivative-margin-optimization-span-var": bars(("SPAN BASE", "EXPOSURE", "SPREAD BENEFIT", "FREE CASH"), 2, (75, 45, 90, 85), (STEEL, RED, GREEN, GOLD)),
     "sebi-mishandling-and-trade-allocation-audit": checks("PRO-RATA ALLOCATION AUDIT", ["TIME PRIORITY", "VWAP FILLS", "ZERO SKEW", "SEBI COMPLIANT"]),
     "reverse-dcf-valuation-model-india": funnel(("MARKET CAP", "IMPLIED FCF", "EXPECTED ROCE", "REALITY CHECK")),
+
+    # ── Batch 4: Institutional Research, Forensics & Capital Allocation ──
+    "forensic-accounting-checklist-indian-equities": checks("FORENSIC RED FLAGS", ["CFO/EBITDA", "DEBTOR DAYS", "AUDITOR EXIT", "CWIP STAGNANT"]),
+    "analyzing-contingent-liabilities-notes-accounts": bars(("TAX DISPUTES", "GUARANTEES", "CUSTOMS", "NET WORTH"), 3, (55, 78, 35, 95), (RED, RED, STEEL, GREEN)),
+    "free-cash-flow-conversion-capex-cycles": waterfall_exit("FCF CONVERSION WATERFALL"),
+    "auditing-related-party-transactions-india": donut("RPT SPREAD", frac=.68, inner_frac=.38, sub_labels=("LOANS 42%", "TRADING 28%", "ROYALTY 18%")),
+    "working-capital-cycle-cash-conversion-trap": bars(("DSO 148D", "DIO 85D", "DPO 55D", "NET CCC"), 3, (85, 55, 40, 95), (STEEL, STEEL, SUB, RED)),
+    "order-book-to-bill-ratio-epc-capital-goods": bars(("REVENUE", "ORDER BOOK", "BOOK-TO-BILL"), 1, (45, 95, 70), (STEEL, GOLD, GREEN)),
+    "analyzing-indian-nbfc-asset-quality-npa": bars(("STAGE 1", "STAGE 2", "STAGE 3", "PCR 65%"), 3, (90, 40, 25, 80), (GREEN, STEEL, RED, GOLD)),
+    "identifying-moats-in-indian-b2b-manufacturing": funnel(("OEM AUDIT", "SWITCHING COST", "PRICING POWER", "25% ROCE")),
+    "promoter-capital-allocation-track-record": bars(("ROCE 26%", "COST OF CAP", "EVA SPREAD"), 0, (92, 50, 75), (GOLD, STEEL, GREEN)),
+    "institutional-sell-discipline-stop-loss": drawdown("PORTFOLIO STOP LOSS", (("PEAK", "0%"), ("TRIM", "-8%"), ("CUT", "-15%"))),
 }
 
 
