@@ -282,16 +282,24 @@ def build_index(arts):
 {NAV}
 <main>
 <header class="lib-head"><div class="container">
+  <span class="eyebrow" style="letter-spacing: .2em; font-size: .75rem; margin-bottom: 12px; display: inline-block;">INSTITUTIONAL EQUITY INTELLIGENCE</span>
   <h1>Goldfib <em>Research</em></h1>
   <p class="dek">Deeply researched guides on institutional-grade equity research in India, research automation, family office investing and the student research model, organised from Beginner to Advanced. Search for a question, or pick a topic and start at the top.</p>
   <div class="cta-row center">{CTA_BTN}<a class="btn ghost" href="{mailto('Hello from the Goldfib research library')}">{HI_TEXT}</a></div>
-  <label class="search"><span class="sr">Search the guides</span><input type="search" id="lib-q" placeholder="Search {len(arts)} guides: try &ldquo;DCF&rdquo;, &ldquo;promoter pledge&rdquo;, &ldquo;PMS&rdquo;" autocomplete="off"></label>
+  <label class="search"><span class="sr">Search the guides</span><input type="search" id="lib-q" placeholder="Search {len(arts)} guides: try &ldquo;DCF&rdquo;, &ldquo;promoter pledge&rdquo;, &ldquo;PMS&rdquo; (Press Esc to clear)" autocomplete="off"></label>
   <p class="start-label">New here? Start with</p>
   <div class="start-grid">{start_cards}</div>
   {pills}
   {levels}
+  <div class="view-toolbar">
+    <div class="results-badge">Showing <b id="results-count">{len(arts)}</b> of {len(arts)} research guides</div>
+    <div class="view-toggle" role="group" aria-label="Layout view">
+      <button id="view-grid" class="view-btn on" aria-pressed="true">⊞ Cards</button>
+      <button id="view-ledger" class="view-btn" aria-pressed="false">≡ Ledger</button>
+    </div>
+  </div>
 </div></header>
-<div class="container">
+<div class="container library-container">
   {sections}
   <p class="no-results" hidden>No guide matches that yet. <a href="{mailto('Research question')}">Ask us the question</a> and we may write it next.</p>
   <aside class="cta cta-end"><span class="eyebrow">Work with Goldfib</span><h3>Need research done, not just read about?</h3><p>We build investment theses, initiation-style equity research and research automation for family offices, at a fraction of the cost of an in-house desk.</p><div class="cta-row">{CTA_BTN}<a class="btn ghost" href="{mailto('Family Office Partnership')}">{HI_TEXT} →</a></div></aside>

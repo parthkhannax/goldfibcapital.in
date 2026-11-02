@@ -1,59 +1,176 @@
-/* Shared behaviour for the Goldfib research library: reading progress, TOC highlight,
-   scroll-reveal, topic filter tabs and the mobile menu. */
+/* ==========================================================================
+   Goldfib Capital · Interaction & Micro-Interaction Engine
+   - Easing: Decisive spring curves
+   - Live High-Speed Search with live result counts
+   - Grid vs Institutional Ledger View Switcher
+   - Dynamic Scroll-Spy Table of Contents
+   - Accessible keyboard focus and mobile navigation
+   ========================================================================== */
+
 (function () {
-  var $$ = function (s) { return [].slice.call(document.querySelectorAll(s)); };
+  'use strict';
 
-  // reading progress + active TOC entry
-  var p = document.getElementById('progress'), toc = $$('.toc a[href^="#"]');
-  function onScroll() {
-    var h = document.documentElement;
-    if (p) p.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
-    var cur;
-    toc.forEach(function (a) { var t = document.getElementById(a.getAttribute('href').slice(1)); if (t && t.getBoundingClientRect().top < 140) cur = a; });
-    toc.forEach(function (a) { a.classList.toggle('on', a === cur); });
-  }
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  var $$ = function (sel, ctx) {
+    return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
+  };
 
-  // scroll-reveal (content stays visible without JS or with reduced motion)
-  var targets = $$('.prose > .viz, .prose > .stats, .prose > .callout, .prose > .takeaways, .cta, .rel, .cluster-head, .card, .start');
-  if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
-    targets.forEach(function (el, i) {
-      if (el.getBoundingClientRect().top < innerHeight) return;
-      el.classList.add('reveal'); el.style.transitionDelay = (el.classList.contains('card') ? (i % 3) * 70 : 0) + 'ms'; io.observe(el);
+  // 1. Reading Progress Bar & Scroll Spy for Table of Contents
+  var progressBar = document.getElementById('progress');
+  var tocLinks = $$('.toc a[href^="#"]');
+  var headings = tocLinks.map(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  function handleScroll() {
+    var docEl = document.documentElement;
+    var totalHeight = docEl.scrollHeight - docEl.clientHeight;
+    if (progressBar && totalHeight > 0) {
+      progressBar.style.width = ((docEl.scrollTop / totalHeight) * 100) + '%';
+    }
+
+    if (!tocLinks.length || !headings.length) return;
+
+    var scrollY = window.pageYOffset || docEl.scrollTop;
+    var currentActive = null;
+
+    for (var i = 0; i < headings.length; i++) {
+      var top = headings[i].getBoundingClientRect().top;
+      if (top <= 160) {
+        currentActive = tocLinks[i];
+      }
+    }
+
+    tocLinks.forEach(function (link) {
+      link.classList.toggle('on', link === currentActive);
     });
   }
 
-  // library filters: topic pills, level, search (combined)
-  var q = document.getElementById('lib-q'), topic = 'all', lvl = 'all';
-  function apply() {
-    var term = q ? q.value.trim().toLowerCase() : '', any = false;
-    $$('.cluster').forEach(function (c) {
-      var shown = 0;
-      $$('.card', c).forEach(function (k) {
-        var ok = (topic === 'all' || k.dataset.cluster === topic) && (lvl === 'all' || k.dataset.level === lvl) &&
-          (!term || term.split(/\s+/).every(function (w) { return k.dataset.search.indexOf(w) > -1; }));
-        k.hidden = !ok; if (ok) { shown++; k.classList.add('in'); }
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  // 2. Library Instant Search, Topic & Level Filtering
+  var searchInput = document.getElementById('lib-q');
+  var pillButtons = $$('.pill[data-filter]');
+  var levelButtons = $$('.lv[data-level]');
+  var clusters = $$('.cluster');
+  var allCards = $$('.card');
+  var noResults = document.querySelector('.no-results');
+  var resultsCounter = document.getElementById('results-count');
+
+  var currentTopic = 'all';
+  var currentLevel = 'all';
+
+  function filterLibrary() {
+    var query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    var tokens = query ? query.split(/\s+/) : [];
+    var visibleTotal = 0;
+
+    clusters.forEach(function (cluster) {
+      var clusterCards = $$('.card', cluster);
+      var clusterVisible = 0;
+
+      clusterCards.forEach(function (card) {
+        var cardTopic = card.getAttribute('data-cluster') || '';
+        var cardLevel = card.getAttribute('data-level') || '';
+        var searchIndex = (card.getAttribute('data-search') || '').toLowerCase();
+
+        var matchesTopic = (currentTopic === 'all' || cardTopic === currentTopic);
+        var matchesLevel = (currentLevel === 'all' || cardLevel === currentLevel);
+        var matchesQuery = !tokens.length || tokens.every(function (token) {
+          return searchIndex.indexOf(token) !== -1;
+        });
+
+        var isVisible = matchesTopic && matchesLevel && matchesQuery;
+        card.style.display = isVisible ? '' : 'none';
+
+        if (isVisible) {
+          clusterVisible++;
+          visibleTotal++;
+        }
       });
-      c.hidden = !shown; if (shown) any = true;
-    });
-    var nr = document.querySelector('.no-results'); if (nr) nr.hidden = any;
-  }
-  $$('.pill[data-filter]').forEach(function (t) {
-    t.addEventListener('click', function () {
-      topic = t.dataset.filter;
-      $$('.pill[data-filter]').forEach(function (x) { x.classList.toggle('on', x === t); x.setAttribute('aria-pressed', x === t); });
-      apply();
-    });
-  });
-  $$('.lv').forEach(function (t) {
-    t.addEventListener('click', function () { lvl = t.dataset.level; $$('.lv').forEach(function (x) { x.classList.toggle('on', x === t); }); apply(); });
-  });
-  if (q) q.addEventListener('input', apply);
 
-  // mobile menu
-  var nav = document.querySelector('.nav'), btn = document.querySelector('.nav-toggle');
-  if (btn) btn.addEventListener('click', function () { var o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+      cluster.style.display = clusterVisible > 0 ? '' : 'none';
+    });
+
+    if (noResults) {
+      noResults.hidden = visibleTotal > 0;
+    }
+
+    if (resultsCounter) {
+      resultsCounter.textContent = visibleTotal;
+    }
+  }
+
+  pillButtons.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      currentTopic = pill.getAttribute('data-filter') || 'all';
+      pillButtons.forEach(function (btn) {
+        var isTarget = btn === pill;
+        btn.classList.toggle('on', isTarget);
+        btn.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
+      });
+      filterLibrary();
+    });
+  });
+
+  levelButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      currentLevel = btn.getAttribute('data-level') || 'all';
+      levelButtons.forEach(function (b) {
+        b.classList.toggle('on', b === btn);
+      });
+      filterLibrary();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterLibrary);
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.activeElement === searchInput) {
+        searchInput.value = '';
+        filterLibrary();
+        searchInput.blur();
+      }
+    });
+  }
+
+  // 3. View Switcher (Grid vs Institutional Ledger View)
+  var viewGridBtn = document.getElementById('view-grid');
+  var viewLedgerBtn = document.getElementById('view-ledger');
+  var libraryContainer = document.querySelector('.library-container');
+
+  function setView(mode) {
+    if (!libraryContainer) return;
+    if (mode === 'ledger') {
+      libraryContainer.classList.add('mode-ledger');
+      if (viewLedgerBtn) viewLedgerBtn.classList.add('on');
+      if (viewGridBtn) viewGridBtn.classList.remove('on');
+      try { localStorage.setItem('goldfib_lib_view', 'ledger'); } catch (e) {}
+    } else {
+      libraryContainer.classList.remove('mode-ledger');
+      if (viewGridBtn) viewGridBtn.classList.add('on');
+      if (viewLedgerBtn) viewLedgerBtn.classList.remove('on');
+      try { localStorage.setItem('goldfib_lib_view', 'grid'); } catch (e) {}
+    }
+  }
+
+  if (viewGridBtn && viewLedgerBtn) {
+    viewGridBtn.addEventListener('click', function () { setView('grid'); });
+    viewLedgerBtn.addEventListener('click', function () { setView('ledger'); });
+    try {
+      var savedView = localStorage.getItem('goldfib_lib_view');
+      if (savedView === 'ledger') setView('ledger');
+    } catch (e) {}
+  }
+
+  // 4. Mobile Navigation Toggle
+  var nav = document.querySelector('.nav');
+  var navToggle = document.querySelector('.nav-toggle');
+  if (nav && navToggle) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
 })();
