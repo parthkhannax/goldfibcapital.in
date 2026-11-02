@@ -224,7 +224,7 @@ main {
 }
 
 /* ==========================================================================
-   Buttons (Tactile & High Contrast)
+   Buttons (Tactile & High Contrast — Institutional Luxury)
    ========================================================================== */
 .btn {
   display: inline-flex;
@@ -232,42 +232,56 @@ main {
   gap: 8px;
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
   padding: 10px 20px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--goldl);
-  background: linear-gradient(180deg, #d4bc6a, #c9a961);
-  color: var(--dark);
+  border: 1px solid rgba(201, 169, 97, 0.45);
+  background: linear-gradient(180deg, #1f2c3d 0%, #141c25 100%);
+  color: #ffffff;
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(20, 28, 37, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 3px 10px rgba(20, 28, 37, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.14);
   cursor: pointer;
+  position: relative;
   transition: transform var(--duration-fast) var(--ease-spring),
               box-shadow var(--duration-fast) var(--ease-spring),
-              filter var(--duration-fast);
+              border-color var(--duration-fast),
+              background var(--duration-fast);
 }
 
 .btn:hover {
-  filter: brightness(1.04);
+  background: linear-gradient(180deg, #26364a 0%, #17212c 100%);
+  border-color: #c9a961;
+  color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
+  box-shadow: 0 6px 20px rgba(20, 28, 37, 0.22), 0 0 14px rgba(201, 169, 97, 0.3);
 }
 
 .btn:active {
   transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(20, 28, 37, 0.1);
+  box-shadow: 0 1px 3px rgba(20, 28, 37, 0.2);
+}
+
+.btn svg {
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
 }
 
 .btn.ghost, .btn.line {
   background: #ffffff;
   color: var(--dark);
   border: 1px solid rgba(20, 28, 37, 0.16);
-  box-shadow: 0 1px 2px rgba(20, 28, 37, 0.04);
+  box-shadow: 0 1px 3px rgba(20, 28, 37, 0.04);
 }
 
 .btn.ghost:hover, .btn.line:hover {
-  border-color: var(--goldl);
+  border-color: rgba(20, 28, 37, 0.35);
   color: var(--dark);
   background: #fbfbf8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 28, 37, 0.08);
 }
 
 .btn.small {

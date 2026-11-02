@@ -24,225 +24,876 @@
 /* Hero Section */
 .hero {
   position: relative;
-  padding: 72px 0 64px;
+  padding: 80px 0 72px;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .hero .container {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 48px;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 52px;
   align-items: center;
 }
 
-.kicker {
+/* Kicker Badge: Anti-AI, bespoke institutional pill */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid rgba(20, 28, 37, 0.12);
+  border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--goldl);
-  display: inline-block;
-  margin-bottom: 14px;
+  color: var(--dark);
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px rgba(20, 28, 37, 0.04);
 }
 
-.hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 4.4vw, 3.4rem);
-  font-weight: 900;
-  letter-spacing: -0.015em;
-  line-height: 1.14;
-  margin-bottom: 20px;
+.badge-radar {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-ping {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.5;
+  animation: badgePulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--goldl);
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.badge-geo {
+  font-weight: 700;
   color: var(--dark);
 }
 
-.hero h1 em {
-  font-style: italic;
+.badge-divider {
+  color: rgba(20, 28, 37, 0.25);
   font-weight: 400;
-  color: var(--goldl);
+}
+
+.badge-sub {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
+/* Main Heading */
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 4.2vw, 3.45rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  color: var(--dark);
+}
+
+.hero-emphasis {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.hero-emphasis em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--navy);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-flourish {
+  position: absolute;
+  bottom: -6px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: 14px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-flourish path {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: flourishDraw 1.2s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flourishDraw {
+  to { stroke-dashoffset: 0; }
 }
 
 .hero .lead {
   font-size: 1.12rem;
   color: var(--text-secondary);
   line-height: 1.72;
-  max-width: 540px;
+  max-width: 550px;
   margin-bottom: 32px;
 }
 
-/* Institutional Live Telemetry Cockpit (Proflex Card Style) */
-.cockpit {
+/* Institutional Proof Strip */
+.hero-proof-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(20, 28, 37, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.proof-item b {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.proof-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.proof-bullet.green { background: var(--green); }
+.proof-bullet.navy { background: var(--navy); }
+.proof-bullet.gold { background: var(--goldl); }
+
+.proof-sep {
+  color: rgba(20, 28, 37, 0.2);
+}
+
+/* ==========================================================================
+   Operations Command Console (Industry-Grade WOW Factor)
+   ========================================================================== */
+.ops-hub {
   background: #ffffff;
   border: 1px solid rgba(20, 28, 37, 0.1);
   border-radius: 16px;
-  box-shadow: 0 12px 36px rgba(20, 28, 37, 0.08), 0 2px 6px rgba(20, 28, 37, 0.04);
-  overflow: hidden;
+  box-shadow: 0 24px 50px -15px rgba(20, 28, 37, 0.12),
+              0 4px 16px rgba(20, 28, 37, 0.04),
+              0 0 0 1px rgba(20, 28, 37, 0.06);
   position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  will-change: transform;
 }
 
-.cockpit-head {
+.ops-hub::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 169, 97, 0.08), transparent 60%);
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ops-hub:hover::after {
+  opacity: 1;
+}
+
+.ops-gold-bar {
+  height: 5px;
+  background: linear-gradient(90deg, #a68a3e, #d4bc6a, #c9a961, #a68a3e);
+  width: 100%;
+}
+
+/* Telemetry Header */
+.ops-header {
   padding: 12px 18px;
   background: var(--navy);
   color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cockpit-pips {
+.ops-header-id {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-.cockpit-pips span {
-  width: 8px;
-  height: 8px;
+.ops-pulse-live {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
+  display: inline-block;
+  animation: pulseDot 1.8s infinite;
 }
 
-.cockpit-status {
-  color: #34d399;
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.ops-header-route {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.06em;
+}
+
+.route-pulse {
+  color: var(--gold);
+  animation: routePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes routePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+
+.ops-header-clock {
   display: flex;
   align-items: center;
   gap: 6px;
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.cockpit-status::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+.clock-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.65rem;
+  padding: 1px 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
 }
 
-.cockpit-body {
-  padding: 22px;
+.clock-digits {
+  color: #34d399;
+  letter-spacing: 0.04em;
+}
+
+/* Segmented View Mode Tabs */
+.ops-nav {
+  display: flex;
+  background: #f7f7f3;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 12px;
+  gap: 6px;
+}
+
+.ops-tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ops-tab:hover {
+  color: var(--dark);
+  background: rgba(20, 28, 37, 0.04);
+}
+
+.ops-tab.active {
   background: #ffffff;
+  color: var(--dark);
+  box-shadow: 0 1px 4px rgba(20, 28, 37, 0.08), 0 0 0 1px rgba(20, 28, 37, 0.04);
 }
 
-.cockpit-grid {
+.ops-tab.active svg {
+  color: var(--goldl);
+}
+
+/* Console Body & Panels */
+.ops-body {
+  padding: 20px;
+  background: #ffffff;
+  position: relative;
+  min-height: 310px;
+}
+
+.ops-panel {
+  display: none;
+  animation: panelFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ops-panel.active {
+  display: block;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Panel 1: KPI Cards */
+.ops-kpi-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
-.c-metric {
-  background: #f9f9f5;
+.ops-kpi-card {
+  background: #fbfbf8;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--green);
   border-radius: 8px;
   padding: 14px 16px;
+  position: relative;
 }
 
-.c-metric:nth-child(2) {
-  border-left-color: var(--navy);
+.ops-kpi-card.green-accent {
+  border-left: 3px solid var(--green);
 }
 
-.c-metric span {
+.ops-kpi-card.navy-accent {
+  border-left: 3px solid var(--navy);
+}
+
+.kpi-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.kpi-label {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
-  display: block;
 }
 
-.c-metric b {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 800;
-  color: var(--dark);
-  margin: 4px 0 2px;
-  display: block;
-}
-
-.c-sub {
+.kpi-chip {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.kpi-chip.green {
+  background: rgba(22, 163, 74, 0.1);
   color: var(--green);
 }
 
-.c-memos {
+.kpi-chip.navy {
+  background: rgba(26, 47, 74, 0.08);
+  color: var(--navy);
+}
+
+.kpi-val {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.kpi-val .curr {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--goldl);
+}
+
+.kpi-val .num {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.kpi-val .unit {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.kpi-sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Panel 1: Live Ingestion Stream */
+.ops-stream-box {
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
 }
 
-.c-memo-title {
-  background: #f9f9f5;
-  padding: 9px 14px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
+.stream-head {
+  padding: 8px 14px;
+  background: #f7f7f3;
   border-bottom: 1px solid var(--border);
-}
-
-.c-memo-row {
-  padding: 10px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.82rem;
-  font-family: var(--font-sans);
-  font-weight: 600;
-  color: var(--dark);
-  border-bottom: 1px solid rgba(20, 28, 37, 0.05);
-}
-
-.c-memo-row:last-child {
-  border-bottom: none;
-}
-
-.c-pill {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
-  padding: 3px 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.stream-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stream-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulseDot 2s infinite;
+}
+
+.stream-feed-wrapper {
+  overflow: hidden;
+  height: 148px;
+  position: relative;
+}
+
+.stream-feed {
+  display: flex;
+  flex-direction: column;
+}
+
+.stream-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(20, 28, 37, 0.05);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  animation: streamSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.15s ease;
+}
+
+.stream-row:hover {
+  background: #fafaf7;
+}
+
+@keyframes streamSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.st-inst {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 2px 7px;
   border-radius: 4px;
-  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
-.c-pill.green {
-  background: rgba(22, 163, 74, 0.1);
+.st-inst.kotak { background: rgba(220, 38, 38, 0.1); color: #dc2626; }
+.st-inst.julius { background: rgba(26, 47, 74, 0.1); color: var(--navy); }
+.st-inst.hdfc { background: rgba(59, 107, 138, 0.12); color: var(--steel); }
+.st-inst.ibkr { background: rgba(201, 169, 97, 0.18); color: var(--goldl); }
+.st-inst.icici { background: rgba(217, 119, 6, 0.12); color: var(--amber); }
+
+.st-desc {
+  color: var(--dark);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.st-desc b {
+  font-weight: 700;
+}
+
+.st-status {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
   color: var(--green);
-  border: 1px solid rgba(22, 163, 74, 0.25);
+  background: rgba(22, 163, 74, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
-.c-pill.navy {
-  background: rgba(26, 47, 74, 0.08);
-  color: var(--navy);
-  border: 1px solid rgba(26, 47, 74, 0.2);
+/* Panel 2: AUM Waveform */
+.waveform-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
 }
 
-.c-pill.gold {
-  background: rgba(201, 169, 97, 0.15);
+.wf-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.wf-stat {
+  font-family: var(--font-sans);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--dark);
+  font-feature-settings: "tnum" 1;
+}
+
+.wf-stat .curr {
+  font-size: 1.15rem;
   color: var(--goldl);
-  border: 1px solid rgba(201, 169, 97, 0.3);
 }
 
-.cockpit-foot {
+.wf-gain {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-left: 8px;
+}
+
+.wf-chips {
+  display: flex;
+  gap: 6px;
+}
+
+.wf-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  background: #f7f7f3;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--dark);
+}
+
+.waveform-chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  background: #fbfbf8;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.waveform-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wave-stroke {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: waveDraw 1.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes waveDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+.wf-tooltip {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  background: var(--navy);
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 4px 12px rgba(20, 28, 37, 0.2);
+  z-index: 10;
+}
+
+.wf-tooltip.visible {
+  opacity: 1;
+}
+
+.wf-tooltip .tt-val {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.alloc-strip {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 14px 0 8px;
+  background: #eaeaea;
+}
+
+.alloc-bar.equity { background: var(--navy); }
+.alloc-bar.credit { background: var(--gold); }
+.alloc-bar.pe { background: var(--steel); }
+.alloc-bar.cash { background: var(--green); }
+
+.alloc-legend {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.alloc-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.alloc-legend .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.alloc-legend .dot.eq { background: var(--navy); }
+.alloc-legend .dot.cr { background: var(--gold); }
+.alloc-legend .dot.pe { background: var(--steel); }
+.alloc-legend .dot.ca { background: var(--green); }
+
+/* Panel 3: Deal Pipeline */
+.pipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.pipe-badge {
+  color: var(--green);
+  background: rgba(22, 163, 74, 0.1);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.deal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deal-card {
+  background: #fbfbf8;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deal-card:hover {
+  background: #ffffff;
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(20, 28, 37, 0.06);
+  transform: translateY(-1px);
+}
+
+.deal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.deal-name {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.deal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.deal-tag.approved { background: rgba(22, 163, 74, 0.1); color: var(--green); }
+.deal-tag.ready { background: rgba(26, 47, 74, 0.08); color: var(--navy); }
+.deal-tag.review { background: rgba(201, 169, 97, 0.18); color: var(--goldl); }
+
+.deal-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.progress-bar-wrap {
+  flex: 1;
+  height: 5px;
+  background: rgba(20, 28, 37, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy), var(--gold));
+  border-radius: 3px;
+}
+
+.progress-pct {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.deal-meta {
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  color: var(--text-secondary);
+}
+
+.deal-meta b {
+  color: var(--dark);
+}
+
+/* Console Footer */
+.ops-footer {
   padding: 10px 18px;
-  background: #f9f9f5;
+  background: #f7f7f3;
   border-top: 1px solid var(--border);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.foot-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.foot-item svg {
+  color: var(--goldl);
+}
+
+.foot-sep {
+  color: rgba(20, 28, 37, 0.2);
+}
+
+@media (max-width: 960px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .ops-hub {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 84px 0 48px;
+  }
+  .hero-badge {
+    white-space: normal;
+    font-size: 0.68rem;
+    padding: 6px 12px;
+    line-height: 1.4;
+  }
+  .ops-header-route {
+    display: none;
+  }
+  .ops-header-id {
+    font-size: 0.68rem;
+  }
+  .ops-kpi-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .stream-row {
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+  }
+  .st-status {
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: -2px;
+  }
+  .alloc-legend {
+    flex-wrap: wrap;
+    gap: 8px 14px;
+  }
 }
 
 /* Logos Marquee */
@@ -741,62 +1392,269 @@
     <li><a href="#team">Team</a></li>
     <li><a href="/blog/">Research</a></li>
   </ul>
-  <a class="btn nav-cta" href="/blog/walkthrough/" data-walkthrough-open>Get your personalised research report →</a>
+  <a class="btn nav-cta" href="/blog/walkthrough/" data-walkthrough-open><span class="long">Get your personalised research report</span><span class="short">Get report</span> →</a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </div></header>
 
 <main>
 <!-- HERO: Institutional Operating System -->
 <section class="hero"><div class="container">
-  <div>
-    <span class="kicker">[ INSTITUTIONAL RESEARCH &amp; AUTOMATION · INDIA &amp; UAE ]</span>
-    <h1>Your family office runs on spreadsheets and WhatsApp. <em>We fix that.</em></h1>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-radar"><span class="badge-ping"></span><span class="badge-dot"></span></span>
+      <span class="badge-geo">MUMBAI (BKC) ⇄ DUBAI (DIFC)</span>
+      <span class="badge-divider">/</span>
+      <span class="badge-sub">FAMILY OFFICE INFRASTRUCTURE</span>
+    </div>
+
+    <h1>
+      Your family office runs on spreadsheets and WhatsApp.
+      <span class="hero-emphasis">
+        <em>We fix that.</em>
+        <svg class="hero-flourish" viewBox="0 0 240 18" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M4 14C52 4 188 4 236 12" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="240" y2="0" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#a68a3e"/>
+              <stop offset="0.5" stop-color="#c9a961"/>
+              <stop offset="1" stop-color="#e8d59c"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+    </h1>
+
     <p class="lead">Goldfib Capital is the outsourced equity research and automation desk for single and multi-family offices in India and Dubai. Decision-ready diligence memos on every deal, and one consolidated portfolio view that updates itself.</p>
+
     <div class="cta-row">
-      <a class="btn" href="/blog/walkthrough/" data-walkthrough-open>Get your personalised research report →</a>
-      <a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Introductory%20Briefing">Book a 20-min briefing call</a>
+      <a class="btn" href="/blog/walkthrough/" data-walkthrough-open>
+        <span>Get your personalised research report</span>
+        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Family%20Office%20Introductory%20Briefing">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Book a 20-min briefing call</span>
+      </a>
+    </div>
+
+    <div class="hero-proof-strip">
+      <div class="proof-item"><span class="proof-bullet green"></span><b>₹400+ Cr</b> reconciled daily</div>
+      <div class="proof-sep">/</div>
+      <div class="proof-item"><span class="proof-bullet navy"></span><b>11</b> institutions unified</div>
+      <div class="proof-sep">/</div>
+      <div class="proof-item"><span class="proof-bullet gold"></span><b>T+0</b> shadow NAV</div>
     </div>
   </div>
 
-  <!-- Institutional Live Telemetry Cockpit -->
-  <div class="cockpit">
-    <div class="cockpit-head">
-      <div class="cockpit-pips"><span></span><span></span><span></span></div>
-      <div>GOLDFIB TERMINAL · RECONCILED T+0</div>
-      <div class="cockpit-status">LIVE TELEMETRY</div>
-    </div>
-    <div class="cockpit-body">
-      <div class="cockpit-grid">
-        <div class="c-metric">
-          <span>Consolidated Net Worth</span>
-          <b>₹412.6 Cr</b>
-          <div class="c-sub">▲ 2.4% this quarter</div>
-        </div>
-        <div class="c-metric">
-          <span>Connected Custodians</span>
-          <b>11 → 1</b>
-          <div class="c-sub" style="color:var(--navy);">Zero discrepancies</div>
-        </div>
+  <!-- Operations Command Console (WOW Factor) -->
+  <div class="ops-hub" id="opsHub">
+    <div class="ops-gold-bar"></div>
+
+    <div class="ops-header">
+      <div class="ops-header-id">
+        <span class="ops-pulse-live"></span>
+        <span>GOLDFIB MULTI-CUSTODIAN CONSOLE</span>
       </div>
-      <div class="c-memos">
-        <div class="c-memo-title">Active Investment Committee Queue</div>
-        <div class="c-memo-row">
-          <span>Specialty Chemicals B2B (Direct Co-Investment)</span>
-          <span class="c-pill green">MEMO APPROVED</span>
-        </div>
-        <div class="c-memo-row">
-          <span>Private Credit AIF Series II (Senior Secured)</span>
-          <span class="c-pill green">DILIGENCE READY</span>
-        </div>
-        <div class="c-memo-row">
-          <span>Pre-IPO Fintech Growth (Secondary Block)</span>
-          <span class="c-pill gold">IC REVIEW THU</span>
-        </div>
+      <div class="ops-header-route">
+        <span>BKC</span><span class="route-pulse">⇄</span><span>DIFC</span>
+      </div>
+      <div class="ops-header-clock" id="hubClock" title="Synchronized Indian Standard Time & Gulf Standard Time">
+        <span class="clock-label">SYNC T+0</span>
+        <span class="clock-digits" id="clockDigits">IST LIVE</span>
       </div>
     </div>
-    <div class="cockpit-foot">
-      <span>11 Depository Participants &amp; Custodians</span>
-      <span>Daily Shadow NAV &amp; PIT Surveillance</span>
+
+    <!-- Segmented Navigation Modes -->
+    <div class="ops-nav">
+      <button class="ops-tab active" data-tab="stream">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Live Reconciler</span>
+      </button>
+      <button class="ops-tab" data-tab="waveform">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-6 6"/></svg>
+        <span>AUM Waveform</span>
+      </button>
+      <button class="ops-tab" data-tab="pipeline">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6m-6-4h6m-6 8h4"/></svg>
+        <span>IC Deal Pipeline</span>
+      </button>
+    </div>
+
+    <!-- Main Body Panels -->
+    <div class="ops-body">
+      <!-- PANEL 1: LIVE RECONCILER (DEFAULT) -->
+      <div class="ops-panel active" id="panel-stream">
+        <div class="ops-kpi-row">
+          <div class="ops-kpi-card green-accent">
+            <div class="kpi-meta">
+              <span class="kpi-label">Consolidated Net Worth</span>
+              <span class="kpi-chip green">▲ +2.44% QTD</span>
+            </div>
+            <div class="kpi-val">
+              <span class="curr">₹</span><span class="num counter">412.60</span><span class="unit">Cr</span>
+            </div>
+            <div class="kpi-sub">Across 11 institutional entities</div>
+          </div>
+
+          <div class="ops-kpi-card navy-accent">
+            <div class="kpi-meta">
+              <span class="kpi-label">Reconciliation Health</span>
+              <span class="kpi-chip navy">11 ➔ 1 POOL</span>
+            </div>
+            <div class="kpi-val">
+              <span class="num">0</span><span class="unit" style="font-size:1.05rem; color:var(--text-muted); font-weight:600;">Breaks</span>
+            </div>
+            <div class="kpi-sub">100% matched T+0 ledger</div>
+          </div>
+        </div>
+
+        <div class="ops-stream-box">
+          <div class="stream-head">
+            <div class="stream-title">
+              <span class="stream-indicator"></span>
+              <span>LIVE DATA INGESTION &amp; RECONCILIATION STREAM</span>
+            </div>
+            <div class="stream-count">11/11 Custodians Active</div>
+          </div>
+          <div class="stream-feed-wrapper">
+            <div class="stream-feed" id="streamFeed">
+              <!-- Dynamically populated & streaming via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 2: INTERACTIVE AUM WAVEFORM -->
+      <div class="ops-panel" id="panel-waveform">
+        <div class="waveform-meta-row">
+          <div>
+            <div class="wf-label">AGGREGATED FAMILY OFFICE AUM GROWTH</div>
+            <div class="wf-stat">
+              <span class="curr">₹</span>412.60 Cr <span class="wf-gain">+58.6% (3Y CAGR)</span>
+            </div>
+          </div>
+          <div class="wf-chips">
+            <span class="wf-chip">Sharpe 1.84</span>
+            <span class="wf-chip">Max DD -4.2%</span>
+          </div>
+        </div>
+        <div class="waveform-chart-wrap" id="waveformWrap">
+          <svg class="waveform-svg" viewBox="0 0 460 140" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c9a961" stop-opacity="0.32"/>
+                <stop offset="70%" stop-color="#c9a961" stop-opacity="0.05"/>
+                <stop offset="100%" stop-color="#c9a961" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="waveLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#1a2f4a"/>
+                <stop offset="45%" stop-color="#3b6b8a"/>
+                <stop offset="85%" stop-color="#c9a961"/>
+                <stop offset="100%" stop-color="#16a34a"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="30" x2="460" y2="30" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
+            <line x1="0" y1="70" x2="460" y2="70" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
+            <line x1="0" y1="110" x2="460" y2="110" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
+            <path class="wave-area" d="M 0,120 Q 70,115 120,95 T 210,75 T 310,50 T 400,24 L 460,18 L 460,140 L 0,140 Z" fill="url(#waveGrad)"/>
+            <path class="wave-stroke" d="M 0,120 Q 70,115 120,95 T 210,75 T 310,50 T 400,24 L 460,18" fill="none" stroke="url(#waveLine)" stroke-width="2.5" stroke-linecap="round"/>
+            <line id="wfCrosshair" x1="310" y1="0" x2="310" y2="140" stroke="#141c25" stroke-width="1" stroke-dasharray="2 2" opacity="0"/>
+            <circle id="wfPoint" cx="310" cy="50" r="4.5" fill="#141c25" stroke="#ffffff" stroke-width="2" opacity="0"/>
+          </svg>
+          <div class="wf-tooltip" id="wfTooltip">
+            <div class="tt-date">Q3 2026</div>
+            <div class="tt-val">₹412.60 Cr</div>
+          </div>
+        </div>
+        <div class="alloc-strip">
+          <div class="alloc-bar equity" style="width: 44%" title="Listed Equities: 44%"></div>
+          <div class="alloc-bar credit" style="width: 24%" title="Private Credit AIF: 24%"></div>
+          <div class="alloc-bar pe" style="width: 18%" title="Global PE/VC: 18%"></div>
+          <div class="alloc-bar cash" style="width: 14%" title="Treasury & Liquid: 14%"></div>
+        </div>
+        <div class="alloc-legend">
+          <span><b class="dot eq"></b>Listed Eq 44%</span>
+          <span><b class="dot cr"></b>Private Credit 24%</span>
+          <span><b class="dot pe"></b>Global Co-Inv 18%</span>
+          <span><b class="dot ca"></b>Cash 14%</span>
+        </div>
+      </div>
+
+      <!-- PANEL 3: DEAL DILIGENCE IC PIPELINE -->
+      <div class="ops-panel" id="panel-pipeline">
+        <div class="pipe-header">
+          <span>ACTIVE IC DILIGENCE QUEUE (T+0 STATUS)</span>
+          <span class="pipe-badge">3 LIVE MEMOS</span>
+        </div>
+        <div class="deal-list">
+          <div class="deal-card">
+            <div class="deal-top">
+              <span class="deal-name">Specialty Chemicals B2B (Direct Co-Investment)</span>
+              <span class="deal-tag approved">MEMO APPROVED</span>
+            </div>
+            <div class="deal-progress-row">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 94%;"></div>
+              </div>
+              <span class="progress-pct">94% DILIGENCE</span>
+            </div>
+            <div class="deal-meta">
+              <span>Target IRR: <b>26.4%</b></span>
+              <span>Cheque: <b>₹15 Cr</b></span>
+              <span>Horizon: <b>4 Yrs</b></span>
+            </div>
+          </div>
+
+          <div class="deal-card">
+            <div class="deal-top">
+              <span class="deal-name">Senior Secured Credit AIF Series II</span>
+              <span class="deal-tag ready">DILIGENCE READY</span>
+            </div>
+            <div class="deal-progress-row">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 88%;"></div>
+              </div>
+              <span class="progress-pct">88% DILIGENCE</span>
+            </div>
+            <div class="deal-meta">
+              <span>Net Yield: <b>14.5%</b></span>
+              <span>Cover: <b>2.2x Asset</b></span>
+              <span>Cheque: <b>₹25 Cr</b></span>
+            </div>
+          </div>
+
+          <div class="deal-card">
+            <div class="deal-top">
+              <span class="deal-name">Pre-IPO Fintech Growth (Secondary Block)</span>
+              <span class="deal-tag review">IC THURSDAY</span>
+            </div>
+            <div class="deal-progress-row">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" style="width: 76%;"></div>
+              </div>
+              <span class="progress-pct">76% DILIGENCE</span>
+            </div>
+            <div class="deal-meta">
+              <span>Discount: <b>18% to FMV</b></span>
+              <span>Allocation: <b>₹10 Cr</b></span>
+              <span>Exit: <b>14 Mos</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Console Footer -->
+    <div class="ops-footer">
+      <div class="foot-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>T+0 Multi-Entity Shadow Ledger</span>
+      </div>
+      <div class="foot-sep">•</div>
+      <div class="foot-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>SEBI PIT &amp; DTAA Treaty Aligned</span>
+      </div>
     </div>
   </div>
 </div></section>
