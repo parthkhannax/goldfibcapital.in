@@ -326,7 +326,7 @@
     tl.fromTo(h1, { clipPath: 'inset(0% 0% 100% 0%)', y: 34 }, { clipPath: 'inset(-8% -2% -14% -2%)', y: 0, duration: 1.25, ease: 'power4.inOut', clearProps: 'clipPath,transform' }, .05)
       .to(flourish, { strokeDashoffset: 0, duration: .8, ease: 'power2.inOut' }, '-=.25');
     gsap.from('.hero .lead', { y: 22, autoAlpha: 0, duration: .8, ease: EASE, delay: .55 });
-    gsap.from('.hero .cta-row > *', { y: 18, autoAlpha: 0, duration: .65, ease: EASE, stagger: .1, delay: .72 });
+    gsap.from('.hero .cta-row > *', { y: 18, autoAlpha: 0, clearProps: 'transform', duration: .65, ease: EASE, stagger: .1, delay: .72 });
     gsap.from('.desk-demo', { y: 48, autoAlpha: 0, scale: .97, duration: 1.1, ease: 'expo.out', delay: .4 });
   }
 
@@ -426,7 +426,7 @@
     var f = $('.final');
     if (!f) return;
     gsap.fromTo(f, { clipPath: 'inset(0% 7% 0% 7% round 28px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: f, start: 'top bottom', end: 'top 45%', scrub: true } });
-    gsap.from('.final .cta-row > *', { y: 20, autoAlpha: 0, duration: .65, ease: EASE, stagger: .1, scrollTrigger: { trigger: '.final .cta-row', start: 'top 92%', once: true } });
+    gsap.from('.final .cta-row > *', { y: 20, autoAlpha: 0, clearProps: 'transform', duration: .65, ease: EASE, stagger: .1, scrollTrigger: { trigger: '.final .cta-row', start: 'top 92%', once: true } });
   }
 
   function chrome() {
@@ -442,11 +442,6 @@
 
   function pointerMotion() {
     gsap.matchMedia().add('(hover: hover) and (pointer: fine) and (min-width: 981px)', function () {
-      $$('.hero .btn, .final .btn').forEach(function (b) {
-        var x = gsap.quickTo(b, 'x', { duration: .45, ease: 'power3' }), y = gsap.quickTo(b, 'y', { duration: .45, ease: 'power3' });
-        b.addEventListener('pointermove', function (e) { var c = b.getBoundingClientRect(); x((e.clientX - c.left - c.width / 2) * .16); y((e.clientY - c.top - c.height / 2) * .28); });
-        b.addEventListener('pointerleave', function () { x(0); y(0); });
-      });
       $$('.pcard, .ps article').forEach(function (c) {
         var rx = gsap.quickTo(c, 'rotationX', { duration: .5, ease: 'power3' }), ry = gsap.quickTo(c, 'rotationY', { duration: .5, ease: 'power3' });
         gsap.set(c, { transformPerspective: 1100 });

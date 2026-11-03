@@ -108,7 +108,7 @@ def cta_box(a, end=False):
             f'<span class="cta-note">A real person replies within one working day. No sales sequence.</span></div></aside>')
 
 
-NAV = ('<header class="nav"><div class="accent-bar"></div><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="30" height="30">Goldfib <span>Capital</span></a>'
+NAV = ('<header class="nav"><div class="accent-bar"></div><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo-light.svg" alt="" width="30" height="30">Goldfib <span>Capital</span></a>'
        '<ul class="nav-links"><li><a href="/#offering">Offering</a></li><li><a href="/#process">Process</a></li><li><a href="/blog/">Research</a></li></ul>'
        f'<a class="btn nav-cta" href="{WT_URL}" data-walkthrough-open><span class="long">{CTA_TEXT}</span><span class="short">Get your free report</span> →</a>'
        '<button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button></div></header>')
