@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Goldfib Capital — Institutional Research & Operations Automation for Family Offices</title>
-<meta name="description" content="Goldfib Capital is the outsourced research and automation desk for family offices in India and the UAE: decision-ready deal diligence memos, automated portfolio reconciliation, and bespoke equity research.">
+<title>Goldfib Capital — Networks & Industry-Grade Automation for Family Offices</title>
+<meta name="description" content="Goldfib Capital helps family offices in India and the UAE grow their networks and run industry-grade automation across the deal lifecycle, from sourcing to closing.">
 <link rel="canonical" href="https://goldfibcapital.in/">
-<meta property="og:title" content="Goldfib Capital — Institutional Research & Automation">
-<meta property="og:description" content="Deal diligence, shadow NAV, and portfolio surveillance for Indian & Dubai family offices, powered by research automation.">
+<meta property="og:title" content="Goldfib Capital — Networks & Automation for Family Offices">
+<meta property="og:description" content="Grow your family office network and automate every deal from sourcing to closing. For family offices in India and Dubai.">
 <meta property="og:url" content="https://goldfibcapital.in/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://goldfibcapital.in/assets/logo.svg">
@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/article.css?v=hs2">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Goldfib Capital","url":"https://goldfibcapital.in/","logo":"https://goldfibcapital.in/assets/logo.svg","email":"partners@goldfibcapital.in","foundingDate":"2023","description":"Outsourced research and automation desk for family offices in India & UAE: deal diligence and portfolio monitoring.","founder":{"@type":"Person","name":"Parth Khanna","url":"https://parthkhannax.github.io/opus6portfolio.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Goldfib Capital","url":"https://goldfibcapital.in/","logo":"https://goldfibcapital.in/assets/logo.svg","email":"partners@goldfibcapital.in","foundingDate":"2023","description":"Helps family offices in India & UAE grow their networks and automate the deal lifecycle from sourcing to closing.","founder":{"@type":"Person","name":"Parth Khanna","url":"https://parthkhannax.github.io/opus6portfolio.html"}}</script>
 <style>
 /* ==========================================================================
    Homepage Custom Styles (Bright Proflex Theme)
@@ -91,518 +91,133 @@
 }
 
 /* ==========================================================================
-   Goldfib Memo Engine (Big Bold Text & Institutional Family Office Image)
+   Goldfib Desk demo: prompt box -> work log -> report
    ========================================================================== */
-.memo-engine {
-  background: #ffffff;
+.desk-demo {
+  --stage-h: 510px;
+  background: #fff;
   border: 1px solid rgba(20, 28, 37, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 24px 50px -15px rgba(20, 28, 37, 0.12),
-              0 4px 16px rgba(20, 28, 37, 0.04),
-              0 0 0 1px rgba(20, 28, 37, 0.06);
-  position: relative;
+  border-radius: 18px;
+  box-shadow: 0 24px 50px -18px rgba(20, 28, 37, 0.16), 0 4px 16px rgba(20, 28, 37, 0.04);
   overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-  will-change: transform;
+  min-width: 0;
+}
+.dd-stage { position: relative; height: var(--stage-h); overflow: hidden; }
+.dd-greeting {
+  position: absolute; left: 24px; right: 24px; top: 66px; text-align: center;
+  font-family: var(--font-serif); font-size: 1.7rem; font-weight: 700; line-height: 1.25; color: var(--dark);
+}
+.dd-greeting small {
+  display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--goldl);
 }
 
-.memo-engine::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(201, 169, 97, 0.08), transparent 60%);
-  border-radius: 16px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.dd-thread { position: absolute; inset: 0 0 92px; padding: 18px 18px 8px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.dd-bubble {
+  align-self: flex-end; max-width: 88%; padding: 9px 14px; border-radius: 14px 14px 4px 14px;
+  background: var(--bg); color: var(--dark); font-size: .88rem; line-height: 1.45;
+}
+.dd-summary { font-size: .8rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+.dd-summary::before { content: '✓'; color: var(--navy); font-weight: 700; }
+
+.dd-report {
+  border: 1px solid var(--border-hover); border-radius: 12px; padding: 14px 16px;
+}
+.dd-report-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.dd-report-head strong { font-size: .92rem; font-weight: 700; color: var(--dark); }
+.dd-report-head span, .dd-chart-title {
+  font-family: var(--font-mono); font-size: .64rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted);
+}
+.dd-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+.dd-kpis b { display: block; font-size: 1.28rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; color: var(--dark); }
+.dd-kpis span { font-size: .72rem; line-height: 1.3; color: var(--text-secondary); }
+.dd-chart-title { display: block; margin-bottom: 8px; }
+.dd-funnel { display: grid; gap: 5px; }
+.dd-row { display: grid; grid-template-columns: 74px 1fr 30px; gap: 8px; align-items: center; font-size: .75rem; color: var(--text-secondary); }
+.dd-row em { font-style: normal; text-align: right; font-weight: 600; color: var(--dark); font-variant-numeric: tabular-nums; }
+.dd-track { height: 10px; }
+.dd-bar {
+  display: block; height: 100%; min-width: 4px; border-radius: 0 4px 4px 0; background: var(--navy);
 }
 
-.memo-engine:hover::after {
-  opacity: 1;
+.dd-composer {
+  position: absolute; left: 14px; right: 14px; bottom: 12px; padding: 11px 12px 9px 14px;
+  background: #fff; border: 1px solid var(--border-hover); border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(20, 28, 37, .07);
 }
-
-.engine-gold-bar {
-  height: 5px;
-  background: linear-gradient(90deg, #a68a3e, #d4bc6a, #c9a961, #a68a3e);
-  width: 100%;
+.dd-input { min-height: 21px; font-size: .9rem; line-height: 1.45; color: var(--dark); }
+.dd-input.empty { color: var(--text-muted); }
+.dd-caret { display: inline-block; width: 1.5px; height: 1em; margin-left: 1px; vertical-align: -2px; background: var(--goldl); animation: ddBlink 1s steps(2) infinite; }
+.dd-tools { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-family: var(--font-mono); font-size: .66rem; color: var(--text-muted); }
+.dd-send {
+  width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center;
+  background: var(--surface-inset); color: #fff; transition: background .2s ease;
 }
-
-/* Box Header with Family Office Tower Image in Logo */
-.engine-head {
-  padding: 12px 18px;
-  background: var(--navy);
-  color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.dd-send.ready { background: var(--goldl); }
+.dd-foot {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px;
+  border-top: 1px solid var(--border); background: var(--surface-hover); font-size: .72rem; color: var(--text-muted);
 }
-
-.engine-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.fo-box-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1.5px solid var(--gold);
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-.fo-box-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.engine-title {
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #ffffff;
-}
-
-.engine-live-step {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: #34d399;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.step-pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
-  animation: pulseDot 1.8s infinite;
-}
-
-/* Timeline Navigation: Big Bold Steps */
-.engine-timeline {
-  display: flex;
-  align-items: center;
-  background: #f7f7f3;
-  border-bottom: 1px solid var(--border);
-  padding: 10px 16px;
-  gap: 8px;
-}
-
-.step-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-family: var(--font-sans);
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.step-circle {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(20, 28, 37, 0.1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--dark);
-  transition: all 0.2s ease;
-}
-
-.step-btn.active {
-  background: #ffffff;
-  color: var(--dark);
-  box-shadow: 0 2px 6px rgba(20, 28, 37, 0.08);
-}
-
-.step-btn.active .step-circle {
-  background: var(--navy);
-  color: #ffffff;
-}
-
-.step-btn.done .step-circle {
-  background: var(--green);
-  color: #ffffff;
-}
-
-.step-connector {
-  flex: 1;
-  height: 2px;
-  background: rgba(20, 28, 37, 0.1);
-  margin: 0 4px;
-  transition: background 0.25s ease;
-}
-
-.step-connector.active {
-  background: var(--goldl);
-}
-
-/* Body & Stage Panels */
-.engine-body {
-  padding: 24px;
-  background: #ffffff;
-  min-height: 280px;
-}
-
-.engine-panel {
-  display: none;
-  animation: panelFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.engine-panel.active {
-  display: block;
-}
-
-/* Step 1: Big Bold Prompt with Family Office Image */
-.big-prompt-card {
-  background: #fafaf7;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 22px;
-  box-shadow: 0 2px 8px rgba(20, 28, 37, 0.04);
-}
-
-.fo-user-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-.fo-photo-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid var(--goldl);
-  box-shadow: 0 2px 8px rgba(20, 28, 37, 0.12);
-  flex-shrink: 0;
-}
-
-.fo-photo-badge img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.fo-client-title {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--dark);
-  letter-spacing: -0.01em;
-}
-
-.fo-client-sub {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--goldl);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.big-prompt-text {
-  font-family: var(--font-serif);
-  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
-  font-weight: 800;
-  line-height: 1.32;
-  color: var(--dark);
-  margin-bottom: 12px;
-}
-
-.big-prompt-deal {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(201, 169, 97, 0.18);
-  border: 1px solid rgba(201, 169, 97, 0.35);
-  color: var(--dark);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 6px;
-}
-
-/* Step 2: Analysing - Focus on Big Status & Big Numbers */
-.big-analysing-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--dark);
-  margin-bottom: 14px;
-}
-
-.pulse-bead-big {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--goldl);
-  box-shadow: 0 0 12px rgba(201, 169, 97, 0.8);
-  animation: pulseDot 1.8s infinite;
-}
-
-.chart-big-box {
-  background: #fbfbf8;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 14px;
-}
-
-.chart-big-title {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-}
-
-.big-cb-svg {
-  width: 100%;
-  height: 105px;
-  display: block;
-}
-
-.big-checks-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-}
-
-.big-check-pill {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--dark);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 1px 3px rgba(20, 28, 37, 0.04);
-}
-
-.big-check-pill b {
-  color: var(--green);
-  font-size: 1.1rem;
-}
-
-/* Step 3: Done - Huge Metrics */
-.big-done-banner {
-  background: rgba(22, 163, 74, 0.12);
-  border: 1px solid rgba(22, 163, 74, 0.3);
-  color: var(--green);
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-family: var(--font-sans);
-  font-size: 1.15rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.huge-metrics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.huge-metric-card {
-  background: #fbfbf8;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-}
-
-.huge-metric-card.green-border { border-top: 4px solid var(--green); }
-.huge-metric-card.navy-border { border-top: 4px solid var(--navy); }
-.huge-metric-card.gold-border { border-top: 4px solid var(--goldl); }
-
-.hm-val {
-  font-family: var(--font-sans);
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: var(--dark);
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.hm-val.green { color: var(--green); }
-.hm-val.navy { color: var(--navy); }
-.hm-val.gold { color: var(--goldl); }
-
-.hm-label {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-secondary);
-}
-
-/* Bottom CTA in Card */
-.engine-cta-bar {
-  padding: 12px 20px;
-  background: #f7f7f3;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.engine-cta-link {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--navy);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.engine-cta-link:hover {
-  color: var(--goldl);
-  text-decoration: underline;
+.dd-foot a { font-size: .8rem; font-weight: 700; color: var(--navy); text-decoration: none; white-space: nowrap; }
+.dd-foot a:hover { color: var(--goldl); text-decoration: underline; }
+/* GSAP layer */
+.motion-wait .hero-content, .motion-wait .desk-demo { visibility: hidden; }
+.hero .container { position: relative; z-index: 1; }
+.hero-net { position: absolute; inset: -6% 0 auto; width: 100%; height: 112%; opacity: .34; pointer-events: none; }
+.dd-stage { display: block; }
+.dd-slot { position: relative; flex: 1; min-height: 0; }
+.dd-work, .dd-result { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.dd-result { gap: 8px; }
+.dd-rail { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); margin: 6px 0 2px; padding-top: 12px; }
+.dd-rail::before, .dd-rail-fill { content: ''; position: absolute; top: 3px; left: 10%; right: 10%; height: 2px; background: var(--border); }
+.dd-rail-fill { background: var(--goldl); }
+.dd-stop { position: relative; text-align: center; font-size: .68rem; font-weight: 600; color: var(--text-muted); transition: color .25s ease; }
+.dd-stop::before { content: ''; position: absolute; top: -13px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #fff; border: 2px solid var(--border-hover); transition: background .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.dd-stop.done { color: var(--text-secondary); }
+.dd-stop.done::before { background: var(--navy); border-color: var(--navy); }
+.dd-stop.on { color: var(--dark); }
+.dd-stop.on::before { background: var(--goldl); border-color: var(--goldl); box-shadow: 0 0 0 4px rgba(201, 169, 97, .22); }
+.dd-viz { flex: 1; min-height: 0; width: 100%; margin-top: 4px; }
+.v-count { font: 700 14px var(--font-sans, Inter, sans-serif); fill: var(--dark); }
+.v-label { font: 600 12px var(--font-sans, Inter, sans-serif); fill: var(--text-secondary); }
+.v-node { font: 700 10px var(--font-mono); fill: var(--navy); }
+.v-hub { font: 600 10.5px var(--font-sans, Inter, sans-serif); fill: #fff; }
+.v-doc { font: 700 10px var(--font-mono); fill: var(--dark); letter-spacing: .08em; }
+.dd-caption { min-height: 38px; padding-top: 4px; text-align: center; font-size: .82rem; line-height: 1.4; color: var(--text-secondary); }
+.dd-caption b { color: var(--dark); font-weight: 600; }
+.accent-bar { position: relative; }
+.scroll-progress { position: absolute; inset: 0; background: var(--navy); }
+.nav { transition: box-shadow .3s ease; }
+.nav.is-scrolled { box-shadow: 0 8px 26px -14px rgba(20, 28, 37, .28); }
+.steps { position: relative; }
+.steps-line { position: absolute; top: -18px; left: 0; right: 0; height: 2px; background: var(--goldl); }
+.pcard, .ps article { will-change: transform; }
+@keyframes ddBlink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .desk-demo *, .desk-demo *::before, .desk-demo *::after { transition: none !important; animation: none !important; }
 }
 
 @media (max-width: 960px) {
-  .hero .container {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .hero-content {
-    display: contents;
-  }
-  .hero-content h1 {
-    order: 1;
-    margin-bottom: 24px;
-  }
-  .memo-engine {
-    order: 2;
-    max-width: 580px;
-    width: 100%;
-    margin: 0 auto 28px;
-  }
-  .hero-content .lead {
-    order: 3;
-    margin-bottom: 24px;
-    font-size: 1.05rem;
-    line-height: 1.65;
-  }
-  .hero-content .cta-row {
-    order: 4;
-  }
+  .hero .container { display: flex; flex-direction: column; gap: 0; }
+  .hero-content { display: contents; }
+  .hero-content h1 { order: 1; margin-bottom: 24px; }
+  .desk-demo { order: 2; max-width: 580px; width: 100%; margin: 0 auto 28px; }
+  .hero-content .lead { order: 3; margin-bottom: 24px; font-size: 1.05rem; line-height: 1.65; }
+  .hero-content .cta-row { order: 4; }
 }
 
 @media (max-width: 600px) {
-  .hero {
-    padding: 52px 0 40px;
-  }
-  .hero-content h1 {
-    font-size: clamp(2rem, 7.5vw, 2.45rem);
-    margin-bottom: 20px;
-  }
-  .memo-engine {
-    margin: 0 auto 24px;
-    border-radius: 12px;
-  }
-  .engine-head {
-    padding: 10px 14px;
-  }
-  .engine-timeline {
-    padding: 8px 10px;
-    gap: 4px;
-  }
-  .step-btn {
-    padding: 6px 8px;
-    font-size: 0.76rem;
-  }
-  .step-circle {
-    width: 20px;
-    height: 20px;
-    font-size: 0.68rem;
-  }
-  .engine-body {
-    padding: 16px;
-    min-height: 270px;
-  }
-  .big-prompt-card {
-    padding: 16px;
-  }
-  .big-prompt-text {
-    font-size: 1.25rem;
-    line-height: 1.35;
-  }
-  .big-prompt-deal {
-    font-size: 0.82rem;
-  }
-  .big-checks-row,
-  .huge-metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .huge-metric-card {
-    padding: 12px;
-  }
-  .hm-val {
-    font-size: 1.6rem;
-  }
-  .hero-content .lead {
-    font-size: 1.02rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  .engine-cta-bar {
-    padding: 11px 16px;
-    flex-wrap: nowrap;
-    gap: 12px;
-  }
-  .engine-cta-bar .fo-client-sub {
-    font-size: 0.65rem;
-    white-space: nowrap;
-    letter-spacing: 0.06em;
-  }
-  .engine-cta-link {
-    font-size: 0.78rem;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+  .hero { padding: 52px 0 40px; }
+  .hero-content h1 { font-size: clamp(2rem, 7.5vw, 2.45rem); margin-bottom: 20px; }
+  .desk-demo { --stage-h: 570px; margin: 0 auto 24px; border-radius: 14px; }
+  .dd-greeting { font-size: 1.4rem; }
+  .dd-thread { padding: 14px 12px 6px; }
+  .dd-report { padding: 12px; }
+  .dd-kpis b { font-size: 1.1rem; }
+  .hero-content .lead { font-size: 1.02rem; line-height: 1.6; margin-bottom: 20px; }
+  .hero-net { opacity: .16; }
+  .dd-foot > span { display: none; }
+  .dd-foot { justify-content: center; }
 }
 
 /* Logos Marquee */
@@ -1080,7 +695,12 @@
   }
 }
 </style>
-<script src="/assets/site.js" defer></script>
+<script>(function(d){if(matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('motion-wait');setTimeout(function(){d.classList.remove('motion-wait')},3000)}})(document.documentElement)</script>
+<script src="/assets/vendor/gsap.min.js?v=3.15.0" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
+<script src="/assets/vendor/SplitText.min.js?v=3.15.0" defer></script>
+<script src="/assets/site.js?v=gsap1" defer></script>
+<script src="/assets/motion.js?v=gsap1" defer></script>
 <script src="/assets/mail.js?v=hs2" defer></script>
 <script src="/assets/walkthrough.js?v=hs2" defer></script>
 <script type="text/javascript">
@@ -1111,9 +731,9 @@
 <section class="hero"><div class="container">
   <div class="hero-content">
     <h1>
-      Your family office runs on spreadsheets and WhatsApp.
+      Grow your family office’s network. Automate every deal from sourcing
       <span class="hero-emphasis">
-        <em>We fix that.</em>
+        <em>to closing.</em>
         <svg class="hero-flourish" viewBox="0 0 240 18" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <path d="M4 14C52 4 188 4 236 12" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
           <defs>
@@ -1127,7 +747,7 @@
       </span>
     </h1>
 
-    <p class="lead">Decision-ready diligence memos, automated portfolio reconciliation, and custom financial models for single and multi-family offices in India and Dubai.</p>
+    <p class="lead">We help single and multi-family offices in India and Dubai reach the right co-investors, founders and advisers, then run sourcing, diligence, IC and closing on industry-grade automation.</p>
 
     <div class="cta-row">
       <a class="btn" href="/blog/walkthrough/" data-walkthrough-open>
@@ -1141,139 +761,22 @@
     </div>
   </div>
 
-  <!-- AI Memo Automation Engine (Big Bold Text + Family Office Image) -->
-  <div class="memo-engine" id="memoEngine" data-tilt>
-    <div class="engine-gold-bar"></div>
-
-    <!-- Top Bar with Family Office Tower Image in Logo -->
-    <div class="engine-head">
-      <div class="engine-brand">
-        <div class="fo-box-logo" title="Single & Multi-Family Office Portal">
-          <img src="/assets/img/photos/towers.jpg" alt="Family Office Towers">
-        </div>
-        <span class="engine-title">GOLDFIB MEMO ENGINE</span>
-      </div>
-      <div class="engine-live-step" id="engineLiveStep">
-        <span class="step-pulse-dot"></span>
-        <span id="stepStatusText">TEAM ANALYSING</span>
-      </div>
-    </div>
-
-    <!-- Interactive 3-Step Timeline -->
-    <div class="engine-timeline">
-      <button class="step-btn" data-step="1" id="stepBtn1">
-        <span class="step-circle">1</span>
-        <span>Automate Memo</span>
-      </button>
-      <div class="step-connector active" id="stepConn1"></div>
-      <button class="step-btn active" data-step="2" id="stepBtn2">
-        <span class="step-circle">2</span>
-        <span>Team Analysing</span>
-      </button>
-      <div class="step-connector" id="stepConn2"></div>
-      <button class="step-btn" data-step="3" id="stepBtn3">
-        <span class="step-circle">3</span>
-        <span>IC Approved</span>
-      </button>
-    </div>
-
-    <!-- Engine Stage Panels -->
-    <div class="engine-body">
-      <!-- STEP 1: BIG BOLD PROMPT WITH FAMILY OFFICE IMAGE -->
-      <div class="engine-panel" id="panelStep1">
-        <div class="big-prompt-card">
-          <div class="fo-user-bar">
-            <div class="fo-photo-badge">
-              <img src="/assets/img/photos/towers.jpg" alt="Family Office Headquarters">
-            </div>
-            <div>
-              <div class="fo-client-title">SINGLE FAMILY OFFICE</div>
-              <div class="fo-client-sub">INVESTMENT COMMITTEE</div>
-            </div>
-          </div>
-          <div class="big-prompt-text">
-            “I want to automate our investment memo.”
-          </div>
-          <div class="big-prompt-deal">
-            ₹25 Cr Co-Investment · Specialty Chemicals B2B
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 2: GOLDFIB TEAM ANALYSING (BIG CHARTS & BIG NUMBERS) -->
-      <div class="engine-panel active" id="panelStep2">
-        <div class="big-analysing-head">
-          <span class="pulse-bead-big"></span>
-          <span>Goldfib Team Analysing...</span>
-        </div>
-
-        <div class="chart-big-box">
-          <div class="chart-big-title">REVERSE DCF EXIT VALUATION (₹ CR)</div>
-          <svg class="big-cb-svg" viewBox="0 0 440 115" preserveAspectRatio="none">
-            <line x1="0" y1="30" x2="440" y2="30" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
-            <line x1="0" y1="60" x2="440" y2="60" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
-            <line x1="0" y1="90" x2="440" y2="90" stroke="rgba(20,28,37,0.06)" stroke-dasharray="3 3"/>
-
-            <!-- Bar 1: FY24 Actual -->
-            <rect x="30" y="62" width="50" height="38" rx="4" fill="#1a2f4a"/>
-            <text x="55" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#141c25">₹16.8 Cr</text>
-            <text x="55" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#64748b">FY24</text>
-
-            <!-- Bar 2: FY25E Base -->
-            <rect x="115" y="46" width="50" height="54" rx="4" fill="#3b6b8a"/>
-            <text x="140" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#141c25">₹23.5 Cr</text>
-            <text x="140" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#64748b">FY25E</text>
-
-            <!-- Bar 3: FY26E Target -->
-            <rect x="200" y="32" width="50" height="68" rx="4" fill="#c9a961"/>
-            <text x="225" y="24" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#a68a3e">₹34.2 Cr</text>
-            <text x="225" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#64748b">FY26E</text>
-
-            <!-- Bar 4: Exit Bull -->
-            <rect x="285" y="18" width="50" height="82" rx="4" fill="#16a34a"/>
-            <text x="310" y="11" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#16a34a">₹48.0 Cr</text>
-            <text x="310" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#16a34a">Exit Target</text>
-
-            <!-- Spline Trajectory -->
-            <path d="M 55,62 Q 140,42 225,28 T 310,18" fill="none" stroke="#141c25" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
-          </svg>
-        </div>
-
-        <div class="big-checks-row">
-          <div class="big-check-pill"><b>✓</b> 10Y ROC Audited</div>
-          <div class="big-check-pill"><b>✓</b> 0 Red Flags</div>
-          <div class="big-check-pill"><b>✓</b> 2.4x Asset Cover</div>
-        </div>
-      </div>
-
-      <!-- STEP 3: DONE - HUGE METRICS -->
-      <div class="engine-panel" id="panelStep3">
-        <div class="big-done-banner">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>IC MEMO APPROVED</span>
-        </div>
-
-        <div class="huge-metrics-grid">
-          <div class="huge-metric-card green-border">
-            <div class="hm-val green">26.4%</div>
-            <div class="hm-label">Base IRR</div>
-          </div>
-          <div class="huge-metric-card navy-border">
-            <div class="hm-val navy">2.85x</div>
-            <div class="hm-label">MOIC</div>
-          </div>
-          <div class="huge-metric-card gold-border">
-            <div class="hm-val gold">2.2x</div>
-            <div class="hm-label">Cover</div>
-          </div>
+  <!-- Goldfib Desk demo: prompt -> work log -> report (driven by assets/site.js) -->
+  <div class="desk-demo is-idle" id="deskDemo" role="img" aria-label="Illustrative demo: a family office asks the Goldfib desk to find co-investors for a deal and take it from sourcing to closing, then receives a report showing the deal pipeline.">
+    <div class="dd-stage" aria-hidden="true">
+      <div class="dd-greeting"><small>Goldfib Desk</small>What should we move forward today?</div>
+      <div class="dd-thread" id="ddThread"></div>
+      <div class="dd-composer">
+        <div class="dd-input empty" id="ddInput"></div>
+        <div class="dd-tools">
+          <span>Sourcing → Closing</span>
+          <span class="dd-send" id="ddSend"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
     </div>
-
-    <!-- Engine Footer: Clean Single Action -->
-    <div class="engine-cta-bar">
-      <span class="fo-client-sub">GOLDFIB RESEARCH DESK</span>
-      <a class="engine-cta-link" href="/blog/walkthrough/" data-walkthrough-open>Automate Your Memos ➔</a>
+    <div class="dd-foot">
+      <span>Illustrative demo, not client results</span>
+      <a href="/blog/walkthrough/" data-walkthrough-open>See it for your office →</a>
     </div>
   </div>
 </div></section>
@@ -1371,18 +874,18 @@
 <section class="block paper" id="what"><div class="container">
   <div class="head">
     <span class="kicker">What We Do</span>
-    <h2>Three operational frictions every lean family office faces</h2>
+    <h2>Three places a lean family office loses deals</h2>
   </div>
   <div class="ps">
     <article><div class="b">
-      <h3>Deal Diligence Memos</h3>
-      <p class="pain"><span class="tag">Today</span>Deals arrive via WhatsApp decks and unvetted broker pitchbooks with 72 hours to decide.</p>
-      <p class="gain"><span class="tag">With Goldfib</span>An institutional, decision-ready 10-page diligence memo delivered within one week.</p>
+      <h3>Network &amp; Co-Investors</h3>
+      <p class="pain"><span class="tag">Today</span>The right co-investors, founders and advisers are reached one relationship at a time, so good deals depend on who happens to call.</p>
+      <p class="gain"><span class="tag">With Goldfib</span>A mapped, tracked network: we identify the right counterparties for each deal and keep every warm introduction moving.</p>
     </div></article>
     <article><div class="b">
-      <h3>Portfolio Reconciliation</h3>
-      <p class="pain"><span class="tag">Today</span>Holdings are scattered across 4 brokers, 3 PMS schemes, 2 private credit AIFs, and offshore bank PDFs.</p>
-      <p class="gain"><span class="tag">With Goldfib</span>One unified, real-time portfolio telemetry cockpit updated automatically via API and drop copies.</p>
+      <h3>Sourcing to Closing Automation</h3>
+      <p class="pain"><span class="tag">Today</span>Deals arrive via WhatsApp decks and broker pitchbooks with 72 hours to decide, then get tracked by hand across chats and spreadsheets.</p>
+      <p class="gain"><span class="tag">With Goldfib</span>One automated pipeline for sourcing, screening, diligence, IC and closing, including a decision-ready diligence memo within one week.</p>
     </div></article>
     <article><div class="b">
       <h3>Auditable Decision Records</h3>
@@ -1440,13 +943,13 @@
 <section class="block paper" id="process"><div class="container">
   <div class="head">
     <span class="kicker">How It Works</span>
-    <h2>From first consultation to a live running desk</h2>
+    <h2>From first conversation to a live deal desk</h2>
   </div>
   <div class="steps">
-    <div><b>01</b><h3>Portfolio Scoping</h3><p>One confidential call reviewing your current holdings, deal pipeline, and operational bottlenecks.</p></div>
-    <div><b>02</b><h3>Pilot Diligence Memo</h3><p>We execute institutional due diligence on one live unlisted or listed deal to demonstrate standard.</p></div>
-    <div><b>03</b><h3>Pipeline Integration</h3><p>We connect your broker contract notes, custodian files, and bank statements into one reconciled view.</p></div>
-    <div><b>04</b><h3>Ongoing Operations</h3><p>On-demand diligence memos, automated quarterly reviews, and real-time SEBI/tax monitoring.</p></div>
+    <div><b>01</b><h3>Network &amp; Pipeline Scoping</h3><p>One confidential call reviewing your relationships, deal pipeline, and operational bottlenecks.</p></div>
+    <div><b>02</b><h3>Pilot on a Live Deal</h3><p>We take one live unlisted or listed deal through sourcing, network mapping and diligence to demonstrate the standard.</p></div>
+    <div><b>03</b><h3>Workflow Integration</h3><p>We connect your deal flow, contacts, documents, and portfolio files into one working system.</p></div>
+    <div><b>04</b><h3>Ongoing Operations</h3><p>Every new deal runs on the same pipeline, with ongoing network building, automated reviews, and SEBI/tax monitoring.</p></div>
   </div>
 </div></section>
 
@@ -1472,8 +975,8 @@
 <!-- FINAL CTA -->
 <section class="final"><div class="container">
   <span class="kicker">Confidential Pilot</span>
-  <h2>Send us a live deal. Get an institutional diligence memo back.</h2>
-  <p>Experience institutional research on your own terms. Send us a deal deck or portfolio statement to start a confidential pilot.</p>
+  <h2>Send us a live deal. See how we’d take it from sourcing to closing.</h2>
+  <p>Send us a deal deck to start a confidential pilot, and see the network and automation working on your own deal.</p>
   <div class="cta-row center">
     <a class="btn" href="/blog/walkthrough/" data-walkthrough-open>Get your personalised research report →</a>
     <a class="btn line" href="mailto:partners@goldfibcapital.in?subject=Confidential%20Family%20Office%20Pilot">Initiate a Confidential Pilot →</a>
