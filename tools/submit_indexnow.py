@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITEMAP = ROOT / "sitemap.xml"
-KEY = "goldfib8c20e549fb8172901a3cb24e6"
+KEY = "3eab93bbed7766ba07a1ddae3c6b7bd8"
 KEY_FILE = ROOT / f"{KEY}.txt"
 HOST = "goldfibcapital.in"
 KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
